@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="TCC">
+    <meta name="author" content="Eduardo Edson Batista Cordeiro Alves">
+    <title>(Detalhe) PP - Prontuário Popular</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Plugin CSS -->
+    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav id="mainNav" class="navbar static-top navbar-toggleable-md navbar-inverse bg-inverse">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="dash.html">PP - Prontuário Popular</a>
+      <div class="collapse navbar-collapse" id="navbarExample">
+          <ul class="sidebar-nav navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="dash.html"><i class="fa fa-fw fa fa-rss"></i> Histórico</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="perfil.html"><i class="fa fa-fw fa fa-user"></i> Perfil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="medico.html"><i class="fa fa-fw fa fa-user-md"></i> Médico</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="adm.html"><i class="fa fa-fw fa  fa-lock"></i> Administrador</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="index.html"><i class="fa fa-fw fa-sign-out"></i> Sair</a>
+              </li>
+          </ul>
+      </div>
+  </nav>
+
+    <div class="content-wrapper py-3">
+        <div class="container-fluid">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="dash.html"> PP</a></li>
+                <li class="breadcrumb-item"><a href="dash.html"> Histórico</a></li>
+                <li class="breadcrumb-item active"> Detalhe</li>
+            </ol>
+
+            <div class="card mb-3">
+                <div class="card-block">
+                  <ul class="nav nav-tabs">
+                    <li class="active"><a href="detail.html">Física</a></li>
+                    <li><a href="detail_2.html">Lógica</a></li>
+                  </ul>
+
+                <div class="table-responsive">
+                  <br />
+                    <fieldset>
+                      <legend>Dados do paciente</legend>
+                      <table class="table table-bordered" width="100%" cellspacing="0">
+                        <tr><th style="width:250px;">Nome: </th><td>Eduardo Edson</td></tr>
+                        <tr><th style="width:250px;">Convênio: </th><td>Brasdesco Saúde</td></tr>
+                        <tr><th style="width:250px;">Internação: </th><td>-</td></tr>
+                        <tr><th style="width:250px;">Ficha Clínica: </th><td>-</td></tr>
+                      </table>
+                    </fieldset>
+
+                    <fieldset>
+                      <legend>Exames</legend>
+                      <label>Iniciais:</label></br>
+                      <textarea class="form-control" rows="5" readonly>Exame Inicial</textarea></br>
+                      <label>Complementares:</label></br>
+                      <textarea class="form-control" rows="5" readonly>Exame Complementar</textarea><br />
+                    </fieldset>
+
+                    <fieldset>
+                      <legend>Diagnóstico</legend>
+                      <textarea class="form-control" rows="5" readonly>Diagnóstico</textarea></br>
+                    </fieldset>
+
+                    <fieldset>
+                      <legend>Tratamento</legend>
+                      <textarea class="form-control" rows="5" readonly>Tratamento</textarea></br>
+                    </fieldset>
+
+                    <fieldset>
+                      <legend>Medicação</legend>
+                      <textarea class="form-control" rows="5" readonly>-</textarea></br>
+                    </fieldset>
+
+                    <fieldset>
+                      <legend>Evolução diária</legend>
+                      <textarea class="form-control" rows="5" readonly>-</textarea></br>
+                    </fieldset>
+
+                  <fieldset>
+                    <legend>Dados referente a nutrição</legend>
+                    <textarea class="form-control" rows="5" readonly>-</textarea></br>
+                  </fieldset>
+
+                  <fieldset>
+                    <legend>Dados referente ao serviço social</legend>
+                    <textarea class="form-control" rows="5" readonly>-</textarea></br>
+                  </fieldset>
+
+                  <fieldset>
+                    <legend>Dados referente à assistência psicológica</legend>
+                    <textarea class="form-control" rows="5" readonly>-</textarea></br>
+                  </fieldset>
+
+                  <fieldset>
+                    <legend>Avaliação pré-operatória</legend>
+                    <textarea class="form-control" rows="5" readonly>-</textarea></br>
+                  </fieldset>
+
+                  <fieldset>
+                    <legend>Recuperação pós-operatório</legend>
+                    <textarea class="form-control" rows="5" readonly>-</textarea></br>
+                  </fieldset>
+
+                  <fieldset>
+                    <legend>Relatório cirurgico</legend>
+                    <textarea class="form-control" rows="5" readonly>-</textarea></br>
+                  </fieldset>
+
+                  <fieldset>
+                    <legend>Controle de antimicrobiano</legend>
+                    <textarea class="form-control" rows="5" readonly>-</textarea></br>
+                  </fieldset>
+
+                  <fieldset>
+                    <legend>Boletim anestésico</legend>
+                    <textarea class="form-control" rows="5" readonly>-</textarea></br>
+                  </fieldset>
+
+                  <fieldset>
+                    <legend>Resumo de alta</legend>
+                    <textarea class="form-control" rows="5" readonly>-</textarea></br>
+                  </fieldset>
+
+                  <fieldset>
+                    <legend>Dados da saída do paciente</legend>
+                    <table class="table table-bordered" width="100%" cellspacing="0">
+                      <tr><th style="width:250px;">Contas: </th><td>Ok</td></tr>
+                      <tr><th style="width:250px;">Relatório de alta: </th><td>Liberado</td></tr>
+                      <tr><th style="width:250px;">Orientações: </th><td>-</td></tr>
+                      <tr><th style="width:250px;">Consumo do centro cirúrgico: </th><td>-</td></tr>
+                      <tr><th style="width:250px;">Notificação de óbito: </th><td>-</td></tr>
+                    </table>
+                  </fieldset>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <a class="scroll-to-top rounded" href="#">
+        <i class="fa fa-chevron-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/tether/tether.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/datatable.js"></script>
+    <script src="js/grafico.js"></script>
+    <script src="js/sb-admin.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
