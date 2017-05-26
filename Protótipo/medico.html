@@ -64,7 +64,6 @@
 
             <div class="card mb-3">
                 <div class="card-block">
-                  <form>
                     <fieldset>
                       <legend>Procurar Paciente</legend>
                       <div class="row">
@@ -85,9 +84,44 @@
                             <input type="text" class="long form-control" required/></p>
                         </div>
                       </div>
-                      <p><button style="float: right;" class="btn btn-outline-warning btn-lg">Buscar</button></p>
+                      <p><button style="float: right;" class="btn btn-outline-warning btn-lg" onclick="$('#show_hide').toggle();">Buscar</button></p>
                     </fieldset>
-                  </form>
+                    <br /><br />
+                    <fieldset id="show_hide" style="display:none;">
+                      <div class="card mb-3">
+                          <div class="card-block">
+                              <div class="table-responsive">
+                                  <table class="table table-bordered" width="100%" id="dataTable" cellspacing="0">
+                                      <thead>
+                                          <tr>
+                                              <th>Hospital</th>
+                                              <th>Data</th>
+                                              <th>Hora</th>
+                                              <th>Médico</th>
+                                              <th>telefone</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          <tr>
+                                              <td><a href="detail.html">Hospital Regional de Planaltina</a></td>
+                                              <td>14/10/2016</td>
+                                              <td>18:02</td>
+                                              <td>Dr. Leandro</td>
+                                              <td>(61) 3388-9700</td>
+                                          </tr>
+                                          <tr>
+                                              <td><a href="detail.html">Hospital Regional de Planaltina</a></td>
+                                              <td>16/10/2016</td>
+                                              <td>12:19</td>
+                                              <td>Dr. Pedro</td>
+                                              <td>(61) 3388-9700</td>
+                                          </tr>
+                                      </tbody>
+                                  </table>
+                              </div>
+                          </div>
+                      </div>
+                    </fieldset>
                 </div>
             </div>
 
