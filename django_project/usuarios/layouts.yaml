@@ -1,0 +1,166 @@
+Coordenador:
+  Dados Pessoais:
+  - nome:5 matricula:3 sexo setor
+  Contato:
+  - celular telefone
+  Dados do sistema:
+  - email:8 username
+  - password password_confirm
+
+CoordenadorEdit:
+  Dados Pessoais:
+  - nome:5 matricula:3 sexo setor
+  Contato:
+  - celular telefone
+  Dados do sistema:
+  - email:8 username
+
+Atendente:
+  Dados Pessoais:
+  - nome:5 matricula:3 sexo disciplina
+  Contato:
+  - celular telefone
+  Dados do sistema:
+  - email:8 username
+  - password password_confirm
+  Dados Orientador (es):
+  - orientador coorientador
+
+AtendenteEdit:
+  Dados Pessoais:
+  - nome:5 matricula:3 sexo disciplina
+  Contato:
+  - celular telefone
+  Dados do sistema:
+  - email:8 username
+  Dados Orientador (es):
+  - orientador coorientador
+
+Paciente:
+  Dados Pessoais:
+  - nome:6 data_nascimento sexo
+  - cpf rg convenio
+  - profissao renda
+  Contato:
+  - celular telefone
+  Moradia:
+  - moradia valor_aluguel
+  Família:
+  - grupo_familiar renda_total
+  Endereço:
+  - cep:4 endereco:4 numero:2 uf:2
+  - complemento bairro referencia
+  Referência:
+  - referencia_nome referencia_telefone referencia_parentesco
+  Outras Informações:
+  - colaborador tratamento_sus beneficio
+
+Prontuario:
+  Prontuario:
+  - paciente medico especialidade
+  - data hora
+  - descricao
+  - arq_1 arq_2
+
+FisioterapiaTriagem:
+  Triagem:
+  - paciente data_laudo area_atendimento
+  - avds_independente tempo_lesao marcha_independente cid
+  - uso_medicamentos atividade_fisica atividade_laboral
+  - relato
+  - diagnostico
+  - queixa_principal
+  - patologia
+  - tratamento_anterior
+  - exames_complementares
+  - parecer
+
+FisioterapiaEvolucao:
+  Evolução:
+  - paciente data
+  - descricao
+
+FisioterapiaNeurologiaInfantilAvalicao:
+  Dados Paciente:
+  - paciente data
+  Responsável:
+  - responsavel idade sexo
+  - endereco telefone
+  - medico
+  Diagnóstico Clínico:
+  - diagnostico
+  Queixa Principal:
+  - queixa_principal
+  Histórico:
+  - historio_comprimento historio_peso historio_pc historio_apgar
+  Anamnese:
+  - anamnese_fisioterapia anamnese_constipacao anamnese_sialorreia anamnese_refluxo
+  - anamnese_atitude anamnese_visao anamnese_avd
+  - anamnese_escola anamnese_escola_motivo
+  - anamnese_convulsao anamnese_convulsao_motivo
+  - anamnese_dor anamnese_dor_motivo
+  - anamnese_cirurgia anamnese_cirurgia_motivo
+  - anamnese_comunicacao
+  - anamnese_medicamentos
+  Exame Físico:
+  - exame_pele exame_edema
+  - exame_cicatrizes exame_tonus
+  - exame_reflexos exame_deformidades
+  - exame_complementares exame_observacao
+  - exame_aquisicao_motora
+  - exame_diagnostico
+  - exame_proposta
+
+FisioterapiaGeriatriaAvalicao:
+  Dados Iniciais:
+  - paciente sexo idade
+  - data_nascimento data_admissao data_avaliacao
+  - diagnostico_clinico
+  - diagnostico_fisioterapeutico
+  - patologia
+  Medicação:
+  - medicamento
+  - medicamentos
+  Anamnese:
+  - anamnese_queixa
+  - anamnese_historia
+  Exame Físico e Funcional:
+  - exame_pressao exame_freq_cardiaca exame_freq_respiratoria
+  - exame_inspecao exame_postura exame_palpacao
+  - exame_trofismo exame_tonus exame_sensibilidade
+  Amplitude de Movimento:
+  - amplitude_superiores amplitude_inferiores amplitude_tronco
+  Força Muscular:
+  - forca_superiores forca_inferiores forca_tronco
+  - forca_retracao forca_equilibrio forca_marcha
+  - forca_obs
+  Escala de Atividades Básicas da Vida Diária:
+  - atividade_alimentacao atividade_mobilidade atividade_cuidado
+  - atividade_banheiro atividade_banho atividade_vestir
+  - atividade_transferencia atividade_escada atividade_fecal atividade_urinario
+  - atividade_total
+  Planejamento Fisioterapêutico:
+  - planejamento_objetivos
+  - planejamento_tratamento
+  Atendimento:
+  - estagiario supervisor
+
+FisioterapiaBerg:
+  Escala de Equilíbrio Funcional de Berg:
+  - paciente:8 data
+  - local avaliador
+  - berg_1
+  - berg_2
+  - berg_3
+  - berg_4
+  - berg_5
+  - berg_6
+  - berg_7
+  - berg_8
+  - berg_9
+  - berg_10
+  - berg_11
+  - berg_12
+  - berg_13
+  - berg_14
+  - berg_total

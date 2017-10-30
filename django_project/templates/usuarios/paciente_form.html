@@ -1,0 +1,16 @@
+{% extends "crud/form.html" %}
+{% load i18n %}
+
+{% block extra_js %}
+  <script language="JavaScript">
+    window.onload = function(){
+      document.getElementById("id_telefone").placeholder = "(__) ____-____";
+      document.getElementById("id_referencia_telefone").placeholder = "(__) ____-____";
+      document.getElementById("id_celular").placeholder = "(__) _____-____";
+      document.getElementById("id_cpf").placeholder = "___.___.___-__";
+      document.getElementById("id_cep").placeholder = "__.___-___";
+      document.getElementById("id_rg").placeholder = "_.___.___";
+    }
+  </script>
+
+{% endblock extra_js %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block base_content %}
+<p>Um administrador pode deletar informações no sistema, <font color="#d30000"><b>CUIDADO</b></font>!</p><br />
+  <form method="post">
+    {% csrf_token %}
+    {% for a in adm_list %}
+      <div class="form-group row">
+        <div class="col-xs-8" style="float:left;">
+          <input value="{{a.nome}}" readonly="readonly" class="textinput textInput form-control" type="text">
+        </div>
+        <div class="col-xs-4" style="float:right;">
+          <select class="custom-select" name="{{a.id}}" id="{{a.id}}">
+            <option {% if a.is_staff %} selected {% endif %} value="True">É administrador</option>
+            <option {% if not a.is_staff %} selected {% endif %} value="False">Não é administrador</option>
+          </select>
+        </div>
+      </div>
+    {% endfor %}
+      <input class="btn btn-primary" type="submit" style="float:right;" value="Salvar" />
+  </form>
+{% endblock %}

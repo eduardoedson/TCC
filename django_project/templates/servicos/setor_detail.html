@@ -1,0 +1,11 @@
+{% extends "crud/detail.html" %}
+{% load i18n %}
+
+{% block extrablock %}
+  <h2 class="legend"><b>Disciplinas Vinculadas</b></h2>
+  <table style="width:100%" class="table table-hover">
+    {% for d in disciplinas %}
+      <tr><td><a href="{% url 'servicos:disciplina_detail' d.id %}">{{d.descricao}}</a></td></tr>
+    {% endfor %}
+  </table>
+{% endblock %}

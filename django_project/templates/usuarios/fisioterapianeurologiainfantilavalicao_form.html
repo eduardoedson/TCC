@@ -1,0 +1,57 @@
+{% extends "crud/form.html" %}
+{% load i18n %}
+
+{% block extra_js %}
+  <script language="JavaScript">
+    window.onload = function(){
+      document.getElementById("id_telefone").placeholder = "(__) ____-____";
+      $('#id_paciente').prop('disabled', true);
+      $('#id_data').prop('disabled', true);
+      $('#id_diagnostico').prop('disabled', true);
+      $('#id_queixa_principal').prop('disabled', true);
+      $('#id_anamnese_escola_motivo').prop('disabled', true);
+      $('#id_anamnese_convulsao_motivo').prop('disabled', true);
+      $('#id_anamnese_dor_motivo').prop('disabled', true);
+      $('#id_anamnese_cirurgia_motivo').prop('disabled', true);
+    }
+
+    document.getElementById('id_anamnese_escola').onchange = function(){
+      if(document.getElementById('id_anamnese_escola').value === 'Não')
+        $('#id_anamnese_escola_motivo').prop('disabled', false);
+      else
+        $('#id_anamnese_escola_motivo').prop('disabled', true);
+    };
+
+    document.getElementById('id_anamnese_convulsao').onchange = function(){
+      if(document.getElementById('id_anamnese_convulsao').value === 'Sim')
+        $('#id_anamnese_convulsao_motivo').prop('disabled', false);
+      else
+        $('#id_anamnese_convulsao_motivo').prop('disabled', true);
+    };
+
+    document.getElementById('id_anamnese_dor').onchange = function(){
+      if(document.getElementById('id_anamnese_dor').value === 'Sim')
+        $('#id_anamnese_dor_motivo').prop('disabled', false);
+      else
+        $('#id_anamnese_dor_motivo').prop('disabled', true);
+    };
+
+    document.getElementById('id_anamnese_cirurgia').onchange = function(){
+      if(document.getElementById('id_anamnese_cirurgia').value === 'Sim')
+        $('#id_anamnese_cirurgia_motivo').prop('disabled', false);
+      else
+        $('#id_anamnese_cirurgia_motivo').prop('disabled', true);
+    };
+
+    document.getElementById('submit-id-salvar').onclick = function(){
+      $('#id_paciente').prop('disabled', false);
+      $('#id_data').prop('disabled', false);
+      $('#id_diagnostico').prop('disabled', false);
+      $('#id_queixa_principal').prop('disabled', false);
+      $('#id_anamnese_escola_motivo').prop('disabled', false);
+      $('#id_anamnese_convulsao_motivo').prop('disabled', false);
+      $('#id_anamnese_dor_motivo').prop('disabled', false);
+      $('#id_anamnese_cirurgia_motivo').prop('disabled', false);
+    };
+  </script>
+{% endblock extra_js %}

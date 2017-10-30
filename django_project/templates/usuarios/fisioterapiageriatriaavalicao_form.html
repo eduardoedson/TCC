@@ -1,0 +1,73 @@
+{% extends "crud/form.html" %}
+{% load i18n %}
+
+{% block extra_js %}
+  <script language="JavaScript">
+    function total_atividades(){
+      var total = 0;
+
+      total += parseInt(document.getElementById('id_atividade_alimentacao').value);
+      total += parseInt(document.getElementById('id_atividade_mobilidade').value);
+      total += parseInt(document.getElementById('id_atividade_cuidado').value);
+      total += parseInt(document.getElementById('id_atividade_banheiro').value);
+      total += parseInt(document.getElementById('id_atividade_banho').value);
+      total += parseInt(document.getElementById('id_atividade_vestir').value);
+      total += parseInt(document.getElementById('id_atividade_transferencia').value);
+      total += parseInt(document.getElementById('id_atividade_escada').value);
+      total += parseInt(document.getElementById('id_atividade_fecal').value);
+      total += parseInt(document.getElementById('id_atividade_urinario').value);
+
+      if(total < 20){
+        document.getElementById('id_atividade_total').value = 'Total = ' + total + ' DT = Depêndencia Total';
+      }else if(total >= 20 && total <= 35){
+        document.getElementById('id_atividade_total').value = 'Total = ' + total + ' DG = Dependência Grave';
+      }else if(total >= 45 && total <= 55){
+        document.getElementById('id_atividade_total').value = 'Total = ' + total + ' DM = Dependência Moderada';
+      }else if(total >= 60 && total <= 95){
+        document.getElementById('id_atividade_total').value = 'Total = ' + total + ' DL = Dependência Leve';
+      }else if(total == 100){
+        document.getElementById('id_atividade_total').value = 'Total = ' + total + ' I = Independente';
+      }else{
+        document.getElementById('id_atividade_total').value = 'Total = ' + total;
+      }
+    }
+
+    window.onload = function(){
+      $('#id_paciente').prop('disabled', true);
+      $('#id_data').prop('disabled', true);
+      $('#id_data_nascimento').prop('disabled', true);
+      $('#id_sexo').prop('disabled', true);
+      $('#id_diagnostico_clinico').prop('disabled', true);
+      $('#id_medicamentos').prop('disabled', true);
+      $('#id_atividade_total').prop('disabled', true);
+    }
+
+    document.getElementById('id_atividade_alimentacao').onchange = function() { total_atividades() };
+    document.getElementById('id_atividade_mobilidade').onchange = function() { total_atividades() };
+    document.getElementById('id_atividade_cuidado').onchange = function() { total_atividades() };
+    document.getElementById('id_atividade_banheiro').onchange = function() { total_atividades() };
+    document.getElementById('id_atividade_banho').onchange = function() { total_atividades() };
+    document.getElementById('id_atividade_vestir').onchange = function() { total_atividades() };
+    document.getElementById('id_atividade_transferencia').onchange = function() { total_atividades() };
+    document.getElementById('id_atividade_escada').onchange = function() { total_atividades() };
+    document.getElementById('id_atividade_fecal').onchange = function() { total_atividades() };
+    document.getElementById('id_atividade_urinario').onchange = function() { total_atividades() };
+
+    document.getElementById('id_medicamento').onchange = function(){
+      if(document.getElementById('id_medicamento').value === 'Sim')
+        $('#id_medicamentos').prop('disabled', false);
+      else
+        $('#id_medicamentos').prop('disabled', true);
+    };
+
+    document.getElementById('submit-id-salvar').onclick = function(){
+      $('#id_paciente').prop('disabled', false);
+      $('#id_data').prop('disabled', false);
+      $('#id_data_nascimento').prop('disabled', false);
+      $('#id_sexo').prop('disabled', false);
+      $('#id_diagnostico_clinico').prop('disabled', false);
+      $('#id_medicamentos').prop('disabled', false);
+      $('#id_atividade_total').prop('disabled', false);
+    };
+  </script>
+{% endblock extra_js %}

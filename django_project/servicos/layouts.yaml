@@ -1,0 +1,11 @@
+Setor:
+  Setor:
+  - descricao
+
+Disciplina:
+  Disciplina:
+  - setor:3 descricao
+
+AreaAtendimento:
+  Área de Atendimento:
+  - setor:3 descricao

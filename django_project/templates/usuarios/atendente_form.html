@@ -1,0 +1,12 @@
+{% extends "crud/form.html" %}
+{% load i18n %}
+
+{% block extra_js %}
+  <script language="JavaScript">
+    window.onload = function(){
+      document.getElementById("id_telefone").placeholder = "(__) ____-____";
+      document.getElementById("id_celular").placeholder = "(__) _____-____";
+    }
+  </script>
+
+{% endblock extra_js %}

@@ -1,0 +1,14 @@
+- Prontuário Eletrônico do Paciente (PEP)
+  - Redução de custos
+  - Compartilhamento de informações
+  - TICS
+  - Registro Eletrônico de Saúde (RES)
+    - Segurança dos dados
+      - Certificação digital (Obrigatório)
+        - Padrão ICP-Brasil
+  - Normas
+    - Conselho Federal de Medicina (CFM)
+      - Resolução CFM Nº 1821/2007
+    - Sociedade Brasileira de Informática (SBIS)
+  - Estrutura do Prontuário
+    - Resoluçaõ CFM Nº 1638/2002

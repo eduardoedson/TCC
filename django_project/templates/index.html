@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block base_content %}
+  <div class="btn-group" style="float:right;">
+    {% if tipo == 'Coordenador' %}
+      <a href="{% url 'usuarios:coordenador_detail' user_pk %}" class="btn btn-primary btn-lg">Perfil</a>
+    {% elif tipo == 'Atendente' %}
+      <a href="{% url 'usuarios:atendente_detail' user_pk %}" class="btn btn-primary btn-lg">Perfil</a>
+    {% endif %}
+    <a href="{% url 'usuarios:mudar_senha' %}" class="btn btn-primary btn-lg">Mudar Senha</a>
+    <a href="{% url 'logout' %}" class="btn btn-danger btn-lg">Sair</a>
+  </div>
+
+  {% if tipo == 'Coordenador' %}
+    <p style="font-°size:20px;">Olá, <font color="#001aff"><b>{{nome}}</b></font>.<br />
+    Você está logado como <font color="#001aff"><b>{{tipo}} ({{setor}})</b></font>.</p>
+    {% if adm %}<p>Você é um <font color="#d30000"><b>Administrador</b></font>.</p><br />{% endif %}
+  {% elif tipo == 'Atendente' %}
+    <p style="font-°size:20px;">Olá, <font color="#001aff"><b>{{nome}}</b></font>.<br />
+    Você está logado como <font color="#001aff"><b>{{tipo}}</b></font> e matriculado na disciplina <font color="#001aff"><b>{{disciplina}}</b></font>.</p>
+  {% endif %}
+  <font color="green" ><p style="font-size:21px; text-align:center;">{{msg}}<br /></font>
+
+  <br /><br />
+
+  <div class="dropdown">
+    <button class="btn btn-primary btn-lg dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      Sistema
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li><a href="{% url 'usuarios:administradores' %}">Administradores</a></li>
+      <li><a href="{% url 'usuarios:atendente_list' %}">Atendentes</a></li>
+      <li><a href="{% url 'usuarios:coordenador_list' %}">Coordenadores</a></li>
+      <li><a href="{% url 'servicos:disciplina_list' %}">Disciplinas</a></li>
+      <li><a href="{% url 'servicos:setor_list' %}">Setores</a></li>
+      <li><a href="{% url 'servicos:areaatendimento_list' %}">Áreas de Atendimento</a></li>
+    </ul>
+    <a href="{% url 'usuarios:paciente_list' %}" class="btn btn-primary btn-lg">Paciente</a>
+  </div>
+
+  <br /><br /><br /><br /><br />
+{% endblock %}

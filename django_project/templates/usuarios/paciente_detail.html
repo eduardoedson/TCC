@@ -1,0 +1,68 @@
+{% extends "crud/detail.html" %}
+{% load staticfiles i18n %}
+
+{% block sub_actions %}
+  <div class="actions btn-group btn-group-sm" role="group">
+      {% if view.list_url %}
+        <a href="{{ view.list_url }}" class="btn btn-default">{% trans 'Listar' %} {{view.verbose_name_plural}}</a>
+      {% endif %}
+      {% if tipo == 'Coordenador' or tipo == 'Administrador' %}
+        <a href="{{ view.create_url }}" class="btn btn-default">
+          {% blocktrans with verbose_name=view.verbose_name %} Adicionar {{ verbose_name }} {% endblocktrans %}
+        </a>
+      {% endif %}
+      <a href="{% url 'usuarios:prontuario_create' object.pk %}" class="btn btn-default">
+        {% blocktrans with verbose_name=view.verbose_name %} Novo Prontuário {% endblocktrans %}
+      </a>
+  </div>
+
+  <br /><br /><br />
+
+  <div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Fisioterapia</button>
+  <ul class="dropdown-menu">
+    <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaevolucao_list' object.pk %}">Evolução</a></li>
+    <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiatriagem_list' object.pk %}">Triagem</a></li>
+    <li class="dropdown-submenu">
+      <a class="test" tabindex="-1" href="#">Geriatria</a>
+      <ul class="dropdown-menu">
+        <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiageriatriaavalicao_list' object.pk %}">Avaliação</a></li>
+        <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaberg_list' object.pk %}">Escala de Equilíbrio Funcional de Berg</a></li>
+        <li><a tabindex="-1" href="#">G-3</a></li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a class="test" tabindex="-1" href="#">Neurologia Adulto</a>
+      <ul class="dropdown-menu">
+        <li><a tabindex="-1" href="#">NA-1</a></li>
+        <li><a tabindex="-1" href="#">NA-2</a></li>
+        <li><a tabindex="-1" href="#">NA-3</a></li>
+        <li><a tabindex="-1" href="#">NA-4</a></li>
+        <li><a tabindex="-1" href="#">NA-5</a></li>
+        <li><a tabindex="-1" href="#">NA-6</a></li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a class="test" tabindex="-1" href="#">Neurologia Infantil</a>
+      <ul class="dropdown-menu">
+        <li><a tabindex="-1" href="{% url 'usuarios:fisioterapianeurologiainfantilavalicao_list' object.pk %}">Avaliação Fisioterápica em Neuropediatria</a></li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a class="test" tabindex="-1" href="#">Ortopedia</a>
+      <ul class="dropdown-menu">
+        <li><a tabindex="-1" href="#">O-1</a></li>
+        <li><a tabindex="-1" href="#">O-2</a></li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a class="test" tabindex="-1" href="#">Uroginecologia</a>
+      <ul class="dropdown-menu">
+        <li><a tabindex="-1" href="#">U-1</a></li>
+        <li><a tabindex="-1" href="#">U-2</a></li>
+        <li><a tabindex="-1" href="#">U-3</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+{% endblock sub_actions %}

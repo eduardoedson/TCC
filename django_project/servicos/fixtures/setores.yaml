@@ -1,0 +1,44 @@
+- model: servicos.Setor
+  pk: 1
+  fields:
+    descricao: Odontologia
+
+- model: servicos.Setor
+  pk: 2
+  fields:
+    descricao: Fisioterapia
+
+- model: servicos.Setor
+  pk: 3
+  fields:
+    descricao: Psicologia
+
+- model: servicos.Setor
+  pk: 4
+  fields:
+    descricao: Nutrição
+
+- model: servicos.Setor
+  pk: 5
+  fields:
+    descricao: Farmácia
+
+- model: servicos.Setor
+  pk: 6
+  fields:
+    descricao: Ed. Física
+
+- model: servicos.Setor
+  pk: 7
+  fields:
+    descricao: Biomedicina
+
+- model: servicos.Setor
+  pk: 8
+  fields:
+    descricao: Enfermagem
+
+- model: servicos.Setor
+  pk: 9
+  fields:
+    descricao: Medicina

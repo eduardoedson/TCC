@@ -1,0 +1,48 @@
+{% extends "crud/form.html" %}
+{% load i18n %}
+
+{% block extra_js %}
+  <script language="JavaScript">
+    function total(){
+      var total = 0;
+      total += parseInt($('input[name=berg_1]:checked').val());
+      total += parseInt($('input[name=berg_2]:checked').val());
+      total += parseInt($('input[name=berg_3]:checked').val());
+      total += parseInt($('input[name=berg_4]:checked').val());
+      total += parseInt($('input[name=berg_5]:checked').val());
+      total += parseInt($('input[name=berg_6]:checked').val());
+      total += parseInt($('input[name=berg_7]:checked').val());
+      total += parseInt($('input[name=berg_8]:checked').val());
+      total += parseInt($('input[name=berg_9]:checked').val());
+      total += parseInt($('input[name=berg_10]:checked').val());
+      total += parseInt($('input[name=berg_11]:checked').val());
+      total += parseInt($('input[name=berg_12]:checked').val());
+      total += parseInt($('input[name=berg_13]:checked').val());
+      total += parseInt($('input[name=berg_14]:checked').val());
+      document.getElementById('id_berg_total').value = total;
+    }
+
+    window.onload = function(){
+      $('#id_paciente').prop('disabled', true);
+    }
+
+    document.getElementById('div_id_berg_1').onchange = function() { total() };
+    document.getElementById('div_id_berg_2').onchange = function() { total() };
+    document.getElementById('div_id_berg_3').onchange = function() { total() };
+    document.getElementById('div_id_berg_4').onchange = function() { total() };
+    document.getElementById('div_id_berg_5').onchange = function() { total() };
+    document.getElementById('div_id_berg_6').onchange = function() { total() };
+    document.getElementById('div_id_berg_7').onchange = function() { total() };
+    document.getElementById('div_id_berg_8').onchange = function() { total() };
+    document.getElementById('div_id_berg_9').onchange = function() { total() };
+    document.getElementById('div_id_berg_10').onchange = function() { total() };
+    document.getElementById('div_id_berg_11').onchange = function() { total() };
+    document.getElementById('div_id_berg_12').onchange = function() { total() };
+    document.getElementById('div_id_berg_13').onchange = function() { total() };
+    document.getElementById('div_id_berg_14').onchange = function() { total() };
+
+    document.getElementById('submit-id-salvar').onclick = function(){
+      $('#id_paciente').prop('disabled', false);
+    };
+  </script>
+{% endblock extra_js %}
