@@ -1,0 +1,265 @@
+{% extends "crud/form.html" %}
+{% load i18n %}
+
+{% block extra_js %}
+  <script language="JavaScript">
+
+    function change_input(id, cond, id_change){
+      if(document.getElementById(id).value === cond)
+        $('#' + id_change).prop('disabled', false);
+      else
+        $('#' + id_change).prop('disabled', true);
+    }
+
+    function change_input_2(id, cond, id_change_1, id_change_2){
+      if(document.getElementById(id).value === cond){
+        $('#' + id_change_1).prop('disabled', false);
+        $('#' + id_change_2).prop('disabled', false);
+      }else{
+        $('#' + id_change_1).prop('disabled', true);
+        $('#' + id_change_2).prop('disabled', true);
+      }
+    }
+
+    document.getElementById('id_diabetes').onchange = function() {
+      change_input_2('id_diabetes', 'Sim', 'id_diabetes_tipo', 'id_diabetes_tempo');
+    };
+    document.getElementById('id_hipertiroidismo').onchange = function() {
+      change_input_2('id_hipertiroidismo', 'Sim', 'id_hipertiroidismo_tipo', 'id_hipertiroidismo_tempo');
+    };
+    document.getElementById('id_hipotiroidismo').onchange = function() {
+      change_input_2('id_hipotiroidismo', 'Sim', 'id_hipotiroidismo_tipo', 'id_hipotiroidismo_tempo');
+    };
+    document.getElementById('id_obesidade').onchange = function() {
+      change_input_2('id_obesidade', 'Sim', 'id_obesidade_tipo', 'id_obesidade_tempo');
+    };
+    document.getElementById('id_outras_metabolicas').onchange = function() {
+      change_input('id_outras_metabolicas', 'Sim', 'id_outras_metabolicas_quais');
+    };
+    document.getElementById('id_bronquite').onchange = function() {
+      change_input('id_bronquite', 'Sim', 'id_bronquite_tempo');
+    };
+    document.getElementById('id_enfisema').onchange = function() {
+      change_input('id_enfisema', 'Sim', 'id_enfisema_tempo');
+    };
+    document.getElementById('id_bronquiectasias').onchange = function() {
+      change_input('id_bronquiectasias', 'Sim', 'id_bronquiectasias_tempo');
+    };
+    document.getElementById('id_asma').onchange = function() {
+      change_input('id_asma', 'Sim', 'id_asma_tempo');
+    };
+    document.getElementById('id_apneia').onchange = function() {
+      change_input('id_apneia', 'Sim', 'id_apneia_tempo');
+    };
+    document.getElementById('id_alergia').onchange = function() {
+      change_input('id_alergia', 'Sim', 'id_alergia_tempo');
+    };
+    document.getElementById('id_outras_respiratorias').onchange = function() {
+      change_input('id_outras_respiratorias', 'Sim', 'id_outras_respiratorias_quais');
+    };
+    document.getElementById('id_stress').onchange = function() {
+      change_input('id_stress', 'Sim', 'id_stress_tempo');
+    };
+    document.getElementById('id_depressao').onchange = function() {
+      change_input('id_depressao', 'Sim', 'id_depressao_tempo');
+    };
+    document.getElementById('id_fibromialgia').onchange = function() {
+      change_input('id_fibromialgia', 'Sim', 'id_fibromialgia_tempo');
+    };
+    document.getElementById('id_outras_psicossomaticas').onchange = function() {
+      change_input('id_outras_psicossomaticas', 'Sim', 'id_outras_psicossomaticas_quais');
+    };
+    document.getElementById('id_labirintite').onchange = function() {
+      change_input('id_labirintite', 'Sim', 'id_labirintite_tempo');
+    };
+    document.getElementById('id_avc').onchange = function() {
+      change_input('id_avc', 'Sim', 'id_avc_tempo');
+    };
+    document.getElementById('id_hernia').onchange = function() {
+      change_input('id_hernia', 'Sim', 'id_hernia_onde');
+    };
+    document.getElementById('id_alzheimer').onchange = function() {
+      change_input('id_alzheimer', 'Sim', 'id_alzheimer_tempo');
+    };
+    document.getElementById('id_traumatismo').onchange = function() {
+      change_input('id_traumatismo', 'Sim', 'id_traumatismo_tempo');
+    };
+    document.getElementById('id_incontinencia').onchange = function() {
+      change_input('id_incontinencia', 'Sim', 'id_incontinencia_tempo');
+    };
+    document.getElementById('id_outras_neurologicas').onchange = function() {
+      change_input('id_outras_neurologicas', 'Sim', 'id_outras_neurologicas_quais');
+    };
+    document.getElementById('id_osteoporose').onchange = function() {
+      change_input_2('id_osteoporose', 'Sim', 'id_osteoporose_onde', 'id_osteoporose_tempo');
+    };
+    document.getElementById('id_artrite').onchange = function() {
+      change_input_2('id_artrite', 'Sim', 'id_artrite_onde', 'id_artrite_tempo');
+    };
+    document.getElementById('id_lombalgia').onchange = function() {
+      change_input_2('id_lombalgia', 'Sim', 'id_lombalgia_onde', 'id_lombalgia_tempo');
+    };
+    document.getElementById('id_bursite').onchange = function() {
+      change_input_2('id_bursite', 'Sim', 'id_bursite_onde', 'id_bursite_tempo');
+    };
+    document.getElementById('id_tendinite').onchange = function() {
+      change_input_2('id_tendinite', 'Sim', 'id_tendinite_onde', 'id_tendinite_tempo');
+    };
+    document.getElementById('id_fratura').onchange = function() {
+      change_input_2('id_fratura', 'Sim', 'id_fratura_onde', 'id_fratura_tempo');
+    };
+    document.getElementById('id_carpo').onchange = function() {
+      change_input_2('id_carpo', 'Sim', 'id_carpo_onde', 'id_carpo_tempo');
+    };
+    document.getElementById('id_outras_osteomioarticulares').onchange = function() {
+      change_input('id_outras_osteomioarticulares', 'Sim', 'id_outras_osteomioarticulares_quais');
+    };
+    document.getElementById('id_medicamento').onchange = function() {
+      change_input('id_medicamento', 'Sim', 'id_medicamentos');
+    };
+    document.getElementById('id_fumante').onchange = function() {
+      change_input_2('id_fumante', 'Sim', 'id_fumante_tempo', 'id_fumante_qnd_parou');
+    };
+    document.getElementById('id_cirurgia').onchange = function() {
+      change_input('id_cirurgia', 'Sim', 'id_cirurgia_onde');
+    };
+    document.getElementById('id_atividade_fisica').onchange = function() {
+      change_input_2('id_atividade_fisica', 'Sim', 'id_atividade_fisica_qual', 'id_atividade_fisica_frequencia');
+    };
+    document.getElementById('id_queda_2_anos').onchange = function() {
+      change_input_2('id_queda_2_anos', 'Sim', 'id_queda_como', 'id_queda_aonde');
+    };
+    document.getElementById('id_queda_hospital').onchange = function() {
+      change_input('id_queda_hospital', 'Sim', 'id_queda_hospital_tempo');
+    };
+    document.getElementById('id_queda_cirurgia').onchange = function() {
+      change_input('id_queda_cirurgia', 'Sim', 'id_queda_cirurgia_qual');
+    };
+    document.getElementById('id_queda_protese').onchange = function() {
+      change_input('id_queda_protese', 'Sim', 'id_queda_protese_onde');
+    };
+
+    window.onload = function(){
+      $('#id_paciente').prop('disabled', true);
+      $('#id_sexo').prop('disabled', true);
+      $('#id_data_nascimento').prop('disabled', true);
+      $('#id_funcao').prop('disabled', true);
+      $('#id_tempo_trabalho').prop('disabled', true);
+      $('#id_ocupacao').prop('disabled', true);
+      $('#id_diabetes_tipo').prop('disabled', true);
+      $('#id_diabetes_tempo').prop('disabled', true);
+      $('#id_hipertiroidismo_tipo').prop('disabled', true);
+      $('#id_hipertiroidismo_tempo').prop('disabled', true);
+      $('#id_hipotiroidismo_tipo').prop('disabled', true);
+      $('#id_hipotiroidismo_tempo').prop('disabled', true);
+      $('#id_obesidade_tipo').prop('disabled', true);
+      $('#id_obesidade_tempo').prop('disabled', true);
+      $('#id_outras_metabolicas_quais').prop('disabled', true);
+      $('#id_bronquite_tempo').prop('disabled', true);
+      $('#id_enfisema_tempo').prop('disabled', true);
+      $('#id_asma_tempo').prop('disabled', true);
+      $('#id_bronquiectasias_tempo').prop('disabled', true);
+      $('#id_apneia_tempo').prop('disabled', true);
+      $('#id_alergia_tempo').prop('disabled', true);
+      $('#id_outras_respiratorias_quais').prop('disabled', true);
+      $('#id_stress_tempo').prop('disabled', true);
+      $('#id_depressao_tempo').prop('disabled', true);
+      $('#id_fibromialgia_tempo').prop('disabled', true);
+      $('#id_outras_psicossomaticas_quais').prop('disabled', true);
+      $('#id_labirintite_tempo').prop('disabled', true);
+      $('#id_avc_tempo').prop('disabled', true);
+      $('#id_traumatismo_tempo').prop('disabled', true);
+      $('#id_hernia_onde').prop('disabled', true);
+      $('#id_incontinencia_tempo').prop('disabled', true);
+      $('#id_alzheimer_tempo').prop('disabled', true);
+      $('#id_outras_neurologicas_quais').prop('disabled', true);
+      $('#id_osteoporose_onde').prop('disabled', true);
+      $('#id_osteoporose_tempo').prop('disabled', true);
+      $('#id_artrite_onde').prop('disabled', true);
+      $('#id_artrite_tempo').prop('disabled', true);
+      $('#id_lombalgia_onde').prop('disabled', true);
+      $('#id_lombalgia_tempo').prop('disabled', true);
+      $('#id_bursite_onde').prop('disabled', true);
+      $('#id_bursite_tempo').prop('disabled', true);
+      $('#id_tendinite_onde').prop('disabled', true);
+      $('#id_tendinite_tempo').prop('disabled', true);
+      $('#id_fratura_onde').prop('disabled', true);
+      $('#id_fratura_tempo').prop('disabled', true);
+      $('#id_carpo_onde').prop('disabled', true);
+      $('#id_carpo_tempo').prop('disabled', true);
+      $('#id_outras_osteomioarticulares_quais').prop('disabled', true);
+      $('#id_medicamentos').prop('disabled', true);
+      $('#id_fumante_tempo').prop('disabled', true);
+      $('#id_fumante_qnd_parou').prop('disabled', true);
+      $('#id_cirurgia_onde').prop('disabled', true);
+      $('#id_atividade_fisica_qual').prop('disabled', true);
+      $('#id_atividade_fisica_frequencia').prop('disabled', true);
+      $('#id_queda_como').prop('disabled', true);
+      $('#id_queda_aonde').prop('disabled', true);
+      $('#id_queda_cirurgia_qual').prop('disabled', true);
+      $('#id_queda_protese_onde').prop('disabled', true);
+      $('#id_queda_hospital_tempo').prop('disabled', true);
+    }
+    document.getElementById('submit-id-salvar').onclick = function(){
+      $('#id_paciente').prop('disabled', false);
+      $('#id_sexo').prop('disabled', false);
+      $('#id_data_nascimento').prop('disabled', false);
+      $('#id_funcao').prop('disabled', false);
+      $('#id_tempo_trabalho').prop('disabled', false);
+      $('#id_ocupacao').prop('disabled', false);
+      $('#id_diabetes_tipo').prop('disabled', false);
+      $('#id_diabetes_tempo').prop('disabled', false);
+      $('#id_hipertiroidismo_tipo').prop('disabled', false);
+      $('#id_hipertiroidismo_tempo').prop('disabled', false);
+      $('#id_hipotiroidismo_tipo').prop('disabled', false);
+      $('#id_hipotiroidismo_tempo').prop('disabled', false);
+      $('#id_obesidade_tipo').prop('disabled', false);
+      $('#id_obesidade_tempo').prop('disabled', false);
+      $('#id_outras_metabolicas_quais').prop('disabled', false);
+      $('#id_bronquite_tempo').prop('disabled', false);
+      $('#id_enfisema_tempo').prop('disabled', false);
+      $('#id_asma_tempo').prop('disabled', false);
+      $('#id_bronquiectasias_tempo').prop('disabled', false);
+      $('#id_apneia_tempo').prop('disabled', false);
+      $('#id_alergia_tempo').prop('disabled', false);
+      $('#id_outras_respiratorias_quais').prop('disabled', false);
+      $('#id_stress_tempo').prop('disabled', false);
+      $('#id_depressao_tempo').prop('disabled', false);
+      $('#id_fibromialgia_tempo').prop('disabled', false);
+      $('#id_outras_psicossomaticas_quais').prop('disabled', false);
+      $('#id_labirintite_tempo').prop('disabled', false);
+      $('#id_avc_tempo').prop('disabled', false);
+      $('#id_traumatismo_tempo').prop('disabled', false);
+      $('#id_hernia_onde').prop('disabled', false);
+      $('#id_incontinencia_tempo').prop('disabled', false);
+      $('#id_alzheimer_tempo').prop('disabled', false);
+      $('#id_outras_neurologicas_quais').prop('disabled', false);
+      $('#id_osteoporose_onde').prop('disabled', false);
+      $('#id_osteoporose_tempo').prop('disabled', false);
+      $('#id_artrite_onde').prop('disabled', false);
+      $('#id_artrite_tempo').prop('disabled', false);
+      $('#id_lombalgia_onde').prop('disabled', false);
+      $('#id_lombalgia_tempo').prop('disabled', false);
+      $('#id_bursite_onde').prop('disabled', false);
+      $('#id_bursite_tempo').prop('disabled', false);
+      $('#id_tendinite_onde').prop('disabled', false);
+      $('#id_tendinite_tempo').prop('disabled', false);
+      $('#id_fratura_onde').prop('disabled', false);
+      $('#id_fratura_tempo').prop('disabled', false);
+      $('#id_carpo_onde').prop('disabled', false);
+      $('#id_carpo_tempo').prop('disabled', false);
+      $('#id_outras_osteomioarticulares_quais').prop('disabled', false);
+      $('#id_medicamentos').prop('disabled', false);
+      $('#id_fumante_tempo').prop('disabled', false);
+      $('#id_fumante_qnd_parou').prop('disabled', false);
+      $('#id_cirurgia_onde').prop('disabled', false);
+      $('#id_atividade_fisica_qual').prop('disabled', false);
+      $('#id_atividade_fisica_frequencia').prop('disabled', false);
+      $('#id_queda_como').prop('disabled', false);
+      $('#id_queda_aonde').prop('disabled', false);
+      $('#id_queda_cirurgia_qual').prop('disabled', false);
+      $('#id_queda_protese_onde').prop('disabled', false);
+      $('#id_queda_hospital_tempo').prop('disabled', falsefalse);
+    };
+  </script>
+{% endblock extra_js %}

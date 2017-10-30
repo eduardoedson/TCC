@@ -164,3 +164,81 @@ FisioterapiaBerg:
   - berg_13
   - berg_14
   - berg_total
+
+FisioterapiaGeriatriaAnamnese:
+  Dados Pessoais:
+  - paciente sexo data
+  - data_nascimento idade estado_civil membro_dominante
+  - trabalha funcao tempo_trabalho ocupacao
+  - aviso emergencia
+  Dados Antropométricos:
+  - peso altura imc
+  Sinais Vitais:
+  - pa fc fr saturacao
+  Doenças Metabólicas:
+  - diabetes diabetes_tipo diabetes_tempo
+  - hipertiroidismo hipertiroidismo_tipo hipertiroidismo_tempo
+  - hipotiroidismo hipotiroidismo_tipo hipotiroidismo_tempo
+  - obesidade obesidade_tipo obesidade_tempo
+  - outras_metabolicas
+  - outras_metabolicas_quais
+  Doenças Respiratórias:
+  - infarto infarto_tempo
+  - hipertensao hipertensao_tempo
+  - hipotensao hipotensao_tempo
+  - vaso_vagal vaso_vagal_tempo
+  - chagas chagas_tempo
+  - outras_cardiovasculares
+  - outras_cardiovasculares_quais
+  Doenças Respiratórias:
+  - bronquite bronquite_tempo
+  - enfisema enfisema_tempo
+  - asma asma_tempo
+  - bronquiectasias bronquiectasias_tempo
+  - apneia apneia_tempo
+  - alergia alergia_tempo
+  - outras_respiratorias
+  - outras_respiratorias_quais
+  Doenças Psicossomáticas:
+  - stress stress_tempo
+  - depressao depressao_tempo
+  - fibromialgia fibromialgia_tempo
+  - outras_psicossomaticas
+  - outras_psicossomaticas_quais
+  Doenças Neurológicas:
+  - labirintite labirintite_tempo
+  - avc avc_tempo
+  - traumatismo traumatismo_tempo
+  - hernia hernia_onde
+  - incontinencia incontinencia_tempo
+  - alzheimer alzheimer_tempo
+  - outras_neurologicas
+  - outras_neurologicas_quais
+  Doenças Osteomioarticulares:
+  - osteoporose osteoporose_onde osteoporose_tempo
+  - artrite artrite_onde artrite_tempo
+  - lombalgia lombalgia_onde lombalgia_tempo
+  - bursite bursite_onde bursite_tempo
+  - tendinite tendinite_onde tendinite_tempo
+  - fratura fratura_onde fratura_tempo
+  - carpo carpo_onde carpo_tempo
+  - outras_osteomioarticulares
+  - outras_osteomioarticulares_quais
+  Uso de Medicamentos:
+  - medicamento
+  - medicamentos
+  Hábitos da Vida Diária:
+  - fumante fumante_tempo fumante_qnd_parou
+  - queda
+  - cirurgia cirurgia_onde
+  - atividade_fisica atividade_fisica_qual atividade_fisica_frequencia
+  Qual das atividades abaixo você realiza e qual a frequência?:
+  - cuidar_casa lavar_roupa
+  - passar_roupa jardinagem supermecado
+  Outras informações:
+  - queda_2_anos queda_como queda_aonde
+  - queda_hospital queda_hospital_tempo
+  - queda_cirurgia queda_cirurgia_qual
+  - queda_protese queda_protese_onde
+  - diagnostico
+  - conduta
