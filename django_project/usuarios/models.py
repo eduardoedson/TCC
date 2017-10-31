@@ -554,3 +554,37 @@ class FisioterapiaGeriatriaAnamnese(models.Model):
 
     def __str__(self):
         return _('%(data)s') % {'data': self.data.strftime('%d/%m/%Y')}
+
+
+class FisioterapiaGeriatriaAnamnese(models.Model):
+    data = models.DateField(verbose_name=_('Data'), blank=True)
+    paciente = models.ForeignKey(Paciente, verbose_name=_('Nome'))
+    data_nascimento = models.DateField(verbose_name=_('Data de Nascimento'), blank=True)
+    idade = models.CharField(max_length=40, verbose_name=_('Idade'), blank=True)
+    nome_pai = models.CharField(max_length=40, verbose_name=_('Nome do Pai da Criança'), blank=True)
+    estado_civil = models.CharField(max_length=40, verbose_name=_('Estado Civil'), blank=True)
+    profissao = models.CharField(max_length=40, verbose_name=_('Profissão'), blank=True)
+    funcao = models.CharField(max_length=40, verbose_name=_('Função'), blank=True)
+    endereco = models.CharField(max_length=100, verbose_name=_('Endereço'), blank=True)
+    cep = models.CharField(max_length=40, verbose_name=_('CEP'), blank=True)
+    telefone = models.CharField(max_length=40, verbose_name=_('Telefone'), blank=True)
+    nome_bebe = models.CharField(max_length=40, verbose_name=_('Nome do Bebê'), blank=True)
+    sexo_bebe = models.CharField(max_length=1, verbose_name=_('Sexo do Bebê'), choices=RANGE_SEXO, blank=True)
+
+    anamnese_queixa_principal = models.TextField(verbose_name=_('Queixa Principal'), blank=True)
+
+    gestacional_tipo_sangue = models.CharField(max_length=1, verbose_name=_('Tipagem Sanguínea'), choices=[('A', 'A'), ('B', 'B'), ('AB', 'AB'), ('O', 'O')], default='A')
+    gestacional_fator_rh = models.CharField(max_length=1, verbose_name=_('Fator RH'), choices=[('-', '-'), ('+', '+')], default='+')
+    gestacional_dum = models.CharField(max_length=40, verbose_name=_('DUM'), blank=True)
+    gestacional_dpp = models.CharField(max_length=40, verbose_name=_('DPP'), blank=True)
+    gestacional_idade = models.CharField(max_length=40, verbose_name=_('Idade Gestacional'), blank=True)
+    gestacional_data = models.CharField(max_length=40, verbose_name=_('Data dos Primeiros Movimentos Fetais'), blank=True)
+
+    antecedentes_idade_menarca = models.CharField(max_length=40, verbose_name=_('Idade da Menarca (Anos)'), blank=True)
+    antecedentes_idade_sexual = models.CharField(max_length=40, verbose_name=_('Idade de Início da Atiidade Sexual (Anos)'), blank=True)
+    antecedentes_ciclo = models.CharField(max_length=40, verbose_name=_('Regularidade do Ciclo Menstrual'), choices=YES_NO_CHOICES, default='Sim')
+    antecedentes_cirurgia = models.CharField(max_length=40, verbose_name=_('Cirurgia ou Doença Ginecológica Anterior'), choices=YES_NO_CHOICES, default='Não')
+    antecedentes_cirurgia_qual = models.CharField(max_length=40, verbose_name=_('Qual?'), blank=True)
+
+    obstetrica_gestacao = models.CharField(max_length=40, verbose_name=_('Número de Gestações Anteriores'), blank=True)
+    obstetrica_parto = models.CharField(max_length=40, verbose_name=_('Tipo de Parto'), choices=[('Normal', 'Normal'), ('Cesárea', 'Cesárea'), ('Fórceps', 'Usou Fórceps')], default='Norma')
