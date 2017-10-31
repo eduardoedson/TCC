@@ -1,6 +1,6 @@
 from django.conf.urls import include, url
 
-from .views import DisciplinaCrud, SetorCrud, AreaAtendimentoCrud
+from .views import AreaAtendimentoCrud, DisciplinaCrud, SetorCrud
 
 app_name = 'servicos'
 

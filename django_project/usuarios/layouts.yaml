@@ -55,13 +55,6 @@ Paciente:
   Outras Informações:
   - colaborador tratamento_sus beneficio
 
-Prontuario:
-  Prontuario:
-  - paciente medico especialidade
-  - data hora
-  - descricao
-  - arq_1 arq_2
-
 FisioterapiaTriagem:
   Triagem:
   - paciente data_laudo area_atendimento

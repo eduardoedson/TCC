@@ -28,6 +28,7 @@ class Disciplina(models.Model):
     def __str__(self):
         return self.descricao
 
+
 class AreaAtendimento(models.Model):
     setor = models.ForeignKey(Setor, verbose_name=_('Setor'))
     descricao = models.CharField(

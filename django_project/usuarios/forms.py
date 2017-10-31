@@ -7,7 +7,7 @@ from django.db import transaction
 from django.forms import ModelForm
 from django.utils.translation import ugettext_lazy as _
 
-from utils import YES_NO_CHOICES, get_or_create_grupo, ESCALA_FUNCIONAL_BERG
+from utils import ESCALA_FUNCIONAL_BERG, YES_NO_CHOICES, get_or_create_grupo
 
 from .models import Atendente, Coordenador, FisioterapiaBerg
 

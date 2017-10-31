@@ -2,8 +2,8 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from servicos.models import Disciplina, Setor, AreaAtendimento
-from utils import RANGE_SEXO, YES_NO_CHOICES, ESCALA_FUNCIONAL_BERG
+from servicos.models import AreaAtendimento, Disciplina, Setor
+from utils import ESCALA_FUNCIONAL_BERG, RANGE_SEXO, YES_NO_CHOICES
 
 
 def media_path(instance, filename):
@@ -242,26 +242,6 @@ class FisioterapiaNeurologiaInfantilAvalicao(models.Model):
         return _('%(data)s %(responsavel)s') % {
             'data': self.data.strftime('%d/%m/%Y'), 'responsavel': self.responsavel}
 
-class Prontuario(models.Model):
-    paciente = models.ForeignKey(Paciente, verbose_name=_('Paciente'))
-    medico = models.CharField(max_length=50, verbose_name=_('Médico'))
-    especialidade = models.CharField(max_length=50, verbose_name=_('Especialidade'))
-    descricao = models.TextField(verbose_name=_('Descrição'))
-    data = models.DateField(verbose_name=_('Data Consulta'))
-    hora = models.CharField(max_length=5, verbose_name=_('Hora Consulta'))
-    arq_1 = models.FileField(
-        blank=True, upload_to=media_path, verbose_name=_('Arquivo 1'))
-    arq_2 = models.FileField(
-        blank=True, upload_to=media_path, verbose_name=_('Arquivo 2'))
-
-    class Meta:
-        verbose_name = _('Prontuário')
-        verbose_name_plural = _('Prontuários')
-        ordering = ['paciente', 'data', 'hora', 'especialidade']
-
-    def __str__(self):
-        return _('%(paciente)s (%(data)s)') % {
-            'paciente': self.paciente, 'data': self.data.strftime('%d/%m/%Y')}
 
 class FisioterapiaGeriatriaAvalicao(models.Model):
     paciente = models.ForeignKey(Paciente, verbose_name=_('Nome'))

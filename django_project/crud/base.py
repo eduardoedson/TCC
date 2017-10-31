@@ -3,7 +3,6 @@ from braces.views import FormMessagesMixin, GroupRequiredMixin
 from django.conf.urls import url
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.urlresolvers import reverse
-from django.db import models
 from django.utils.decorators import classonlymethod
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
@@ -11,10 +10,11 @@ from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
 
 from crispy_layout_mixin import CrispyLayoutFormMixin, get_field_display
 from prontuario.settings import LOGIN_REDIRECT_URL
-from utils import lista_grupos, make_pagination
+from utils import make_pagination
 
 LIST, CREATE, DETAIL, UPDATE, DELETE = \
     'list', 'create', 'detail', 'update', 'delete'
+
 
 def _form_invalid_message(msg):
     return '%s %s' % (_('Formulário inválido.'), msg)

@@ -6,7 +6,7 @@ import crud.base
 from crud.base import Crud
 from prontuario.settings import LOGIN_REDIRECT_URL
 
-from .models import Disciplina, Setor, AreaAtendimento
+from .models import AreaAtendimento, Disciplina, Setor
 
 
 class SetorCrud(Crud):
@@ -31,6 +31,7 @@ class SetorCrud(Crud):
                 setor=self.object)
             return context
 
+
 class DisciplinaCrud(Crud):
     model = Disciplina
     help_path = ''
@@ -44,6 +45,7 @@ class DisciplinaCrud(Crud):
 
     class CreateView(crud.base.CrudCreateView, GroupRequiredMixin):
         group_required = ['Coordenador']
+
 
 class AreaAtendimentoCrud(Crud):
     model = AreaAtendimento
