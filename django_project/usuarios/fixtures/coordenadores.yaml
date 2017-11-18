@@ -1,6 +1,0 @@
-- model: usuarios.Coordenador
-  pk: 1
-  fields:
-    nome: Coordenador Biomedicina
-    user: coord_biomedicina
-    user: coord_biomedicina

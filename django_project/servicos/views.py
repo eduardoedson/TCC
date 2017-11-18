@@ -15,13 +15,13 @@ class SetorCrud(Crud):
 
     class BaseMixin(GroupRequiredMixin,
                     LoginRequiredMixin, crud.base.CrudBaseMixin):
-        list_field_names = ['descricao']
+        list_field_names = ['descricao', 'nome']
 
         raise_exception = True
         login_url = LOGIN_REDIRECT_URL
 
     class CreateView(crud.base.CrudCreateView, GroupRequiredMixin):
-        group_required = ['Coordenador']
+        group_required = ['Supervisor']
 
     class DetailView(crud.base.CrudDetailView):
 
@@ -44,7 +44,7 @@ class DisciplinaCrud(Crud):
         login_url = LOGIN_REDIRECT_URL
 
     class CreateView(crud.base.CrudCreateView, GroupRequiredMixin):
-        group_required = ['Coordenador']
+        group_required = ['Supervisor']
 
 
 class AreaAtendimentoCrud(Crud):
@@ -59,4 +59,4 @@ class AreaAtendimentoCrud(Crud):
         login_url = LOGIN_REDIRECT_URL
 
     class CreateView(crud.base.CrudCreateView, GroupRequiredMixin):
-        group_required = ['Coordenador']
+        group_required = ['Supervisor']

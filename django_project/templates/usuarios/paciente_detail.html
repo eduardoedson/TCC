@@ -6,14 +6,11 @@
       {% if view.list_url %}
         <a href="{{ view.list_url }}" class="btn btn-default">{% trans 'Listar' %} {{view.verbose_name_plural}}</a>
       {% endif %}
-      {% if tipo == 'Coordenador' or tipo == 'Administrador' %}
+      {% if tipo == 'Supervisor' or tipo == 'Administrador' %}
         <a href="{{ view.create_url }}" class="btn btn-default">
           {% blocktrans with verbose_name=view.verbose_name %} Adicionar {{ verbose_name }} {% endblocktrans %}
         </a>
       {% endif %}
-      <a href="{% url 'usuarios:prontuario_create' object.pk %}" class="btn btn-default">
-        {% blocktrans with verbose_name=view.verbose_name %} Novo Prontuário {% endblocktrans %}
-      </a>
   </div>
 
   <br /><br /><br />
@@ -58,8 +55,8 @@
     <li class="dropdown-submenu">
       <a class="test" tabindex="-1" href="#">Uroginecologia</a>
       <ul class="dropdown-menu">
-        <li><a tabindex="-1" href="#">U-1</a></li>
-        <li><a tabindex="-1" href="#">U-2</a></li>
+        <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaavaliacaogestacional_list' object.pk %}">Avaliação Fisioterapêutica Gestacional</a></li>
+        <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaavaliacaomaculina_list' object.pk %}">Avaliação de Incontinência Urinária Masculina</a></li>
         <li><a tabindex="-1" href="#">U-3</a></li>
       </ul>
     </li>

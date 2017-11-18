@@ -9,7 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from utils import ESCALA_FUNCIONAL_BERG, YES_NO_CHOICES, get_or_create_grupo
 
-from .models import Atendente, Coordenador, FisioterapiaBerg
+from .models import Aluno, Supervisor, FisioterapiaBerg, Recepcionista
 
 
 class FisioterapiaBergForm(ModelForm):
@@ -102,7 +102,7 @@ class FisioterapiaBergForm(ModelForm):
         fields = '__all__'
 
 
-class CoordenadorForm(ModelForm):
+class SupervisorForm(ModelForm):
 
     # Usuário
     password = forms.CharField(
@@ -116,7 +116,7 @@ class CoordenadorForm(ModelForm):
         widget=forms.PasswordInput())
 
     class Meta:
-        model = Coordenador
+        model = Supervisor
         fields = ['nome', 'sexo', 'setor', 'telefone',
                   'celular', 'username', 'email', 'matricula']
 
@@ -124,7 +124,7 @@ class CoordenadorForm(ModelForm):
                                attrs={'style': 'text-transform:lowercase;'})}
 
     def __init__(self, *args, **kwargs):
-        super(CoordenadorForm, self).__init__(*args, **kwargs)
+        super(SupervisorForm, self).__init__(*args, **kwargs)
 
     def valida_igualdade(self, texto1, texto2, msg):
         if texto1 != texto2:
@@ -152,23 +152,23 @@ class CoordenadorForm(ModelForm):
 
     @transaction.atomic
     def save(self, commit=False):
-        coordenador = super(CoordenadorForm, self).save(commit)
+        supervisor = super(SupervisorForm, self).save(commit)
 
         # Cria User
-        u = User.objects.create(username=coordenador.username, email=coordenador.email)
+        u = User.objects.create(username=supervisor.username, email=supervisor.email)
         u.set_password(self.cleaned_data['password'])
         u.is_active = True
-        u.groups.add(get_or_create_grupo('Coordenador'))
+        u.groups.add(get_or_create_grupo('Supervisor'))
         u.save()
 
-        coordenador.user = u
-        coordenador.save()
-        return coordenador
+        supervisor.user = u
+        supervisor.save()
+        return supervisor
 
-class CoordenadorEditForm(ModelForm):
+class SupervisorEditForm(ModelForm):
 
     class Meta:
-        model = Coordenador
+        model = Supervisor
         fields = ['nome', 'sexo', 'setor', 'telefone',
                   'celular', 'username', 'email', 'matricula']
 
@@ -178,7 +178,7 @@ class CoordenadorEditForm(ModelForm):
                    }
 
     def __init__(self, *args, **kwargs):
-        super(CoordenadorEditForm, self).__init__(*args, **kwargs)
+        super(SupervisorEditForm, self).__init__(*args, **kwargs)
 
     def valida_igualdade(self, texto1, texto2, msg):
         if texto1 != texto2:
@@ -187,15 +187,15 @@ class CoordenadorEditForm(ModelForm):
 
     @transaction.atomic
     def save(self, commit=False):
-        coordenador = super(CoordenadorEditForm, self).save(commit)
+        supervisor = super(SupervisorEditForm, self).save(commit)
 
         # User
-        u = coordenador.user
-        u.email = coordenador.email
+        u = supervisor.user
+        u.email = supervisor.email
         u.save()
 
-        coordenador.save()
-        return coordenador
+        supervisor.save()
+        return supervisor
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(
@@ -227,7 +227,7 @@ class MudarSenhaForm(forms.Form):
                  'name': 'confirmar_senha',
                  'placeholder': 'Confirmar Senha'}))
 
-class AtendenteForm(ModelForm):
+class AlunoForm(ModelForm):
 
     # Usuário
     password = forms.CharField(
@@ -241,16 +241,16 @@ class AtendenteForm(ModelForm):
         widget=forms.PasswordInput())
 
     class Meta:
-        model = Atendente
+        model = Aluno
         fields = ['nome', 'sexo', 'disciplina', 'telefone',
                   'celular', 'username', 'email', 'matricula',
-                  'orientador', 'coorientador']
+                  'supervisor']
 
         widgets = {'email': forms.TextInput(
                                attrs={'style': 'text-transform:lowercase;'})}
 
     def __init__(self, *args, **kwargs):
-        super(AtendenteForm, self).__init__(*args, **kwargs)
+        super(AlunoForm, self).__init__(*args, **kwargs)
 
     def valida_igualdade(self, texto1, texto2, msg):
         if texto1 != texto2:
@@ -278,26 +278,26 @@ class AtendenteForm(ModelForm):
 
     @transaction.atomic
     def save(self, commit=False):
-        atendente = super(AtendenteForm, self).save(commit)
+        aluno = super(AlunoForm, self).save(commit)
 
         # Cria User
-        u = User.objects.create(username=atendente.username, email=atendente.email)
+        u = User.objects.create(username=aluno.username, email=aluno.email)
         u.set_password(self.cleaned_data['password'])
         u.is_active = True
-        u.groups.add(get_or_create_grupo('Atendente'))
+        u.groups.add(get_or_create_grupo('Aluno'))
         u.save()
 
-        atendente.user = u
-        atendente.save()
-        return atendente
+        aluno.user = u
+        aluno.save()
+        return aluno
 
-class AtendenteEditForm(ModelForm):
+class AlunoEditForm(ModelForm):
 
     class Meta:
-        model = Atendente
+        model = Aluno
         fields = ['nome', 'sexo', 'disciplina', 'telefone',
                   'celular', 'username', 'email', 'matricula',
-                  'orientador', 'coorientador']
+                  'supervisor']
 
         widgets = {'username': forms.TextInput(attrs={'readonly': 'readonly'}),
                    'email': forms.TextInput(
@@ -305,7 +305,7 @@ class AtendenteEditForm(ModelForm):
                    }
 
     def __init__(self, *args, **kwargs):
-        super(AtendenteEditForm, self).__init__(*args, **kwargs)
+        super(AlunoEditForm, self).__init__(*args, **kwargs)
 
     def valida_igualdade(self, texto1, texto2, msg):
         if texto1 != texto2:
@@ -314,12 +314,106 @@ class AtendenteEditForm(ModelForm):
 
     @transaction.atomic
     def save(self, commit=False):
-        atendente = super(AtendenteEditForm, self).save(commit)
+        aluno = super(AlunoEditForm, self).save(commit)
 
         # User
-        u = atendente.user
-        u.email = atendente.email
+        u = aluno.user
+        u.email = aluno.email
         u.save()
 
-        atendente.save()
-        return atendente
+        aluno.save()
+        return aluno
+
+
+class RecepcionistaForm(ModelForm):
+
+    # Usuário
+    password = forms.CharField(
+        max_length=20,
+        label=_('Senha'),
+        widget=forms.PasswordInput())
+
+    password_confirm = forms.CharField(
+        max_length=20,
+        label=_('Confirmar Senha'),
+        widget=forms.PasswordInput())
+
+    class Meta:
+        model = Recepcionista
+        fields = ['nome', 'sexo', 'setor', 'username', 'email']
+
+        widgets = {'email': forms.TextInput(
+                               attrs={'style': 'text-transform:lowercase;'})}
+
+    def __init__(self, *args, **kwargs):
+        super(RecepcionistaForm, self).__init__(*args, **kwargs)
+
+    def valida_igualdade(self, texto1, texto2, msg):
+        if texto1 != texto2:
+            raise ValidationError(msg)
+        return True
+
+    def clean(self):
+
+        if ('password' not in self.cleaned_data or
+                'password_confirm' not in self.cleaned_data):
+            raise ValidationError(_('Favor informar senhas atuais ou novas'))
+
+        msg = _('As senhas não conferem.')
+        self.valida_igualdade(
+            self.cleaned_data['password'],
+            self.cleaned_data['password_confirm'],
+            msg)
+
+        try:
+            validate_password(self.cleaned_data['password'])
+        except ValidationError as error:
+            raise ValidationError(error)
+
+        return self.cleaned_data
+
+    @transaction.atomic
+    def save(self, commit=False):
+        supervisor = super(RecepcionistaForm, self).save(commit)
+
+        # Cria User
+        u = User.objects.create(username=recepcionista.username, email=recepcionista.email)
+        u.set_password(self.cleaned_data['password'])
+        u.is_active = True
+        u.groups.add(get_or_create_grupo('Recepcionista'))
+        u.save()
+
+        recepcionista.user = u
+        recepcionista.save()
+        return recepcionista
+
+class RecepcionistaEditForm(ModelForm):
+
+    class Meta:
+        model = Recepcionista
+        fields = ['nome', 'sexo', 'setor', 'username', 'email']
+
+        widgets = {'username': forms.TextInput(attrs={'readonly': 'readonly'}),
+                   'email': forms.TextInput(
+                                 attrs={'style': 'text-transform:lowercase;'}),
+                   }
+
+    def __init__(self, *args, **kwargs):
+        super(RecepcionistaEditForm, self).__init__(*args, **kwargs)
+
+    def valida_igualdade(self, texto1, texto2, msg):
+        if texto1 != texto2:
+            raise ValidationError(msg)
+        return True
+
+    @transaction.atomic
+    def save(self, commit=False):
+        recepcionista = super(RecepcionistaEditForm, self).save(commit)
+
+        # User
+        u = recepcionista.user
+        u.email = recepcionista.email
+        u.save()
+
+        recepcionista.save()
+        return recepcionista

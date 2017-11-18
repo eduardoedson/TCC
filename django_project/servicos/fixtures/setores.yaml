@@ -1,44 +1,53 @@
 - model: servicos.Setor
   pk: 1
   fields:
-    descricao: Odontologia
+    descricao: Fisioterapia
+    nome: Clínica Escola de Fisioterapia
 
-- model: servicos.Setor
+- model: servicos.AreaAtendimento
+  pk: 1
+  fields:
+    setor: 1
+    descricao: Geriatria
+
+- model: servicos.AreaAtendimento
   pk: 2
   fields:
-    descricao: Fisioterapia
+    setor: 1
+    descricao: Neurologia Adulto
 
-- model: servicos.Setor
+- model: servicos.AreaAtendimento
   pk: 3
   fields:
-    descricao: Psicologia
+    setor: 1
+    descricao: Neurologia Infantil
 
-- model: servicos.Setor
+- model: servicos.AreaAtendimento
   pk: 4
   fields:
-    descricao: Nutrição
+    setor: 1
+    descricao: Ortopedia
 
-- model: servicos.Setor
+- model: servicos.AreaAtendimento
   pk: 5
   fields:
-    descricao: Farmácia
+    setor: 1
+    descricao: Uroginecologia
 
-- model: servicos.Setor
-  pk: 6
+- model: servicos.Disciplina
+  pk: 1
   fields:
-    descricao: Ed. Física
+    setor: 1
+    descricao: Estágio I
 
-- model: servicos.Setor
-  pk: 7
+- model: servicos.Disciplina
+  pk: 2
   fields:
-    descricao: Biomedicina
+    setor: 1
+    descricao: Estágio II
 
-- model: servicos.Setor
-  pk: 8
+- model: servicos.Disciplina
+  pk: 3
   fields:
-    descricao: Enfermagem
-
-- model: servicos.Setor
-  pk: 9
-  fields:
-    descricao: Medicina
+    setor: 1
+    descricao: Estágio III

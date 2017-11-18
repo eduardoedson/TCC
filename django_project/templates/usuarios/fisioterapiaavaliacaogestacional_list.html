@@ -2,12 +2,13 @@
 {% load i18n %}
 
 {% block buttons %}
-  {% if tipo == 'Coordenador' or tipo == 'Administrador' %}
     <div class="actions btn-group pull-right" role="group">
-      <a href="{{ view.create_url }}" class="btn btn-default">
+      <a href="{% url 'usuarios:paciente_detail' pk %}" class="btn btn-default">
+        Voltar para paciente
+      </a>
+      <a href="{% url 'usuarios:fisioterapiaavaliacaogestacional_create' pk %}" class="btn btn-default">
         {% blocktrans with verbose_name=view.verbose_name %} Adicionar {{ verbose_name }} {% endblocktrans %}
       </a>
       {% block more_buttons %}{% endblock more_buttons %}
     </div>
-  {% endif %}
 {% endblock buttons %}

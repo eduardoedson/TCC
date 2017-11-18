@@ -13,27 +13,30 @@ from crud.base import Crud
 from prontuario.settings import LOGIN_REDIRECT_URL
 from utils import lista_grupos, valida_igualdade
 
-from .forms import (AtendenteEditForm, AtendenteForm, CoordenadorEditForm,
-                    CoordenadorForm, FisioterapiaBergForm, MudarSenhaForm)
-from .models import (Atendente, Coordenador, FisioterapiaBerg,
+from .forms import (AlunoEditForm, AlunoForm, SupervisorEditForm,
+                    SupervisorForm, FisioterapiaBergForm, MudarSenhaForm,
+                    RecepcionistaForm, RecepcionistaEditForm)
+from .models import (Aluno, Supervisor, FisioterapiaBerg,
                      FisioterapiaEvolucao, FisioterapiaGeriatriaAnamnese,
                      FisioterapiaGeriatriaAvalicao,
                      FisioterapiaNeurologiaInfantilAvalicao,
-                     FisioterapiaTriagem, Paciente)
+                     FisioterapiaTriagem, Paciente, Recepcionista,
+                     FisioterapiaAvaliacaoGestacional,
+                     FisioterapiaAvaliacaoMaculina)
 
 
 def get_medico(pk):
     try:
-        coordenador = Coordenador.objects.get(user_id=pk)
+        supervisor = Supervisor.objects.get(user_id=pk)
     except ObjectDoesNotExist:
         try:
-            atendente = Atendente.objects.get(user_id=pk)
+            aluno = Aluno.objects.get(user_id=pk)
         except ObjectDoesNotExist:
             return 0
         else:
-            return [atendente, atendente.disciplina.setor.descricao]
+            return [aluno, aluno.disciplina.setor.descricao]
     else:
-        return [coordenador, coordenador.setor.descricao]
+        return [supervisor, supervisor.setor.descricao]
 
 
 class FisioterapiaGeriatriaAnamneseCrud(Crud):
@@ -364,8 +367,8 @@ def mudar_senha(request):
                        'msg': 'Formulário inválido.'}
             return render(request, 'mudar_senha.html', context)
 
-class CoordenadorCrud(Crud):
-    model = Coordenador
+class SupervisorCrud(Crud):
+    model = Supervisor
     help_path = ''
 
     class BaseMixin(GroupRequiredMixin,
@@ -376,21 +379,21 @@ class CoordenadorCrud(Crud):
         login_url = LOGIN_REDIRECT_URL
 
     class CreateView(crud.base.CrudCreateView, GroupRequiredMixin):
-        form_class = CoordenadorForm
-        group_required = ['Coordenador']
+        form_class = SupervisorForm
+        group_required = ['Supervisor']
 
     class UpdateView(crud.base.CrudUpdateView):
-        form_class = CoordenadorEditForm
+        form_class = SupervisorEditForm
 
         @property
         def layout_key(self):
-            return 'CoordenadorEdit'
+            return 'SupervisorEdit'
 
     class DetailView(crud.base.CrudDetailView):
 
         @property
         def layout_key(self):
-            return 'CoordenadorEdit'
+            return 'SupervisorEdit'
 
     class DeleteView(crud.base.CrudDeleteView):
         def delete(self, request, *args, **kwargs):
@@ -399,8 +402,8 @@ class CoordenadorCrud(Crud):
             self.object.user.delete()
             return redirect(self.get_success_url())
 
-class AtendenteCrud(Crud):
-    model = Atendente
+class AlunoCrud(Crud):
+    model = Aluno
     help_path = ''
 
     class BaseMixin(GroupRequiredMixin,
@@ -411,25 +414,25 @@ class AtendenteCrud(Crud):
         login_url = LOGIN_REDIRECT_URL
 
     class CreateView(crud.base.CrudCreateView, GroupRequiredMixin):
-        form_class = AtendenteForm
-        group_required = ['Coordenador']
+        form_class = AlunoForm
+        group_required = ['Supervisor']
 
 
     class UpdateView(crud.base.CrudUpdateView):
-        form_class = AtendenteEditForm
+        form_class = AlunoEditForm
 
         @property
         def layout_key(self):
-            return 'AtendenteEdit'
+            return 'AlunoEdit'
 
     class DetailView(crud.base.CrudDetailView):
 
         @property
         def layout_key(self):
-            return 'AtendenteEdit'
+            return 'AlunoEdit'
 
     class DeleteView(crud.base.CrudDeleteView):
-        
+
         def delete(self, request, *args, **kwargs):
             self.object.user.delete()
             return redirect(self.get_success_url())
@@ -438,11 +441,11 @@ class AtendenteCrud(Crud):
 def administradores(request):
 
     if (not request.user.is_authenticated() or
-            request.user.groups.first().name != 'Coordenador'):
+            request.user.groups.first().name != 'Supervisor'):
         return render(request, '403.html', {})
 
     if request.method == 'GET':
-        coords = Coordenador.objects.all()
+        coords = Supervisor.objects.all()
         adms = []
         for c in coords:
             adm = {'id': c.id,
@@ -454,17 +457,146 @@ def administradores(request):
         return render(request, 'administradores.html', context)
 
     elif request.method == 'POST':
-        for id_coordenador in request.POST:
-            if id_coordenador != 'csrfmiddlewaretoken':
+        for id_supervisor in request.POST:
+            if id_supervisor != 'csrfmiddlewaretoken':
                 try:
-                    coordenador = Coordenador.objects.get(id=id_coordenador)
+                    supervisor = Supervisor.objects.get(id=id_supervisor)
                 except ObjectDoesNotExist:
                     pass
                 else:
-                    user = coordenador.user
-                    user.is_superuser = request.POST[id_coordenador]
+                    user = supervisor.user
+                    user.is_superuser = request.POST[id_supervisor]
                     user.save()
         return render(request,
                       'index.html',
                       {'msg':
                        'Lista de administradores atualizada com sucesso.'})
+
+class RecepcionistaCrud(Crud):
+    model = Recepcionista
+    help_path = ''
+
+    class BaseMixin(GroupRequiredMixin,
+                    LoginRequiredMixin, crud.base.CrudBaseMixin):
+        list_field_names = ['nome', 'setor']
+
+        raise_exception = True
+        login_url = LOGIN_REDIRECT_URL
+
+    class CreateView(crud.base.CrudCreateView, GroupRequiredMixin):
+        form_class = RecepcionistaForm
+        group_required = ['Recepcionista']
+
+    class UpdateView(crud.base.CrudUpdateView):
+        form_class = RecepcionistaEditForm
+
+        @property
+        def layout_key(self):
+            return 'RecepcionistaEdit'
+
+    class DetailView(crud.base.CrudDetailView):
+
+        @property
+        def layout_key(self):
+            return 'RecepcionistaEdit'
+
+    class DeleteView(crud.base.CrudDeleteView):
+        def delete(self, request, *args, **kwargs):
+            context =  super(crud.base.CrudDeleteView, self).delete(
+                request, args, kwargs)
+            self.object.user.delete()
+            return redirect(self.get_success_url())
+
+
+class FisioterapiaAvaliacaoGestacionalCrud(Crud):
+    model = FisioterapiaAvaliacaoGestacional
+    help_path = ''
+
+    class BaseMixin(GroupRequiredMixin,
+                    LoginRequiredMixin, crud.base.CrudBaseMixin):
+        list_field_names = ['data']
+
+        raise_exception = True
+        login_url = LOGIN_REDIRECT_URL
+
+    class ListView(crud.base.CrudListView):
+
+        @classmethod
+        def get_url_regex(cls):
+            return r'^(?P<pk>\d+)/list$'
+
+        def get_context_data(self, **kwargs):
+            context = super(crud.base.CrudListView, self).get_context_data(
+                **kwargs)
+            context['NO_ENTRIES_MSG'] = 'Nenhuma ficha encontrada.'
+            context['pk'] = self.kwargs['pk']
+            context['title'] = 'Avaliação Fisioterapêutica Gestacional'
+            context['headers'] = self.get_headers()
+            context['rows'] = self.get_rows(
+                    FisioterapiaAvaliacaoGestacional.objects.filter(
+                        paciente_id=self.kwargs['pk']))
+            return context
+
+    class CreateView(crud.base.CrudCreateView):
+
+        @classmethod
+        def get_url_regex(cls):
+            return r'^(?P<pk>\d+)/create$'
+
+        def cancel_url(self):
+            return reverse('usuarios:fisioterapiaavaliacaogestacional_list',
+                        kwargs={'pk': self.kwargs['pk']})
+
+        def get_initial(self):
+            paciente = Paciente.objects.get(id=self.kwargs['pk'])
+            self.initial['paciente'] = self.kwargs['pk']
+            self.initial['data_nascimento'] = paciente.data_nascimento
+            self.initial['data'] = datetime.now().strftime('%d/%m/%Y')
+            return self.initial.copy()
+
+
+class FisioterapiaAvaliacaoMaculinaCrud(Crud):
+    model = FisioterapiaAvaliacaoMaculina
+    help_path = ''
+
+    class BaseMixin(GroupRequiredMixin,
+                    LoginRequiredMixin, crud.base.CrudBaseMixin):
+        list_field_names = ['data']
+
+        raise_exception = True
+        login_url = LOGIN_REDIRECT_URL
+
+    class ListView(crud.base.CrudListView):
+
+        @classmethod
+        def get_url_regex(cls):
+            return r'^(?P<pk>\d+)/list$'
+
+        def get_context_data(self, **kwargs):
+            context = super(crud.base.CrudListView, self).get_context_data(
+                **kwargs)
+            context['NO_ENTRIES_MSG'] = 'Nenhuma ficha encontrada.'
+            context['pk'] = self.kwargs['pk']
+            context['title'] = 'Avaliação de Incontinência Urinária Masculina'
+            context['headers'] = self.get_headers()
+            context['rows'] = self.get_rows(
+                    FisioterapiaAvaliacaoMaculina.objects.filter(
+                        paciente_id=self.kwargs['pk']))
+            return context
+
+    class CreateView(crud.base.CrudCreateView):
+
+        @classmethod
+        def get_url_regex(cls):
+            return r'^(?P<pk>\d+)/create$'
+
+        def cancel_url(self):
+            return reverse('usuarios:fisioterapiaavaliacaomaculina_list',
+                        kwargs={'pk': self.kwargs['pk']})
+
+        def get_initial(self):
+            paciente = Paciente.objects.get(id=self.kwargs['pk'])
+            self.initial['paciente'] = self.kwargs['pk']
+            self.initial['data_nascimento'] = paciente.data_nascimento
+            self.initial['data'] = datetime.now().strftime('%d/%m/%Y')
+            return self.initial.copy()

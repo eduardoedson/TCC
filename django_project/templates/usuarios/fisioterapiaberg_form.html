@@ -24,6 +24,7 @@
 
     window.onload = function(){
       $('#id_paciente').prop('disabled', true);
+      $('#id_berg_total').prop('disabled', true);
     }
 
     document.getElementById('div_id_berg_1').onchange = function() { total() };
@@ -43,6 +44,7 @@
 
     document.getElementById('submit-id-salvar').onclick = function(){
       $('#id_paciente').prop('disabled', false);
+      $('#id_berg_total').prop('disabled', false);
     };
   </script>
 {% endblock extra_js %}

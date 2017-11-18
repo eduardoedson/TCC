@@ -11,7 +11,7 @@
               {% if view.list_url %}
                 <a href="{{ view.list_url }}" class="btn btn-default">{% trans 'Listar' %} {{view.verbose_name_plural}}</a>
               {% endif %}
-              {% if tipo == 'Coordenador' %}
+              {% if tipo == 'Supervisor' %}
                 <a href="{{ view.create_url }}" class="btn btn-default">
                   {% blocktrans with verbose_name=view.verbose_name %} Adicionar {{ verbose_name }} {% endblocktrans %}
                 </a>
@@ -21,7 +21,7 @@
 
       <div class="editons pull-right">
         {% block editions %}
-          {% if tipo == 'Coordenador' %}
+          {% if tipo == 'Supervisor' %}
             <div class="actions btn-group" role="group">
               <a href="{{ view.update_url }}" class="btn btn-warning">{% trans 'Editar' %}</a>
               <a href="{{ view.delete_url }}" class="btn btn-danger btn-excluir">{% trans 'Excluir' %}</a>

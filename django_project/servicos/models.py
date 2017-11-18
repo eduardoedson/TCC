@@ -4,7 +4,9 @@ from django.utils.translation import ugettext_lazy as _
 
 class Setor(models.Model):
     descricao = models.CharField(
-        max_length=30, verbose_name=('Nome do Setor'), unique=True)
+        max_length=30, verbose_name=_('Nome do Setor'), unique=True)
+    nome = models.CharField(
+        max_length=50, verbose_name=_('Nome'), blank=True)
 
     class Meta:
         verbose_name = _('Setor')
@@ -12,7 +14,7 @@ class Setor(models.Model):
         ordering = ['descricao']
 
     def __str__(self):
-        return self.descricao
+        return self.descricao + ' - ' + self.nome
 
 
 class Disciplina(models.Model):

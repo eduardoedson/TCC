@@ -1,0 +1,10 @@
+{% extends "crud/detail.html" %}
+{% load i18n %}
+
+{% block sub_actions %}
+  <div class="actions btn-group btn-group-sm" role="group">
+    <a href="{% url 'usuarios:paciente_detail' object.paciente.pk %}" class="btn btn-default">Voltar para paciente</a>
+    <a href="{% url 'usuarios:fisioterapiaavaliacaogestacional_list' object.paciente.pk %}" class="btn btn-default">Listar Fichas</a>
+    <a href="{% url 'usuarios:fisioterapiaavaliacaogestacional_create' object.paciente.pk %}" class="btn btn-default">Nova Fichas</a>
+  </div>
+{% endblock sub_actions %}
