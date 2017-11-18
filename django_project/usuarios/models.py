@@ -776,3 +776,111 @@ class FisioterapiaAvaliacaoMaculina(models.Model):
 
     def __str__(self):
         return _('%(data)s') % {'data': self.data.strftime('%d/%m/%Y')}
+
+
+class FisioterapiaAvaliacaoFeminina(models.Model):
+    data = models.DateField(verbose_name=_('Data da Avaliação'), blank=True)
+    data_atendimento = models.DateField(verbose_name=_('Data do Atendimento'), blank=True)
+    paciente = models.ForeignKey(Paciente, verbose_name=_('Nome'))
+    registro = models.CharField(max_length=40, verbose_name=_('Registro'), blank=True)
+    data_nascimento = models.DateField(verbose_name=_('Data de Nascimento'), blank=True)
+    idade = models.CharField(max_length=40, verbose_name=_('Idade'), blank=True)
+    estado_civil = models.CharField(max_length=40, verbose_name=_('Estado Civil'), blank=True)
+    profissao = models.CharField(max_length=40, verbose_name=_('Profissão'), blank=True)
+    funcao = models.CharField(max_length=40, verbose_name=_('Função'), blank=True)
+    endereco = models.CharField(max_length=40, verbose_name=_('Endereço'), blank=True)
+    cep = models.CharField(max_length=40, verbose_name=_('CEP'), blank=True)
+    telefone = models.CharField(max_length=40, verbose_name=_('Telefone'), blank=True)
+    celular = models.CharField(max_length=40, verbose_name=_('Celular'), blank=True)
+
+    antecedentes_obesa = models.CharField(max_length=40, verbose_name=_('Obesa'), choices=YES_NO_CHOICES, blank=True)
+    antecedentes_gravidez = models.CharField(max_length=40, verbose_name=_('Gravidez'), blank=True)
+    antecedentes_forros = models.CharField(max_length=40, verbose_name=_('Troca de Forros'), choices=YES_NO_CHOICES, blank=True)
+    antecedentes_cirurgia = models.TextField(max_length=40, verbose_name=_('Cirurgias Anteriores'), blank=True)
+    antecedentes_medicacoes = models.TextField(verbose_name=_('Medicações Atuais'), blank=True)
+
+    doencas_atuais = models.TextField(verbose_name=_('Doenças Atuais'), blank=True)
+    doencas_neurologicas = models.TextField(verbose_name=_('Doenças Neurológicas'), blank=True)
+    doencas_ortopedicas = models.TextField(verbose_name=_('Doenças Ortopédicas'), blank=True)
+    doencas_psiquiatricas = models.TextField(verbose_name=_('Doenças Psiquiátricas'), blank=True)
+    doencas_bronquite_tosse = models.TextField(verbose_name=_('Bronquite ou Tosse'), blank=True)
+    doencas_diabetes = models.TextField(verbose_name=_('Diabetes'), blank=True)
+    doencas_gerais = models.TextField(verbose_name=_('Doenças Gerais'), blank=True)
+    doencas_satisfacao = models.CharField(max_length=40, verbose_name=_('Grau de Satisfação com a Situação Atual'), choices=[('Satisfeito', 'Satisfeito'), ('Insatisfeito', 'Insatisfeito'), ('Indiferente', 'Indiferente')], blank=True)
+
+    dados_urodinamicos = models.TextField(verbose_name=_('Pré-Tratamento - Considerar Resultados Médicos'), blank=True)
+
+    partos_normal = models.CharField(max_length=40, verbose_name=_('Normal'), blank=True)
+    partos_forceps = models.CharField(max_length=40, verbose_name=_('Fórceps'), blank=True)
+    partos_cesareas = models.CharField(max_length=40, verbose_name=_('Cesáreas'), blank=True)
+    partos_abortos = models.CharField(max_length=40, verbose_name=_('Abortos'), blank=True)
+
+    habitos_cigarro = models.CharField(max_length=40, verbose_name=_('Cigarro (Quantidade/Dia)'), blank=True)
+    habitos_alcool = models.CharField(max_length=40, verbose_name=_('Álcool (Dose/Dia)'), blank=True)
+    habitos_alimentacao = models.CharField(max_length=40, verbose_name=_('Alimentação'), blank=True)
+    habitos_atividade = models.TextField(verbose_name=_('Atividade Física'), blank=True)
+
+    infeccoes_anteriores = models.TextField(verbose_name=_('Anteriores'), blank=True)
+    infeccoes_disuria = models.CharField(max_length=40, verbose_name=_('Presença de Disúria'), blank=True)
+    infeccoes_hematuria = models.CharField(max_length=40, verbose_name=_('Hematúria'), blank=True)
+
+    miccicional_frequencia = models.CharField(max_length=40, verbose_name=_('Frequência Miccional'), blank=True)
+    miccicional_esvaziamento = models.CharField(max_length=40, verbose_name=_('Sensação de Esvaziamento Vesical'), blank=True, choices=[('Completo', 'Completo'), ('Incompleto', 'Incompleto')])
+    miccicional_gotejamento = models.CharField(max_length=40, verbose_name=_('Gotejamento Pós-Micional'), blank=True, choices=YES_NO_CHOICES)
+    miccicional_urgencia = models.CharField(max_length=40, verbose_name=_('Urgência Micional'), blank=True, choices=YES_NO_CHOICES)
+    miccicional_iue = models.CharField(max_length=40, verbose_name=_('Investigação de IUE'), blank=True)
+
+    perda_tosse = models.CharField(max_length=40, verbose_name=_('Tosse'), blank=True, choices=YES_NO_CHOICES)
+    perda_espirro = models.CharField(max_length=40, verbose_name=_('Espirro'), blank=True, choices=YES_NO_CHOICES)
+    perda_riso = models.CharField(max_length=40, verbose_name=_('Riso Forçado'), blank=True, choices=YES_NO_CHOICES)
+    perda_atividade = models.CharField(max_length=40, verbose_name=_('Atividade Física'), blank=True, choices=YES_NO_CHOICES)
+    perda_esporte = models.CharField(max_length=40, verbose_name=_('Esporte'), blank=True, choices=YES_NO_CHOICES)
+    perda_relacao = models.CharField(max_length=40, verbose_name=_('Relação Sexual'), blank=True, choices=YES_NO_CHOICES)
+    perda_marcha = models.CharField(max_length=40, verbose_name=_('Marcha'), blank=True, choices=YES_NO_CHOICES)
+    perda_corrida = models.CharField(max_length=40, verbose_name=_('Corrida'), blank=True, choices=YES_NO_CHOICES)
+    perda_carregamento = models.CharField(max_length=40, verbose_name=_('Carregamento de Peso'), blank=True, choices=YES_NO_CHOICES)
+    perda_posicao = models.CharField(max_length=40, verbose_name=_('Mudança de Posição'), blank=True, choices=YES_NO_CHOICES)
+
+    exame_peso = models.TextField(verbose_name=_('Peso (Kg)'), blank=True)
+    exame_altura = models.TextField(verbose_name=_('Altura (m)'), blank=True)
+    exame_imc = models.TextField(verbose_name=_('IMC (Kg/m²)'), blank=True)
+    exame_postural = models.TextField(verbose_name=_('Avaliação Postural'), blank=True)
+
+    exame_pele = models.CharField(max_length=40, verbose_name=_('Estado da Pele'), choices=[('Atrófica', 'Atrófica'), ('Normal', 'Normal')], blank=True)
+    exame_estrias = models.CharField(max_length=40, verbose_name=_('Estrias'), choices=[('Ausente', 'Ausente'), ('Presente', 'Presente')], blank=True)
+    exame_pele_inspecao = models.CharField(max_length=40, verbose_name=_('Inspeção da Pele'), choices=[('Mucosa Hipeêmica', 'Mucosa Hipeêmica'), ('Presença de irritação local', 'Presença de irritação local '), ('Presença de Corrimentos', 'Presença de Corrimentos'), ('Presença de cicatrizes', 'Presença de cicatrizes'), ('Presença de Varicosidades', 'Presença de Varicosidades'), ('Presença de Epsiotomias', 'Presença de Epsiotomias')], blank=True)
+    exame_cicatriz = models.CharField(max_length=40, verbose_name=_('Cicatrizes/Aderências'), blank=True)
+    exame_zonas = models.CharField(max_length=40, verbose_name=_('Zonas Doloras'), blank=True)
+    exame_hernias = models.CharField(max_length=40, verbose_name=_('Hérnias'), blank=True)
+    exame_diastase = models.CharField(max_length=40, verbose_name=_('Diástase'), blank=True)
+    exame_nucleo_fibroso = models.CharField(max_length=40, verbose_name=_('Núcleo Fibroso Central do Príneo'), choices=[('Hipotônico (Depressão)', 'Hipotônico (Depressão)'), ('Normal (Resist. Elástica)', 'Normal (Resist. Elástica)'), ('Hipertônico (Resist. Rígida)', 'Hipertônico (Resist. Rígida)')], blank=True)
+    exame_forca = models.CharField(max_length=40, verbose_name=_('Força Muscular'), choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')], blank=True)
+
+    palpacao_exploracao = models.CharField(max_length=40, verbose_name=_('Exploração do Canal Vaginal (unidigital)'), blank=True)
+    palpacao_zonas = models.CharField(max_length=40, verbose_name=_('Zonas Dolorosas'), blank=True)
+    palpacao_trigger = models.CharField(max_length=40, verbose_name=_('Trigger Points'), blank=True)
+    palpacao_laceracao = models.CharField(max_length=40, verbose_name=_('Laceração Musculas'), blank=True)
+
+    avaliacao_funcional = models.CharField(max_length=40, verbose_name=_('AFA'), choices=[('Grau 0', 'Sem função perineal objetiva, nem mesmo à palpitação'), ('Grau 1', 'Função perineal objetiva ausente, contração reconhecível somente à palpação.'), ('Grau 2', 'Função perineal objetiva débil, reconhecida à palpação.'), ('Grau 3', 'Função perineal objetiva presente e resistência opositora à palpação; não mantida'), ('Grau 4', 'Função perineal objetiva presente e resistência opositora mantida mais que cinco segundos')], blank=True)
+    avaliacao_tempo = models.CharField(max_length=40, verbose_name=_('Tempo de Manutenção da Contração (AFA-Bidigital)'), blank=True)
+    avaliacao_apneia = models.CharField(max_length=40, verbose_name=_('Apneia'), choices=[('Presente', 'Presente'), ('Ausente', 'Ausente')], blank=True)
+    avaliacao_participacao = models.CharField(max_length=40, verbose_name=_('Participação de Músculos Acessórios'), choices=[('Abdominais', 'Abdominais'), ('Glúteos', 'Glúteos'), ('Adutores', 'Adutores')], blank=True)
+    avaliacao_perineometro_pico = models.CharField(max_length=40, verbose_name=_('Perineômetro Pico'), blank=True)
+    avaliacao_perineometro_manutencao = models.CharField(max_length=40, verbose_name=_('Tempo Manutenção do Pico'), blank=True)
+    avaliacao_bulbo = models.CharField(max_length=40, verbose_name=_('Bulbocavernoso'), choices=[('Presente', 'Presente'), ('Ausente', 'Ausente')], blank=True)
+    avaliacao_cultaneo = models.CharField(max_length=40, verbose_name=_('Cutâneo Anal'), choices=[('Presente', 'Presente'), ('Ausente', 'Ausente')], blank=True)
+    avaliacao_tosse = models.CharField(max_length=40, verbose_name=_('Teste da Tosse'), choices=[('Presente', 'Presente'), ('Ausente', 'Ausente')], blank=True)
+    avaliacao_testes = models.TextField(verbose_name=_('Testes Especiais (Se Houver Necessidade)'), blank=True)
+    avaliacao_diagnostico = models.TextField(verbose_name=_('Diagnóstico Fisioterapêutico'), blank=True)
+    avaliacao_metas = models.TextField(verbose_name=_('Metas a Curto e Longo Prazo'), blank=True)
+    avaliacao_recursos = models.TextField(verbose_name=_('Recursos Que Serão Utilizados Com Justificativa'), blank=True)
+
+    aluno = models.CharField(max_length=40, verbose_name=_('Nome do Aluno'), blank=True)
+
+    class Meta:
+        verbose_name = _('Avaliação de Incontinência Urinária Feminina')
+        verbose_name_plural = _('Avaliações de Incontinência Urinária Feminina')
+        ordering = ['data']
+
+    def __str__(self):
+        return _('%(data)s') % {'data': self.data.strftime('%d/%m/%Y')}
