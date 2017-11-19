@@ -8,7 +8,8 @@ from .views import (AlunoCrud, SupervisorCrud, FisioterapiaBergCrud,
                     FisioterapiaTriagemCrud, PacienteCrud, administradores,
                     mudar_senha, RecepcionistaCrud,
                     FisioterapiaAvaliacaoGestacionalCrud,
-                    FisioterapiaAvaliacaoMaculinaCrud)
+                    FisioterapiaAvaliacaoMasculinaCrud,
+                    FisioterapiaAvaliacaoFemininaCrud)
 
 app_name = 'usuarios'
 
@@ -23,7 +24,8 @@ urlpatterns = [
     url(r'^fisioterapia-geriatria-berg/', include(FisioterapiaBergCrud.get_urls())),
     url(r'^fisioterapia-geriatria-anamnese/', include(FisioterapiaGeriatriaAnamneseCrud.get_urls())),
     url(r'^fisioterapia-uroginecologia-avaliacao/', include(FisioterapiaAvaliacaoGestacionalCrud.get_urls())),
-    url(r'^fisioterapia-uroginecologia-masculina/', include(FisioterapiaAvaliacaoMaculinaCrud.get_urls())),
+    url(r'^fisioterapia-uroginecologia-masculina/', include(FisioterapiaAvaliacaoMasculinaCrud.get_urls())),
+    url(r'^fisioterapia-uroginecologia-feminina/', include(FisioterapiaAvaliacaoFemininaCrud.get_urls())),
     url(r'^fisioterapia-neurologia-infantil-avaliacao/', include(FisioterapiaNeurologiaInfantilAvalicaoCrud.get_urls())),
     url(r'^mudar_senha/$', mudar_senha, name='mudar_senha'),
     url(r'^administradores/$', administradores, name='administradores'),

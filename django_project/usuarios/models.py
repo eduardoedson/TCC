@@ -692,7 +692,7 @@ class FisioterapiaAvaliacaoGestacional(models.Model):
         return _('%(data)s') % {'data': self.data.strftime('%d/%m/%Y')}
 
 
-class FisioterapiaAvaliacaoMaculina(models.Model):
+class FisioterapiaAvaliacaoMasculina(models.Model):
     data = models.DateField(verbose_name=_('Data da Avaliação'), blank=True)
     data_atendimento = models.DateField(verbose_name=_('Data do Atendimento'), blank=True)
     paciente = models.ForeignKey(Paciente, verbose_name=_('Nome'))
@@ -793,6 +793,8 @@ class FisioterapiaAvaliacaoFeminina(models.Model):
     telefone = models.CharField(max_length=40, verbose_name=_('Telefone'), blank=True)
     celular = models.CharField(max_length=40, verbose_name=_('Celular'), blank=True)
 
+    motivo = models.TextField(verbose_name=_('Motivo da Consulta'), blank=True)
+
     antecedentes_obesa = models.CharField(max_length=40, verbose_name=_('Obesa'), choices=YES_NO_CHOICES, blank=True)
     antecedentes_gravidez = models.CharField(max_length=40, verbose_name=_('Gravidez'), blank=True)
     antecedentes_forros = models.CharField(max_length=40, verbose_name=_('Troca de Forros'), choices=YES_NO_CHOICES, blank=True)
@@ -841,9 +843,9 @@ class FisioterapiaAvaliacaoFeminina(models.Model):
     perda_carregamento = models.CharField(max_length=40, verbose_name=_('Carregamento de Peso'), blank=True, choices=YES_NO_CHOICES)
     perda_posicao = models.CharField(max_length=40, verbose_name=_('Mudança de Posição'), blank=True, choices=YES_NO_CHOICES)
 
-    exame_peso = models.TextField(verbose_name=_('Peso (Kg)'), blank=True)
-    exame_altura = models.TextField(verbose_name=_('Altura (m)'), blank=True)
-    exame_imc = models.TextField(verbose_name=_('IMC (Kg/m²)'), blank=True)
+    exame_peso = models.CharField(max_length=40, verbose_name=_('Peso (Kg)'), blank=True)
+    exame_altura = models.CharField(max_length=40, verbose_name=_('Altura (m)'), blank=True)
+    exame_imc = models.CharField(max_length=40, verbose_name=_('IMC (Kg/m²)'), blank=True)
     exame_postural = models.TextField(verbose_name=_('Avaliação Postural'), blank=True)
 
     exame_pele = models.CharField(max_length=40, verbose_name=_('Estado da Pele'), choices=[('Atrófica', 'Atrófica'), ('Normal', 'Normal')], blank=True)

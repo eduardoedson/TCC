@@ -301,7 +301,7 @@ FisioterapiaAvaliacaoGestacional:
   - metas
   - recursos
 
-FisioterapiaAvaliacaoMaculina:
+FisioterapiaAvaliacaoMasculina:
   Avaliação:
   - data data_atendimento
   Dados Pessoais:
@@ -347,4 +347,63 @@ FisioterapiaAvaliacaoMaculina:
   - avaliacao_metas
   - avaliacao_recursos
   Atendimento:
+  - aluno
+
+FisioterapiaAvaliacaoFeminina:
+  Avaliação:
+  - data data_atendimento
+  Dados Pessoais:
+  - paciente:8 registro
+  - data_nascimento idade estado_civil
+  - profissao funcao
+  - endereco:8 cep
+  - telefone celular
+  - motivo
+  Antecedentes Pessoais:
+  - antecedentes_obesa antecedentes_gravidez antecedentes_forros
+  - antecedentes_cirurgia
+  - antecedentes_medicacoes
+  Doenças Associadas:
+  - doencas_satisfacao
+  - doencas_atuais
+  - doencas_neurologicas
+  - doencas_ortopedicas
+  - doencas_psiquiatricas
+  - doencas_bronquite_tosse
+  - doencas_gerais
+  Dados Urodinâmicos:
+  - dados_urodinamicos
+  Partos:
+  - partos_normal partos_forceps
+  - partos_cesareas partos_abortos
+  Hábitos da Vida:
+  - habitos_cigarro habitos_alcool habitos_alimentacao
+  - habitos_atividade
+  Infecções:
+  - infeccoes_disuria infeccoes_hematuria
+  - infeccoes_anteriores
+  Miccicional:
+  - miccicional_frequencia miccicional_esvaziamento
+  - miccicional_gotejamento miccicional_urgencia miccicional_iue
+  Perda de Urina Durate:
+  - perda_tosse perda_espirro perda_riso
+  - perda_atividade perda_esporte perda_relacao
+  - perda_marcha perda_corrida perda_carregamento perda_posicao
+  Exame Físico:
+  - exame_peso exame_altura exame_imc
+  - exame_postural
+  - exame_pele exame_estrias exame_pele_inspecao
+  - exame_cicatriz exame_zonas exame_hernias
+  - exame_diastase exame_nucleo_fibroso exame_forca
+  Palpação:
+  - palpacao_exploracao palpacao_zonas palpacao_trigger palpacao_laceracao
+  Avaliação Funcional do Assoalho Pélvico (AFA):
+  - avaliacao_funcional
+  - avaliacao_tempo avaliacao_apneia avaliacao_participacao avaliacao_perineometro_pico
+  - avaliacao_perineometro_manutencao avaliacao_bulbo avaliacao_cultaneo avaliacao_tosse
+  - avaliacao_testes
+  - avaliacao_diagnostico
+  - avaliacao_metas
+  - avaliacao_recursos
+  Aluno:
   - aluno

@@ -6,7 +6,7 @@
       <a href="{% url 'usuarios:paciente_detail' pk %}" class="btn btn-default">
         Voltar para paciente
       </a>
-      <a href="{% url 'usuarios:fisioterapiaavaliacaomaculina_create' pk %}" class="btn btn-default">
+      <a href="{% url 'usuarios:fisioterapiaavaliacaomasculina_create' pk %}" class="btn btn-default">
         {% blocktrans with verbose_name=view.verbose_name %} Adicionar {{ verbose_name }} {% endblocktrans %}
       </a>
       {% block more_buttons %}{% endblock more_buttons %}
