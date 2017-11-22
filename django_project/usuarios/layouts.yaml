@@ -407,3 +407,188 @@ FisioterapiaAvaliacaoFeminina:
   - avaliacao_recursos
   Aluno:
   - aluno
+
+FisioterapiaAcidenteVascularEncefalico:
+  Avaliação:
+  - data
+  Dados Pessoais:
+  - paciente data_nascimento idade
+  - sexo endereco telefone
+  - profissao estado_civil diagnostico_clinico diagnostico_fisioterapico
+  Dados Vitais:
+  - dados_pa dados_fc
+  - dados_fr dados_t
+  Medicamentos:
+  - medicamentos_utilizados
+  Patologias Associadas:
+  - patologias_hipertensao patologias_cardiopatias patologias_diabetes
+  - patologias_articular patologias_alergias patologias_dor
+  - patologias_outras
+  - patologias_cirurgico
+  Anamnese:
+  - anamnese_qp
+  - anamnese_lesao anamnese_tratamento
+  Exame Físico:
+  - exame_atitude exame_consciencia
+  - exame_postura exame_marcha
+  - exame_retracao_encurtamento exame_deformidades
+  Movimentos Involuntários:
+  - movimentos_coreia movimentos_atetose movimentos_balismo
+  - movimentos_tremor movimentos_mioclonia movimentos_fasciculacoes
+  - movimentos_outros
+  Coordenação:
+  - coordenacao_decomposicao coordenacao_dismetria
+  - coordenacao_rechaco coordenacao_ataxia coordenacao_nistagmo
+  Equilíbrio:
+  - equilibrio
+  Escala de Avaliação:
+  - escala_grau
+  - escala_perimetria escala_trofismo
+  MMSS:
+  - mmss
+  - mmss_direito_7 mmss_direito_14 mmss_direito_21
+  - mmss_esquerdo_7 mmss_esquerdo_14 mmss_esquerdo_21
+  MMII:
+  - mmii
+  - mmii_direito_7 mmii_direito_14 mmii_direito_21
+  - mmii_esquerdo_7 mmii_esquerdo_14 mmii_esquerdo_21
+  Reflexos Osteotendinosos:
+  - reflexos_bicipital reflexos_tricipital reflexos_patelar reflexos_anquileu
+  Sensibilidade:
+  - sensibilidade_superficial
+  - sensibilidade_tatil sensibilidade_termica
+  - sensibilidade_profunda
+  - sensibilidade_cinetica
+  - sensibilidade_combinada
+  - sensibilidade_topognosia sensibilidade_esterognosia sensibilidade_barognosia
+  Membro Superior Direito:
+  - ms_direito_ombro ms_direito_cotovelo
+  - ms_direito_punho ms_direito_mao ms_direito_dedos
+  Membro Superior Esquerdo:
+  - ms_esquerdo_ombro ms_esquerdo_cotovelo
+  - ms_esquerdo_punho ms_esquerdo_mao ms_esquerdo_dedos
+  Membro Inferior Direito:
+  - mi_direito_quadril mi_direito_joelho mi_direito_tornozelo mi_direito_pe
+  Membro Inferior Esquerdo:
+  - mi_esquerdo_quadril mi_esquerdo_joelho mi_esquerdo_tornozelo mi_esquerdo_pe
+  Desenvolvimento:
+  - desenvolvimento_avds
+  - desenvolvimento_neurofuncional
+  Objetivos:
+  - objetivos_tratamento objetivos_conduta
+  Atendimento:
+  - atendimento_estagiario atendimento_supervisor
+
+
+FisioterapiaEscleroseMultipla:
+  Avaliação:
+  - data
+  Dados Pessoais:
+  - paciente data_nascimento idade
+  - sexo endereco telefone
+  - profissao estado_civil diagnostico_clinico diagnostico_fisioterapico
+  Dados Vitais:
+  - dados_pa dados_fc
+  - dados_fr dados_t
+  Informações:
+  - info_medicamentos info_exames
+  - info_antecedentes info_adm
+  Anamnese:
+  - anamnese_qp anamnese_hmpa
+  Exame Físico:
+  - exame_tonus exame_trofismo
+  Reflexos Osteotendinosos:
+  - reflexos_bicipital reflexos_tricipital reflexos_patelar reflexos_anquileu
+  MMSS:
+  - mmss
+  - mmss_direito_7 mmss_direito_14 mmss_direito_21
+  - mmss_esquerdo_7 mmss_esquerdo_14 mmss_esquerdo_21
+  MMII:
+  - mmii
+  - mmii_direito_7 mmii_direito_14 mmii_direito_21
+  - mmii_esquerdo_7 mmii_esquerdo_14 mmii_esquerdo_21
+  Desenvolvimento:
+  - desenvolvimento_avds
+  - desenvolvimento_neurofuncional desenvolvimento_conduta
+  Escala de Incapacidade de Kurtzke:
+  - kurtzke_piramidais
+  - kurtzke_cerebelares
+  Atendimento:
+  - atendimento_estagiario atendimento_supervisor
+
+FisioterapiaTRM:
+  Avaliação:
+  - data
+  Dados Pessoais:
+  - paciente data_nascimento idade
+  - sexo endereco telefone
+  - profissao estado_civil diagnostico_clinico diagnostico_fisioterapico
+  Dados Vitais:
+  - dados_pa dados_fc
+  - dados_fr dados_t
+  Informações:
+  - info_medicamentos info_exames
+  - info_antecedentes info_adm
+  Anamnese:
+  - anamnese_qp anamnese_hmpa
+  Complicações Associadas:
+  - complicacoes_bexiga complicacoes_disreflexia complicacoes_escaras
+  - complicacoes_ossificacao complicacoes_dor complicacoes_hipotensao
+  - complicacoes_disestesias complicacoes_trombose complicacoes_respiratorias complicacoes_deformidades
+  - complicacoes_outros
+  Função Sexual:
+  - sexual_relacao sexual_vontade_filhos sexual_filhos
+  Função Sexual (Homem):
+  - sexual_homem_orgasmo
+  - sexual_homem_erecao sexual_homem_erecao_tipo
+  - sexual_homem_ejaculacao sexual_homem_ejaculacao_tipo
+  Função Sexual (Mulher):
+  - sexual_mulher_orgasmo sexual_mulher_lubrificacao
+  Exame Físico:
+  - exame_tonus exame_trofismo
+  Reflexos Osteotendinosos:
+  - reflexos_bicipital reflexos_tricipital reflexos_patelar reflexos_anquileu
+  MMSS:
+  - mmss
+  - mmss_direito_7 mmss_direito_14 mmss_direito_21
+  - mmss_esquerdo_7 mmss_esquerdo_14 mmss_esquerdo_21
+  MMII:
+  - mmii
+  - mmii_direito_7 mmii_direito_14 mmii_direito_21
+  - mmii_esquerdo_7 mmii_esquerdo_14 mmii_esquerdo_21
+  Desenvolvimento:
+  - desenvolvimento_avds
+  - desenvolvimento_neurofuncional
+  - desenvolvimento_conduta
+  - desenvolvimento_objetivo
+  Atendimento:
+  - atendimento_estagiario atendimento_supervisor
+
+FisioterapiaNeurologica:
+  Avaliação:
+  - data
+  Dados Pessoais:
+  - paciente data_nascimento idade
+  - sexo endereco telefone
+  - profissao estado_civil diagnostico_clinico diagnostico_fisioterapico
+  Dados Vitais:
+  - dados_pa dados_fc
+  - dados_fr dados_t
+  Informações:
+  - info_medicamentos info_patologias
+  - info_antecedentes info_sensibilidade
+  Anamnese:
+  - anamnese_hmpa anamnese_hp
+  - anamnese_qp
+  Exame Físico:
+  - exame_deformidades exame_tonus
+  - exame_trofismo exame_retracoes_encurtamento
+  Reflexos Osteotendinosos:
+  - reflexos_bicipital reflexos_tricipital reflexos_patelar reflexos_anquileu
+  ADM:
+  - adm_avd adm_marcha
+  - adm_ms adm_mi
+  Desenvolvimento:
+  - desenvolvimento_conduta desenvolvimento_objetivo
+  Atendimento:
+  - atendimento_estagiario atendimento_supervisor

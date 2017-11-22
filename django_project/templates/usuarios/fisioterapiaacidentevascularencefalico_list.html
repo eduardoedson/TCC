@@ -1,0 +1,14 @@
+{% extends "crud/list.html" %}
+{% load i18n %}
+
+{% block buttons %}
+    <div class="actions btn-group pull-right" role="group">
+      <a href="{% url 'usuarios:paciente_detail' pk %}" class="btn btn-default">
+        Voltar para paciente
+      </a>
+      <a href="{% url 'usuarios:fisioterapiaacidentevascularencefalico_create' pk %}" class="btn btn-default">
+        {% blocktrans with verbose_name=view.verbose_name %} Adicionar {{ verbose_name }} {% endblocktrans %}
+      </a>
+      {% block more_buttons %}{% endblock more_buttons %}
+    </div>
+{% endblock buttons %}

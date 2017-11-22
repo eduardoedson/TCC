@@ -1,0 +1,36 @@
+{% extends "crud/form.html" %}
+{% load i18n %}
+
+{% block extra_js %}
+  <script language="JavaScript">
+    function change_input(id, cond, id_change){
+      if(document.getElementById(id).value === cond)
+        $('#' + id_change).prop('disabled', false);
+      else
+        $('#' + id_change).prop('disabled', true);
+    }
+
+    document.getElementById('id_sexual_homem_erecao').onchange = function() {
+      change_input('id_sexual_homem_erecao', 'Sim', 'id_sexual_homem_erecao_tipo');
+    };
+
+    document.getElementById('id_sexual_homem_ejaculacao').onchange = function() {
+      change_input('id_sexual_homem_ejaculacao', 'Sim', 'id_sexual_homem_ejaculacao_tipo');
+    };
+
+    window.onload = function(){
+      document.getElementById("id_telefone").placeholder = "(__) ____-____";
+
+      $('#id_paciente').prop('disabled', true);
+      $('#id_data_nascimento').prop('disabled', true);
+      $('#id_sexual_homem_erecao_tipo').prop('disabled', true);
+      $('#id_sexual_homem_ejaculacao_tipo').prop('disabled', true);
+    }
+    document.getElementById('submit-id-salvar').onclick = function(){
+      $('#id_paciente').prop('disabled', false);
+      $('#id_data_nascimento').prop('disabled', false);
+      $('#id_sexual_homem_erecao_tipo').prop('disabled', false);
+      $('#id_sexual_homem_ejaculacao_tipo').prop('disabled', false);
+    };
+  </script>
+{% endblock extra_js %}

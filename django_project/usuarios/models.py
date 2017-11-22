@@ -886,3 +886,356 @@ class FisioterapiaAvaliacaoFeminina(models.Model):
 
     def __str__(self):
         return _('%(data)s') % {'data': self.data.strftime('%d/%m/%Y')}
+
+
+class FisioterapiaAcidenteVascularEncefalico(models.Model):
+    paciente = models.ForeignKey(Paciente, verbose_name=_('Nome'))
+    data = models.DateField(verbose_name=_('Data da Avaliação'), blank=True)
+    data_nascimento = models.DateField(verbose_name=_('Data de Nascimento'), blank=True)
+    idade = models.CharField(max_length=40, verbose_name=_('Idade'), blank=True)
+    sexo = models.CharField(max_length=1, verbose_name=_('Sexo'), choices=RANGE_SEXO)
+    endereco = models.CharField(max_length=40, verbose_name=_('Endereço'), blank=True)
+    telefone = models.CharField(max_length=40, verbose_name=_('Telefone'), blank=True)
+    profissao = models.CharField(max_length=40, verbose_name=_('Profissão'), blank=True)
+    estado_civil = models.CharField(max_length=40, verbose_name=_('Estado Civil'), blank=True)
+    diagnostico_clinico = models.CharField(max_length=40, verbose_name=_('Diagnóstico Clínico'), blank=True)
+    diagnostico_fisioterapico = models.CharField(max_length=40, verbose_name=_('Diagnóstico Fisioterápico'), blank=True)
+
+    dados_pa = models.CharField(max_length=40, verbose_name=_('P.A.'), blank=True)
+    dados_fc = models.CharField(max_length=40, verbose_name=_('F.C.'), blank=True)
+    dados_fr = models.CharField(max_length=40, verbose_name=_('F.R.'), blank=True)
+    dados_t = models.CharField(max_length=40, verbose_name=_('T°'), blank=True)
+
+    medicamentos_utilizados = models.TextField(verbose_name=_('Medicamentos Utilizados'), blank=True)
+
+    patologias_hipertensao = models.CharField(max_length=1, verbose_name=_('Hipertensão Arterial'), choices=YES_NO_CHOICES, blank=True)
+    patologias_cardiopatias = models.CharField(max_length=1, verbose_name=_('Cardiopatias'), choices=YES_NO_CHOICES, blank=True)
+    patologias_diabetes = models.CharField(max_length=1, verbose_name=_('Diabetes'), choices=YES_NO_CHOICES, blank=True)
+    patologias_articular = models.CharField(max_length=1, verbose_name=_('Comprometimento Articular'), choices=YES_NO_CHOICES, blank=True)
+    patologias_alergias = models.CharField(max_length=1, verbose_name=_('Alergias'), choices=YES_NO_CHOICES, blank=True)
+    patologias_dor = models.CharField(max_length=1, verbose_name=_('Dor'), choices=YES_NO_CHOICES, blank=True)
+    patologias_outras = models.TextField(verbose_name=_('Outras'), blank=True)
+    patologias_cirurgico = models.TextField(verbose_name=_('Antecedentes Cirúrgicos'), blank=True)
+
+    anamnese_qp = models.TextField(verbose_name=_('Q.P.'), blank=True)
+    anamnese_lesao = models.CharField(max_length=40, verbose_name=_('H.M.P.A.: Tempo da Lesão'), blank=True)
+    anamnese_tratamento = models.CharField(max_length=40, verbose_name=_('Tratamento Fisioterápico'), choices=YES_NO_CHOICES, blank=True)
+
+    exame_atitude = models.CharField(max_length=40, verbose_name=_('Atitude'), choices=[('Ativo', 'Ativo'), ('Passivo', 'Passivo')], blank=True)
+    exame_consciencia = models.CharField(max_length=40, verbose_name=_('Nível de Consciência'), choices=[('Bom', 'Bom'), ('Regular', 'Regular'), ('Ruim', 'Ruim')], blank=True)
+    exame_postura = models.TextField(verbose_name=_('Postura'), blank=True)
+    exame_marcha = models.TextField(verbose_name=_('Exame da Marcha'), blank=True)
+    exame_retracao_encurtamento = models.TextField(verbose_name=_('Retrações e Encurtamentos'), blank=True)
+    exame_deformidades = models.TextField(verbose_name=_('Deformidades'), blank=True)
+
+    movimentos_coreia = models.CharField(max_length=40, verbose_name=_('Coréia'), choices=YES_NO_CHOICES, blank=True)
+    movimentos_atetose = models.CharField(max_length=40, verbose_name=_('Atetose'), choices=YES_NO_CHOICES, blank=True)
+    movimentos_balismo = models.CharField(max_length=40, verbose_name=_('Balismo'), choices=YES_NO_CHOICES, blank=True)
+    movimentos_tremor = models.CharField(max_length=40, verbose_name=_('Tremor'), choices=YES_NO_CHOICES, blank=True)
+    movimentos_mioclonia = models.CharField(max_length=40, verbose_name=_('Mioclonias'), choices=YES_NO_CHOICES, blank=True)
+    movimentos_fasciculacoes = models.CharField(max_length=40, verbose_name=_('Fasciculações'), choices=YES_NO_CHOICES, blank=True)
+    movimentos_outros = models.TextField(verbose_name=_('Outros'), blank=True)
+
+    coordenacao_decomposicao = models.CharField(max_length=40, verbose_name=_('Decomposição de Movimento'), choices=YES_NO_CHOICES, blank=True)
+    coordenacao_dismetria = models.CharField(max_length=40, verbose_name=_('Dismetria'), choices=YES_NO_CHOICES, blank=True)
+    coordenacao_rechaco = models.CharField(max_length=40, verbose_name=_('Rechaço de Stewart-Holmes'), choices=YES_NO_CHOICES, blank=True)
+    coordenacao_ataxia = models.CharField(max_length=40, verbose_name=_('Ataxia Crebelar'), choices=YES_NO_CHOICES, blank=True)
+    coordenacao_nistagmo = models.CharField(max_length=40, verbose_name=_('Nistagmo'), choices=YES_NO_CHOICES, blank=True)
+
+    equilibrio = models.TextField(verbose_name=_('Equilíbrio'), blank=True)
+
+    escala_grau = models.CharField(max_length=40, verbose_name=_('Tônus Asworth'), choices=[('Grau 1', 'Grau 1: Tônus normal.'), ('Grau 2', 'Grau 2: Aumento leve do tônus - movimentação passiva com certa resistência.'), ('Grau 3', 'Grau 3: Aumento moderado do tônus - maior resistência à movimentação passiva.'), ('Grau 4', 'Grau 4: Aumento considerável do tônus - movimentação passiva é difícil.'), ('Grau 5', 'Grau 5: Rigidez em flexão ou extensão.')], blank=True)
+    escala_perimetria = models.CharField(max_length=40, verbose_name=_('Perimetria'), choices=[('Normal', 'Normal'), ('Alterada', 'Alterada'), ('Discrepância', 'Discrepância')], blank=True)
+    escala_trofismo = models.CharField(max_length=40, verbose_name=_('Trofismo'), choices=[('Normo', 'Normo'), ('Hipertrofia', 'Hipertrofia'), ('Hipotrofia', 'Hipotrofia')], blank=True)
+
+    mmss = models.CharField(max_length=40, verbose_name=_('MMSS'), blank=True)
+    mmss_direito_7 = models.CharField(max_length=40, verbose_name=_('Direito - 7cm'), blank=True)
+    mmss_direito_14 = models.CharField(max_length=40, verbose_name=_('Direito - 14cm'), blank=True)
+    mmss_direito_21 = models.CharField(max_length=40, verbose_name=_('Direito - 21cm'), blank=True)
+    mmss_esquerdo_7 = models.CharField(max_length=40, verbose_name=_('Esquerdo - 7cm'), blank=True)
+    mmss_esquerdo_14 = models.CharField(max_length=40, verbose_name=_('Esquerdo - 14cm'), blank=True)
+    mmss_esquerdo_21 = models.CharField(max_length=40, verbose_name=_('Esquerdo - 21cm'), blank=True)
+
+    mmii = models.CharField(max_length=40, verbose_name=_('MMII'), blank=True)
+    mmii_direito_7 = models.CharField(max_length=40, verbose_name=_('Direito - 7cm'), blank=True)
+    mmii_direito_14 = models.CharField(max_length=40, verbose_name=_('Direito - 14cm'), blank=True)
+    mmii_direito_21 = models.CharField(max_length=40, verbose_name=_('Direito - 21cm'), blank=True)
+    mmii_esquerdo_7 = models.CharField(max_length=40, verbose_name=_('Esquerdo - 7cm'), blank=True)
+    mmii_esquerdo_14 = models.CharField(max_length=40, verbose_name=_('Esquerdo - 14cm'), blank=True)
+    mmii_esquerdo_21 = models.CharField(max_length=40, verbose_name=_('Esquerdo - 21cm'), blank=True)
+
+    reflexos_bicipital = models.CharField(max_length=40, verbose_name=_('Bicipital - C6'), choices=[('Normoreflexia', 'Normoreflexia'), ('Hiporeflexia', 'Hiporeflexia'), ('Hiperreflexia', 'Hiperreflexia'), ('Arreflexia', 'Arreflexia')], blank=True)
+    reflexos_tricipital = models.CharField(max_length=40, verbose_name=_('Tricipital - C7'), choices=[('Normoreflexia', 'Normoreflexia'), ('Hiporeflexia', 'Hiporeflexia'), ('Hiperreflexia', 'Hiperreflexia'), ('Arreflexia', 'Arreflexia')], blank=True)
+    reflexos_patelar = models.CharField(max_length=40, verbose_name=_('Patelar - L2, L3 e L4'), choices=[('Normoreflexia', 'Normoreflexia'), ('Hiporeflexia', 'Hiporeflexia'), ('Hiperreflexia', 'Hiperreflexia'), ('Arreflexia', 'Arreflexia')], blank=True)
+    reflexos_anquileu = models.CharField(max_length=40, verbose_name=_('Anquileu - L5, S1 e S2'), choices=[('Normoreflexia', 'Normoreflexia'), ('Hiporeflexia', 'Hiporeflexia'), ('Hiperreflexia', 'Hiperreflexia'), ('Arreflexia', 'Arreflexia')], blank=True)
+
+    sensibilidade_superficial = models.CharField(max_length=40, verbose_name=_('Sensibilidade Superficial (Exterioceptiva)'), blank=True)
+    sensibilidade_tatil = models.CharField(max_length=40, verbose_name=_('Tátil'), choices=[('Preservada', 'Preservada'), ('Alterada', 'Alterada')], blank=True)
+    sensibilidade_termica = models.CharField(max_length=40, verbose_name=_('Térmica e Dolorosa'), choices=[('Preservada', 'Preservada'), ('Alterada', 'Alterada')], blank=True)
+    sensibilidade_profunda = models.CharField(max_length=40, verbose_name=_('Sensibilidade Profunda'), blank=True)
+    sensibilidade_cinetica = models.CharField(max_length=40, verbose_name=_('Cinética - Postural'), choices=[('Preservada', 'Preservada'), ('Alterada', 'Alterada')], blank=True)
+    sensibilidade_combinada = models.CharField(max_length=40, verbose_name=_('Sensibilidade Combinada'), blank=True)
+    sensibilidade_topognosia = models.CharField(max_length=40, verbose_name=_('Topognosia'), choices=[('Preservada', 'Preservada'), ('Alterada', 'Alterada')], blank=True)
+    sensibilidade_esterognosia = models.CharField(max_length=40, verbose_name=_('Esterognosia'), choices=[('Preservada', 'Preservada'), ('Alterada', 'Alterada')], blank=True)
+    sensibilidade_barognosia = models.CharField(max_length=40, verbose_name=_('Barognosia'), choices=[('Preservada', 'Preservada'), ('Alterada', 'Alterada')], blank=True)
+
+    ms_direito_ombro = models.CharField(max_length=40, verbose_name=_('Ombro'), choices=[('N', 'Normal'), ('R', 'Reduzida')], blank=True)
+    ms_direito_cotovelo = models.CharField(max_length=40, verbose_name=_('Cotovelo'), choices=[('N', 'Normal'), ('R', 'Reduzida')], blank=True)
+    ms_direito_punho = models.CharField(max_length=40, verbose_name=_('Punho'), choices=[('N', 'Normal'), ('R', 'Reduzida')], blank=True)
+    ms_direito_mao = models.CharField(max_length=40, verbose_name=_('Mão'), choices=[('N', 'Normal'), ('R', 'Reduzida')], blank=True)
+    ms_direito_dedos = models.CharField(max_length=40, verbose_name=_('Dedos'), choices=[('N', 'Normal'), ('R', 'Reduzida')], blank=True)
+
+    ms_esquerdo_ombro = models.CharField(max_length=40, verbose_name=_('Ombro'), choices=[('N', 'Normal'), ('R', 'Reduzida')], blank=True)
+    ms_esquerdo_cotovelo = models.CharField(max_length=40, verbose_name=_('Cotovelo'), choices=[('N', 'Normal'), ('R', 'Reduzida')], blank=True)
+    ms_esquerdo_punho = models.CharField(max_length=40, verbose_name=_('Punho'), choices=[('N', 'Normal'), ('R', 'Reduzida')], blank=True)
+    ms_esquerdo_mao = models.CharField(max_length=40, verbose_name=_('Mão'), choices=[('N', 'Normal'), ('R', 'Reduzida')], blank=True)
+    ms_esquerdo_dedos = models.CharField(max_length=40, verbose_name=_('Dedos'), choices=[('N', 'Normal'), ('R', 'Reduzida')], blank=True)
+
+    mi_direito_quadril = models.CharField(max_length=40, verbose_name=_('Quadril'), choices=[('N', 'Normal'), ('R', 'Reduzida')], blank=True)
+    mi_direito_joelho = models.CharField(max_length=40, verbose_name=_('Joelho'), choices=[('N', 'Normal'), ('R', 'Reduzida')], blank=True)
+    mi_direito_tornozelo = models.CharField(max_length=40, verbose_name=_('Tornozelo'), choices=[('N', 'Normal'), ('R', 'Reduzida')], blank=True)
+    mi_direito_pe = models.CharField(max_length=40, verbose_name=_('Pé'), choices=[('N', 'Normal'), ('R', 'Reduzida')], blank=True)
+
+    mi_esquerdo_quadril = models.CharField(max_length=40, verbose_name=_('Quadril'), choices=[('N', 'Normal'), ('R', 'Reduzida')], blank=True)
+    mi_esquerdo_joelho = models.CharField(max_length=40, verbose_name=_('Joelho'), choices=[('N', 'Normal'), ('R', 'Reduzida')], blank=True)
+    mi_esquerdo_tornozelo = models.CharField(max_length=40, verbose_name=_('Tornozelo'), choices=[('N', 'Normal'), ('R', 'Reduzida')], blank=True)
+    mi_esquerdo_pe = models.CharField(max_length=40, verbose_name=_('Pé'), choices=[('N', 'Normal'), ('R', 'Reduzida')], blank=True)
+
+    desenvolvimento_avds = models.CharField(max_length=40, verbose_name=_('AVD\'s'), choices=[('Independente', 'Independente'), ('Dependente', 'Dependente'), ('Semi-Independente', 'Semi-Independente')], blank=True)
+    desenvolvimento_neurofuncional = models.TextField(verbose_name=_('NeuroFuncional'), blank=True)
+
+    objetivos_tratamento = models.TextField(verbose_name=_('Tratamento'), blank=True)
+    objetivos_conduta = models.TextField(verbose_name=_('Conduta Fisioterapêutica'), blank=True)
+
+    atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'), blank=True)
+    atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervissor (a)'), blank=True)
+
+    class Meta:
+        verbose_name = _('Avaliação Acidente Vascular Encefálico')
+        verbose_name_plural = _('Avaliações Acidente Vascular Encefálico')
+        ordering = ['data']
+
+    def __str__(self):
+        return _('%(data)s') % {'data': self.data.strftime('%d/%m/%Y')}
+
+
+class FisioterapiaEscleroseMultipla(models.Model):
+    data = models.DateField(verbose_name=_('Data da Avaliação'), blank=True)
+
+    paciente = models.ForeignKey(Paciente, verbose_name=_('Nome'))
+    data_nascimento = models.DateField(verbose_name=_('Data de Nascimento'), blank=True)
+    idade = models.CharField(max_length=40, verbose_name=_('Idade'), blank=True)
+    sexo = models.CharField(max_length=1, verbose_name=_('Sexo'), choices=RANGE_SEXO)
+    endereco = models.CharField(max_length=40, verbose_name=_('Endereço'), blank=True)
+    telefone = models.CharField(max_length=40, verbose_name=_('Telefone'), blank=True)
+    profissao = models.CharField(max_length=40, verbose_name=_('Profissão'), blank=True)
+    estado_civil = models.CharField(max_length=40, verbose_name=_('Estado Civil'), blank=True)
+    diagnostico_clinico = models.CharField(max_length=40, verbose_name=_('Diagnóstico Clínico'), blank=True)
+    diagnostico_fisioterapico = models.CharField(max_length=40, verbose_name=_('Diagnóstico Fisioterápico'), blank=True)
+
+    dados_pa = models.CharField(max_length=40, verbose_name=_('P.A.'), blank=True)
+    dados_fc = models.CharField(max_length=40, verbose_name=_('F.C.'), blank=True)
+    dados_fr = models.CharField(max_length=40, verbose_name=_('F.R.'), blank=True)
+    dados_t = models.CharField(max_length=40, verbose_name=_('T°'), blank=True)
+
+    info_medicamentos = models.TextField(verbose_name=_('Medicamentos Utilizados'), blank=True)
+    info_exames = models.TextField(verbose_name=_('Exames Complementares'), blank=True)
+    info_antecedentes = models.TextField(verbose_name=_('Antecedentes Cirúrgicos'), blank=True)
+    info_adm = models.TextField(verbose_name=_('ADM'), blank=True)
+
+    anamnese_qp = models.TextField(verbose_name=_('Q.P.'), blank=True)
+    anamnese_hmpa = models.TextField(verbose_name=_('H.M.P.A.'), blank=True)
+
+    exame_tonus = models.CharField(max_length=40, verbose_name=_('Escala de Avaliação do Tônus Asworth'), choices=[('Grau 1', 'Grau 1: Tônus normal.'), ('Grau 2', 'Grau 2: Aumento leve do tônus - movimentação passiva com certa resistência.'), ('Grau 3', 'Grau 3: Aumento moderado do tônus - maior resistência à movimentação passiva.'), ('Grau 4', 'Grau 4: Aumento considerável do tônus - movimentação passiva é difícil.'), ('Grau 5', 'Grau 5: Rigidez em flexão ou extensão.')], blank=True)
+    exame_trofismo = models.CharField(max_length=40, verbose_name=_('Trofismo'), choices=[('Normo', 'Normo'), ('Hipertrofia', 'Hipertrofia'), ('Hipotrofia', 'Hipotrofia')], blank=True)
+
+    reflexos_bicipital = models.CharField(max_length=40, verbose_name=_('Bicipital'), choices=[('Normoreflexia', 'Normoreflexia'), ('Hiporeflexia', 'Hiporeflexia'), ('Hiperreflexia', 'Hiperreflexia'), ('Arreflexia', 'Arreflexia')], blank=True)
+    reflexos_tricipital = models.CharField(max_length=40, verbose_name=_('Tricipital'), choices=[('Normoreflexia', 'Normoreflexia'), ('Hiporeflexia', 'Hiporeflexia'), ('Hiperreflexia', 'Hiperreflexia'), ('Arreflexia', 'Arreflexia')], blank=True)
+    reflexos_patelar = models.CharField(max_length=40, verbose_name=_('Patelar'), choices=[('Normoreflexia', 'Normoreflexia'), ('Hiporeflexia', 'Hiporeflexia'), ('Hiperreflexia', 'Hiperreflexia'), ('Arreflexia', 'Arreflexia')], blank=True)
+    reflexos_anquileu = models.CharField(max_length=40, verbose_name=_('Anquileu'), choices=[('Normoreflexia', 'Normoreflexia'), ('Hiporeflexia', 'Hiporeflexia'), ('Hiperreflexia', 'Hiperreflexia'), ('Arreflexia', 'Arreflexia')], blank=True)
+
+    mmss = models.CharField(max_length=40, verbose_name=_('MMSS'), blank=True)
+    mmss_direito_7 = models.CharField(max_length=40, verbose_name=_('Direito - 7cm'), blank=True)
+    mmss_direito_14 = models.CharField(max_length=40, verbose_name=_('Direito - 14cm'), blank=True)
+    mmss_direito_21 = models.CharField(max_length=40, verbose_name=_('Direito - 21cm'), blank=True)
+    mmss_esquerdo_7 = models.CharField(max_length=40, verbose_name=_('Esquerdo - 7cm'), blank=True)
+    mmss_esquerdo_14 = models.CharField(max_length=40, verbose_name=_('Esquerdo - 14cm'), blank=True)
+    mmss_esquerdo_21 = models.CharField(max_length=40, verbose_name=_('Esquerdo - 21cm'), blank=True)
+
+    mmii = models.CharField(max_length=40, verbose_name=_('MMII'), blank=True)
+    mmii_direito_7 = models.CharField(max_length=40, verbose_name=_('Direito - 7cm'), blank=True)
+    mmii_direito_14 = models.CharField(max_length=40, verbose_name=_('Direito - 14cm'), blank=True)
+    mmii_direito_21 = models.CharField(max_length=40, verbose_name=_('Direito - 21cm'), blank=True)
+    mmii_esquerdo_7 = models.CharField(max_length=40, verbose_name=_('Esquerdo - 7cm'), blank=True)
+    mmii_esquerdo_14 = models.CharField(max_length=40, verbose_name=_('Esquerdo - 14cm'), blank=True)
+    mmii_esquerdo_21 = models.CharField(max_length=40, verbose_name=_('Esquerdo - 21cm'), blank=True)
+
+    desenvolvimento_avds = models.CharField(max_length=40, verbose_name=_('AVD\'s'), choices=[('Independente', 'Independente'), ('Dependente', 'Dependente'), ('Semi-Independente', 'Semi-Independente')], blank=True)
+    desenvolvimento_neurofuncional = models.TextField(verbose_name=_('NeuroFuncional'), blank=True)
+    desenvolvimento_conduta = models.TextField(verbose_name=_('Conduta Fisioterapêutica'), blank=True)
+
+    kurtzke_piramidais = models.CharField(max_length=40, verbose_name=_('Funções Piramidais'), choices=[('0', 'Normal'), ('1', 'Sinais anormais sem incapacidades'), ('2', 'Incapacidade mínima'), ('3', 'Paraparesia ou Hemiparesia leve ou moderada, Monoparesia grave'), ('4', 'Paraparesia ou Hemiparesia acentuada, Quadriparesia moderada; ou Monoplegia'), ('5', 'Paraplegia, Hemiplegia ou Quadriparesia acentuada'), ('6', 'Quadriplegia')], blank=True)
+    kurtzke_cerebelares = models.TextField(verbose_name=_('Funções Cerebelares'), blank=True)
+
+    atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'), blank=True)
+    atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervissor (a)'), blank=True)
+
+    class Meta:
+        verbose_name = _('Avaliação Esclerose Múltipla')
+        verbose_name_plural = _('Avaliações Esclerose Múltipla')
+        ordering = ['data']
+
+    def __str__(self):
+        return _('%(data)s') % {'data': self.data.strftime('%d/%m/%Y')}
+
+
+class FisioterapiaTRM(models.Model):
+    data = models.DateField(verbose_name=_('Data da Avaliação'), blank=True)
+
+    paciente = models.ForeignKey(Paciente, verbose_name=_('Nome'))
+    data_nascimento = models.DateField(verbose_name=_('Data de Nascimento'), blank=True)
+    idade = models.CharField(max_length=40, verbose_name=_('Idade'), blank=True)
+    sexo = models.CharField(max_length=1, verbose_name=_('Sexo'), choices=RANGE_SEXO)
+    endereco = models.CharField(max_length=40, verbose_name=_('Endereço'), blank=True)
+    telefone = models.CharField(max_length=40, verbose_name=_('Telefone'), blank=True)
+    profissao = models.CharField(max_length=40, verbose_name=_('Profissão'), blank=True)
+    estado_civil = models.CharField(max_length=40, verbose_name=_('Estado Civil'), blank=True)
+    diagnostico_clinico = models.CharField(max_length=40, verbose_name=_('Diagnóstico Clínico'), blank=True)
+    diagnostico_fisioterapico = models.CharField(max_length=40, verbose_name=_('Diagnóstico Fisioterápico'), blank=True)
+
+    dados_pa = models.CharField(max_length=40, verbose_name=_('P.A.'), blank=True)
+    dados_fc = models.CharField(max_length=40, verbose_name=_('F.C.'), blank=True)
+    dados_fr = models.CharField(max_length=40, verbose_name=_('F.R.'), blank=True)
+    dados_t = models.CharField(max_length=40, verbose_name=_('T°'), blank=True)
+
+    info_medicamentos = models.TextField(verbose_name=_('Medicamentos Utilizados'), blank=True)
+    info_exames = models.TextField(verbose_name=_('Exames Complementares'), blank=True)
+    info_antecedentes = models.TextField(verbose_name=_('Antecedentes Cirúrgicos'), blank=True)
+    info_adm = models.TextField(verbose_name=_('ADM'), blank=True)
+
+    anamnese_qp = models.TextField(verbose_name=_('Q.P.'), blank=True)
+    anamnese_hmpa = models.TextField(verbose_name=_('H.M.P.A.'), choices=[('Traumática', 'Traumática'), ('Não Traumática', 'Não Traumática')], blank=True)
+
+    complicacoes_bexiga = models.CharField(max_length=40, verbose_name=_('Bexiga Neurogênica'), choices=YES_NO_CHOICES, blank=True)
+    complicacoes_disreflexia = models.CharField(max_length=40, verbose_name=_('Disreflexia Autonômica'), choices=YES_NO_CHOICES, blank=True)
+    complicacoes_escaras = models.CharField(max_length=40, verbose_name=_('Escaras'), choices=YES_NO_CHOICES, blank=True)
+    complicacoes_ossificacao = models.CharField(max_length=40, verbose_name=_('Ossificação Heterotópica'), choices=YES_NO_CHOICES, blank=True)
+    complicacoes_dor = models.CharField(max_length=40, verbose_name=_('Dor'), choices=YES_NO_CHOICES, blank=True)
+    complicacoes_hipotensao = models.CharField(max_length=40, verbose_name=_('Hipotensão Postural'), choices=YES_NO_CHOICES, blank=True)
+    complicacoes_disestesias = models.CharField(max_length=40, verbose_name=_('Disestesias Medulares'), choices=YES_NO_CHOICES, blank=True)
+    complicacoes_trombose = models.CharField(max_length=40, verbose_name=_('Trombose Venosa Profunda'), choices=YES_NO_CHOICES, blank=True)
+    complicacoes_respiratorias = models.CharField(max_length=40, verbose_name=_('Complicações Respiratórias'), choices=YES_NO_CHOICES, blank=True)
+    complicacoes_deformidades = models.CharField(max_length=40, verbose_name=_('Deformidades'), choices=YES_NO_CHOICES, blank=True)
+    complicacoes_outros = models.TextField(verbose_name=_('Outros'), blank=True)
+
+    sexual_relacao = models.CharField(max_length=40, verbose_name=_('Já teve relações sexuais?'), choices=YES_NO_CHOICES, blank=True)
+    sexual_filhos = models.CharField(max_length=40, verbose_name=_('Tem filhos?'), choices=YES_NO_CHOICES, blank=True)
+    sexual_vontade_filhos = models.CharField(max_length=40, verbose_name=_('Tem vontade de ter filhos?'), choices=YES_NO_CHOICES, blank=True)
+
+    sexual_homem_erecao = models.CharField(max_length=40, verbose_name=_('Tem Ereção?'), choices=YES_NO_CHOICES, blank=True)
+    sexual_homem_erecao_tipo = models.CharField(max_length=40, verbose_name=_('Tipo Ereção?'), choices=[('Reflexa', 'Reflexa'), ('Psicogênica', 'Psicogênica')], blank=True)
+    sexual_homem_ejaculacao = models.CharField(max_length=40, verbose_name=_('Tem Ejaculação?'), choices=YES_NO_CHOICES, blank=True)
+    sexual_homem_ejaculacao_tipo = models.CharField(max_length=40, verbose_name=_('Tipo Ejaculação?'), choices=[('Retrógrada', 'Retrógrada'), ('Normal', 'Normal')], blank=True)
+    sexual_homem_orgasmo = models.CharField(max_length=40, verbose_name=_('Tem Orgasmo?'), choices=YES_NO_CHOICES, blank=True)
+
+    sexual_mulher_orgasmo = models.CharField(max_length=40, verbose_name=_('Tem Orgasmo?'), choices=YES_NO_CHOICES, blank=True)
+    sexual_mulher_lubrificacao = models.CharField(max_length=40, verbose_name=_('Tem Lubrificação?'), choices=YES_NO_CHOICES, blank=True)
+
+    exame_tonus = models.CharField(max_length=40, verbose_name=_('Escala de Avaliação do Tônus Asworth'), choices=[('Grau 1', 'Grau 1: Tônus normal.'), ('Grau 2', 'Grau 2: Aumento leve do tônus - movimentação passiva com certa resistência.'), ('Grau 3', 'Grau 3: Aumento moderado do tônus - maior resistência à movimentação passiva.'), ('Grau 4', 'Grau 4: Aumento considerável do tônus - movimentação passiva é difícil.'), ('Grau 5', 'Grau 5: Rigidez em flexão ou extensão.')], blank=True)
+    exame_trofismo = models.CharField(max_length=40, verbose_name=_('Trofismo'), choices=[('Normo', 'Normo'), ('Hipertrofia', 'Hipertrofia'), ('Hipotrofia', 'Hipotrofia')], blank=True)
+    exame_tperimetria = models.CharField(max_length=40, verbose_name=_('Perimetria'), choices=[('Normal', 'Normal'), ('Alterada', 'Alterada')], blank=True)
+
+    reflexos_bicipital = models.CharField(max_length=40, verbose_name=_('Bicipital'), choices=[('Normoreflexia', 'Normoreflexia'), ('Hiporeflexia', 'Hiporeflexia'), ('Hiperreflexia', 'Hiperreflexia'), ('Arreflexia', 'Arreflexia')], blank=True)
+    reflexos_tricipital = models.CharField(max_length=40, verbose_name=_('Tricipital'), choices=[('Normoreflexia', 'Normoreflexia'), ('Hiporeflexia', 'Hiporeflexia'), ('Hiperreflexia', 'Hiperreflexia'), ('Arreflexia', 'Arreflexia')], blank=True)
+    reflexos_patelar = models.CharField(max_length=40, verbose_name=_('Patelar'), choices=[('Normoreflexia', 'Normoreflexia'), ('Hiporeflexia', 'Hiporeflexia'), ('Hiperreflexia', 'Hiperreflexia'), ('Arreflexia', 'Arreflexia')], blank=True)
+    reflexos_anquileu = models.CharField(max_length=40, verbose_name=_('Anquileu'), choices=[('Normoreflexia', 'Normoreflexia'), ('Hiporeflexia', 'Hiporeflexia'), ('Hiperreflexia', 'Hiperreflexia'), ('Arreflexia', 'Arreflexia')], blank=True)
+
+    mmss = models.CharField(max_length=40, verbose_name=_('MMSS'), blank=True)
+    mmss_direito_7 = models.CharField(max_length=40, verbose_name=_('Direito - 7cm'), blank=True)
+    mmss_direito_14 = models.CharField(max_length=40, verbose_name=_('Direito - 14cm'), blank=True)
+    mmss_direito_21 = models.CharField(max_length=40, verbose_name=_('Direito - 21cm'), blank=True)
+    mmss_esquerdo_7 = models.CharField(max_length=40, verbose_name=_('Esquerdo - 7cm'), blank=True)
+    mmss_esquerdo_14 = models.CharField(max_length=40, verbose_name=_('Esquerdo - 14cm'), blank=True)
+    mmss_esquerdo_21 = models.CharField(max_length=40, verbose_name=_('Esquerdo - 21cm'), blank=True)
+
+    mmii = models.CharField(max_length=40, verbose_name=_('MMII'), blank=True)
+    mmii_direito_7 = models.CharField(max_length=40, verbose_name=_('Direito - 7cm'), blank=True)
+    mmii_direito_14 = models.CharField(max_length=40, verbose_name=_('Direito - 14cm'), blank=True)
+    mmii_direito_21 = models.CharField(max_length=40, verbose_name=_('Direito - 21cm'), blank=True)
+    mmii_esquerdo_7 = models.CharField(max_length=40, verbose_name=_('Esquerdo - 7cm'), blank=True)
+    mmii_esquerdo_14 = models.CharField(max_length=40, verbose_name=_('Esquerdo - 14cm'), blank=True)
+    mmii_esquerdo_21 = models.CharField(max_length=40, verbose_name=_('Esquerdo - 21cm'), blank=True)
+
+    desenvolvimento_avds = models.CharField(max_length=40, verbose_name=_('AVD\'s'), choices=[('Independente', 'Independente'), ('Dependente', 'Dependente'), ('Semi-Independente', 'Semi-Independente')], blank=True)
+    desenvolvimento_neurofuncional = models.TextField(verbose_name=_('NeuroFuncional'), blank=True)
+    desenvolvimento_conduta = models.TextField(verbose_name=_('Conduta Fisioterapêutica'), blank=True)
+    desenvolvimento_objetivo = models.TextField(verbose_name=_('Objetivos de Tratamento'), blank=True)
+
+    atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'), blank=True)
+    atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervissor (a)'), blank=True)
+
+    class Meta:
+        verbose_name = _('Avaliação TRM')
+        verbose_name_plural = _('Avaliações TRM')
+        ordering = ['data']
+
+    def __str__(self):
+        return _('%(data)s') % {'data': self.data.strftime('%d/%m/%Y')}
+
+
+class FisioterapiaNeurologica(models.Model):
+    data = models.DateField(verbose_name=_('Data da Avaliação'), blank=True)
+
+    paciente = models.ForeignKey(Paciente, verbose_name=_('Nome'))
+    data_nascimento = models.DateField(verbose_name=_('Data de Nascimento'), blank=True)
+    idade = models.CharField(max_length=40, verbose_name=_('Idade'), blank=True)
+    sexo = models.CharField(max_length=1, verbose_name=_('Sexo'), choices=RANGE_SEXO)
+    endereco = models.CharField(max_length=40, verbose_name=_('Endereço'), blank=True)
+    telefone = models.CharField(max_length=40, verbose_name=_('Telefone'), blank=True)
+    profissao = models.CharField(max_length=40, verbose_name=_('Profissão'), blank=True)
+    estado_civil = models.CharField(max_length=40, verbose_name=_('Estado Civil'), blank=True)
+    diagnostico_clinico = models.CharField(max_length=40, verbose_name=_('Diagnóstico Clínico'), blank=True)
+    diagnostico_fisioterapico = models.CharField(max_length=40, verbose_name=_('Diagnóstico Fisioterápico'), blank=True)
+
+    dados_pa = models.CharField(max_length=40, verbose_name=_('P.A.'), blank=True)
+    dados_fc = models.CharField(max_length=40, verbose_name=_('F.C.'), blank=True)
+    dados_fr = models.CharField(max_length=40, verbose_name=_('F.R.'), blank=True)
+    dados_t = models.CharField(max_length=40, verbose_name=_('T°'), blank=True)
+
+    info_medicamentos = models.TextField(verbose_name=_('Medicamentos Utilizados'), blank=True)
+    info_patologias = models.TextField(verbose_name=_('Patologias Associadas'), blank=True)
+    info_antecedentes = models.TextField(verbose_name=_('Antecedentes Cirúrgicos'), blank=True)
+    info_sensibilidade = models.TextField(verbose_name=_('Sensibilidade'), blank=True)
+
+    anamnese_qp = models.TextField(verbose_name=_('Q.P.'), blank=True)
+    anamnese_hmpa = models.TextField(verbose_name=_('H.M.A.'), blank=True)
+    anamnese_hp = models.TextField(verbose_name=_('H.P.'), blank=True)
+
+    exame_deformidades = models.TextField(verbose_name=_('Deformidades'), blank=True)
+    exame_tonus = models.TextField(verbose_name=_('Tônus'), blank=True)
+    exame_trofismo = models.TextField(verbose_name=_('Trofismo'), blank=True)
+    exame_retracoes_encurtamento = models.TextField(verbose_name=_('Retrações ou Encurtamentos'), blank=True)
+
+    reflexos_bicipital = models.CharField(max_length=40, verbose_name=_('Bicipital - C6'), choices=[('Normoreflexia', 'Normoreflexia'), ('Hiporeflexia', 'Hiporeflexia'), ('Hiperreflexia', 'Hiperreflexia'), ('Arreflexia', 'Arreflexia')], blank=True)
+    reflexos_tricipital = models.CharField(max_length=40, verbose_name=_('Tricipital - C7'), choices=[('Normoreflexia', 'Normoreflexia'), ('Hiporeflexia', 'Hiporeflexia'), ('Hiperreflexia', 'Hiperreflexia'), ('Arreflexia', 'Arreflexia')], blank=True)
+    reflexos_patelar = models.CharField(max_length=40, verbose_name=_('Patelar - L2, L3 e L4'), choices=[('Normoreflexia', 'Normoreflexia'), ('Hiporeflexia', 'Hiporeflexia'), ('Hiperreflexia', 'Hiperreflexia'), ('Arreflexia', 'Arreflexia')], blank=True)
+    reflexos_anquileu = models.CharField(max_length=40, verbose_name=_('Anquileu - L5, S1 e S2'), choices=[('Normoreflexia', 'Normoreflexia'), ('Hiporeflexia', 'Hiporeflexia'), ('Hiperreflexia', 'Hiperreflexia'), ('Arreflexia', 'Arreflexia')], blank=True)
+
+    adm_ms = models.TextField(verbose_name=_('Membros Superiores'), blank=True)
+    adm_mi = models.TextField(verbose_name=_('Membros Inferiores'), blank=True)
+    adm_avd = models.CharField(max_length=40, verbose_name=_('AVD\'s'), choices=[('Independente', 'Independente'), ('Dependente', 'Dependente'), ('Semi-Independente', 'Semi-Independente')], blank=True)
+    adm_marcha = models.CharField(max_length=40, verbose_name=_('Marcha'), blank=True)
+
+    desenvolvimento_conduta = models.TextField(verbose_name=_('Conduta Fisioterapêutica'), blank=True)
+    desenvolvimento_objetivo = models.TextField(verbose_name=_('Objetivos de Tratamento'), blank=True)
+
+    atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'), blank=True)
+    atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervissor (a)'), blank=True)
+
+    class Meta:
+        verbose_name = _('Avaliação Neurológica')
+        verbose_name_plural = _('Avaliações Neurológica')
+        ordering = ['data']
+
+    def __str__(self):
+        return _('%(data)s') % {'data': self.data.strftime('%d/%m/%Y')}

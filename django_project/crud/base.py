@@ -138,7 +138,7 @@ class CrudCreateView(GroupRequiredMixin,
 
     raise_exception = True
     login_url = LOGIN_REDIRECT_URL
-    group_required = ['Supervisor', 'Alunos']
+    group_required = ['Supervisor', 'Aluno']
 
     @classmethod
     def get_url_regex(cls):
@@ -175,7 +175,7 @@ class CrudUpdateView(GroupRequiredMixin,
 
     raise_exception = True
     login_url = LOGIN_REDIRECT_URL
-    group_required = ['Supervisor']
+    group_required = []
 
     @classmethod
     def get_url_regex(cls):

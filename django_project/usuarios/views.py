@@ -23,7 +23,11 @@ from .models import (Aluno, Supervisor, FisioterapiaBerg,
                      FisioterapiaTriagem, Paciente, Recepcionista,
                      FisioterapiaAvaliacaoGestacional,
                      FisioterapiaAvaliacaoMasculina,
-                     FisioterapiaAvaliacaoFeminina)
+                     FisioterapiaAvaliacaoFeminina,
+                     FisioterapiaAcidenteVascularEncefalico,
+                     FisioterapiaEscleroseMultipla,
+                     FisioterapiaTRM,
+                     FisioterapiaNeurologica)
 
 
 def get_medico(pk):
@@ -640,6 +644,195 @@ class FisioterapiaAvaliacaoFemininaCrud(Crud):
 
         def cancel_url(self):
             return reverse('usuarios:fisioterapiaavaliacaofeminina_list',
+                        kwargs={'pk': self.kwargs['pk']})
+
+        def get_initial(self):
+            paciente = Paciente.objects.get(id=self.kwargs['pk'])
+            self.initial['paciente'] = self.kwargs['pk']
+            self.initial['data_nascimento'] = paciente.data_nascimento
+            self.initial['data'] = datetime.now().strftime('%d/%m/%Y')
+            return self.initial.copy()
+
+class FisioterapiaAcidenteVascularEncefalicoCrud(Crud):
+    model = FisioterapiaAcidenteVascularEncefalico
+    help_path = ''
+
+    class BaseMixin(GroupRequiredMixin,
+                    LoginRequiredMixin, crud.base.CrudBaseMixin):
+        list_field_names = ['data']
+
+        raise_exception = True
+        login_url = LOGIN_REDIRECT_URL
+
+    class ListView(crud.base.CrudListView):
+
+        @classmethod
+        def get_url_regex(cls):
+            return r'^(?P<pk>\d+)/list$'
+
+        def get_context_data(self, **kwargs):
+            context = super(crud.base.CrudListView, self).get_context_data(
+                **kwargs)
+            context['NO_ENTRIES_MSG'] = 'Nenhuma ficha encontrada.'
+            context['pk'] = self.kwargs['pk']
+            context['title'] = 'Avaliação Acidente Vascular Encefálico'
+            context['headers'] = self.get_headers()
+            context['rows'] = self.get_rows(
+                    FisioterapiaAcidenteVascularEncefalico.objects.filter(
+                        paciente_id=self.kwargs['pk']))
+            return context
+
+    class CreateView(crud.base.CrudCreateView):
+
+        @classmethod
+        def get_url_regex(cls):
+            return r'^(?P<pk>\d+)/create$'
+
+        def cancel_url(self):
+            return reverse('usuarios:fisioterapiaacidentevascularencefalico_list',
+                        kwargs={'pk': self.kwargs['pk']})
+
+        def get_initial(self):
+            paciente = Paciente.objects.get(id=self.kwargs['pk'])
+            self.initial['paciente'] = self.kwargs['pk']
+            self.initial['data_nascimento'] = paciente.data_nascimento
+            self.initial['data'] = datetime.now().strftime('%d/%m/%Y')
+            return self.initial.copy()
+
+
+class FisioterapiaEscleroseMultiplaCrud(Crud):
+    model = FisioterapiaEscleroseMultipla
+    help_path = ''
+
+    class BaseMixin(GroupRequiredMixin,
+                    LoginRequiredMixin, crud.base.CrudBaseMixin):
+        list_field_names = ['data']
+
+        raise_exception = True
+        login_url = LOGIN_REDIRECT_URL
+
+    class ListView(crud.base.CrudListView):
+
+        @classmethod
+        def get_url_regex(cls):
+            return r'^(?P<pk>\d+)/list$'
+
+        def get_context_data(self, **kwargs):
+            context = super(crud.base.CrudListView, self).get_context_data(
+                **kwargs)
+            context['NO_ENTRIES_MSG'] = 'Nenhuma ficha encontrada.'
+            context['pk'] = self.kwargs['pk']
+            context['title'] = 'Avaliação Esclerose Múltipla'
+            context['headers'] = self.get_headers()
+            context['rows'] = self.get_rows(
+                    FisioterapiaEscleroseMultipla.objects.filter(
+                        paciente_id=self.kwargs['pk']))
+            return context
+
+    class CreateView(crud.base.CrudCreateView):
+
+        @classmethod
+        def get_url_regex(cls):
+            return r'^(?P<pk>\d+)/create$'
+
+        def cancel_url(self):
+            return reverse('usuarios:fisioterapiaesclerosemultipla_list',
+                        kwargs={'pk': self.kwargs['pk']})
+
+        def get_initial(self):
+            paciente = Paciente.objects.get(id=self.kwargs['pk'])
+            self.initial['paciente'] = self.kwargs['pk']
+            self.initial['data_nascimento'] = paciente.data_nascimento
+            self.initial['data'] = datetime.now().strftime('%d/%m/%Y')
+            return self.initial.copy()
+
+
+class FisioterapiaTRMCrud(Crud):
+    model = FisioterapiaTRM
+    help_path = ''
+
+    class BaseMixin(GroupRequiredMixin,
+                    LoginRequiredMixin, crud.base.CrudBaseMixin):
+        list_field_names = ['data']
+
+        raise_exception = True
+        login_url = LOGIN_REDIRECT_URL
+
+    class ListView(crud.base.CrudListView):
+
+        @classmethod
+        def get_url_regex(cls):
+            return r'^(?P<pk>\d+)/list$'
+
+        def get_context_data(self, **kwargs):
+            context = super(crud.base.CrudListView, self).get_context_data(
+                **kwargs)
+            context['NO_ENTRIES_MSG'] = 'Nenhuma ficha encontrada.'
+            context['pk'] = self.kwargs['pk']
+            context['title'] = 'Avaliação TRM'
+            context['headers'] = self.get_headers()
+            context['rows'] = self.get_rows(
+                    FisioterapiaTRM.objects.filter(
+                        paciente_id=self.kwargs['pk']))
+            return context
+
+    class CreateView(crud.base.CrudCreateView):
+
+        @classmethod
+        def get_url_regex(cls):
+            return r'^(?P<pk>\d+)/create$'
+
+        def cancel_url(self):
+            return reverse('usuarios:fisioterapiatrm_list',
+                        kwargs={'pk': self.kwargs['pk']})
+
+        def get_initial(self):
+            paciente = Paciente.objects.get(id=self.kwargs['pk'])
+            self.initial['paciente'] = self.kwargs['pk']
+            self.initial['data_nascimento'] = paciente.data_nascimento
+            self.initial['data'] = datetime.now().strftime('%d/%m/%Y')
+            return self.initial.copy()
+
+
+
+
+class FisioterapiaNeurologicaCrud(Crud):
+    model = FisioterapiaNeurologica
+    help_path = ''
+
+    class BaseMixin(GroupRequiredMixin,
+                    LoginRequiredMixin, crud.base.CrudBaseMixin):
+        list_field_names = ['data']
+
+        raise_exception = True
+        login_url = LOGIN_REDIRECT_URL
+
+    class ListView(crud.base.CrudListView):
+
+        @classmethod
+        def get_url_regex(cls):
+            return r'^(?P<pk>\d+)/list$'
+
+        def get_context_data(self, **kwargs):
+            context = super(crud.base.CrudListView, self).get_context_data(
+                **kwargs)
+            context['NO_ENTRIES_MSG'] = 'Nenhuma ficha encontrada.'
+            context['pk'] = self.kwargs['pk']
+            context['title'] = 'Avaliação Neurológica'
+            context['headers'] = self.get_headers()
+            context['rows'] = self.get_rows(
+                    FisioterapiaNeurologica.objects.filter(
+                        paciente_id=self.kwargs['pk']))
+            return context
+
+    class CreateView(crud.base.CrudCreateView):
+
+        @classmethod
+        def get_url_regex(cls):
+            return r'^(?P<pk>\d+)/create$'
+
+        def cancel_url(self):
+            return reverse('usuarios:fisioterapianeurologica_list',
                         kwargs={'pk': self.kwargs['pk']})
 
         def get_initial(self):

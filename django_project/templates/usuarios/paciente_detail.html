@@ -13,6 +13,14 @@
       {% endif %}
   </div>
 
+  <div class="editons pull-right">
+    {% block editions %}
+      <div class="actions btn-group" role="group">
+        <a href="{{ view.update_url }}" class="btn btn-warning">{% trans 'Editar' %}</a>
+      </div>
+    {% endblock %}
+  </div>
+
   <br /><br /><br />
 
   <div class="dropdown">
@@ -31,12 +39,12 @@
     <li class="dropdown-submenu">
       <a class="test" tabindex="-1" href="#">Neurologia Adulto</a>
       <ul class="dropdown-menu">
-        <li><a tabindex="-1" href="#">NA-1</a></li>
-        <li><a tabindex="-1" href="#">NA-2</a></li>
+        <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaacidentevascularencefalico_list' object.pk %}">Avaliação AVE</a></li>
+        <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaesclerosemultipla_list' object.pk %}">Avaliação Esclerose Múltipla</a></li>
         <li><a tabindex="-1" href="#">NA-3</a></li>
         <li><a tabindex="-1" href="#">NA-4</a></li>
-        <li><a tabindex="-1" href="#">NA-5</a></li>
-        <li><a tabindex="-1" href="#">NA-6</a></li>
+        <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiatrm_list' object.pk %}">Avaliação TRM</a></li>
+        <li><a tabindex="-1" href="{% url 'usuarios:fisioterapianeurologica_list' object.pk %}">Ficha Base</a></li>
       </ul>
     </li>
     <li class="dropdown-submenu">
