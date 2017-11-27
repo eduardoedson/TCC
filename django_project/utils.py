@@ -61,6 +61,70 @@ def lista_grupos():
     return grupos
 
 
+AVALIACAO_PARKINSON = [
+    [],
+    [
+        (0, _('[0] - Sem comprometimento')),
+        (1, _('[1] - Lentificação detectável do uso de supinação - pronação evidenciada pela dificuldade no inicio do manuseio de instrumentos, abotoamento de roupas e durante a escrita manual.')),
+        (2, _('[2] - Lentificação moderada de supinação - pronação, em um ou ambos os lados, evidenciada pelo comprometimento moderado da função das mãos. A escrita manual encontra-se fortemente prejudicada, com micrografia presente.')),
+        (3, _('[3] - Lentificação grave do uso de supinação - pronação. Incapaz de escrever ou abotoar roupas. Dificuldade acentuada no manuseio de utenspilios.')),
+    ],
+    [
+        (0, _('[0] - Não detectável.')),
+        (1, _('[1] - Rigidez detectável no pescoço e ombros. Fenômenos de ativação encontra-se presente. Um ou ambos os braços apresentam rigidez leve, negativa, durante o processo.')),
+        (2, _('[2] - Rigidez moderada no pescoço e ombros. A rigidez durante o repouso é positiva quando o paciente não está medicado.')),
+        (3, _('[3] - Rigidez grave no pescoço e ombros. A rigidez de repouso não pode ser revertida por medicação.')),
+    ],
+    [
+        (0, _('[0] - Postura normal. Cabeça fletida ara frente menos que 10cm.')),
+        (1, _('[1] - Começando a apresentar coluna de atiçador. Cabeça para frente mais de 12cm.')),
+        (2, _('[2] - Começa a apresentar flexão de braço. Cabeça fletida para frente mais de 15cm. Um ou ambos os braços elevados mas ainda abaixo da cintura.')),
+        (3, _('[3] - Início da postura simiesca. Cabeça fletida para frente mais de 15cm. Uma ou ambas as mãos elevadas acima da cintura. Flexão aguda da mão, começando a flexão de joelhos.')),
+    ],
+    [
+        (0, _('[0] - Balanceio correto dos dois braços.')),
+        (1, _('[1] - Um braço com diminuição definida do balanceio.')),
+        (2, _('[2] - Um braço não balança.')),
+        (3, _('[3] - Os dois braços não balançam.')),
+    ],
+    [
+        (0, _('[0] - Passos bons com passadas de 40 a 75cm. Faz iros sem esforço.')),
+        (1, _('[1] - Marcha encurtada para passadas 30 a 40cm. Começando a bater um calcanhar. Faz os giros mais lentamente. Requer vários passos.')),
+        (2, _('[2] - Passada moderadamente encurtado agora com 15 a 30cm. Os dois calcanhares começam a bater no solo forçadamente.')),
+        (3, _('[3] - Início da marcha com interrupções, passos com menos de 7cm. Ocasionalmente a marcha apresenta um tipo de bloqueio com um "gaguejar". O paciente anda sobre artelhos fazem os giros muito lentamente.')),
+    ],
+    [
+        (0, _('[0] - Sem tremor detectável.')),
+        (1, _('[1] - Observando o movimento de tremor com menos de 2,5cm de pico a pico nos membros ou cabeça durante o repouso ou em qualquer mão durante a marcha ou durante o teste dedo-nariz.')),
+        (2, _('[2] - O evento máximo do tremor nõ excede 10cm. O tremor é grave mas não constamte paciente retém algum controle das mãos.')),
+        (3, _('[3] - Um evento de tremor excedendo 10cm. O tremor é constante e grave. O paciente não consegue livrar-se do tremor enquanto está acordado a menos que seja do tipo cerebelar puro. A escrita e auto-alimentação são impossíveis.')),
+    ],
+    [
+        (0, _('[0] - Normal. Expressão completa. Sem aparência de espanto.')),
+        (1, _('[1] - Imobilidade detectável. A boca permanece aberta. Começam características de ansiedade e depressão.')),
+        (2, _('[2] - Imobilidade moderada. A emoção é interrompida com aumento acentuado no limiar. Os lábios se partem com o tempo. Aparência moderada de ansiedade ou depressão. Pode ocorrer perda de saliva pela boca.')),
+        (3, _('[3] - Face congelada. Boca aberta 0,5cm ou mais. Pode haver perda intensa de saliva pela boca.')),
+    ],
+    [
+        (0, _('[0] - Nenhuma.')),
+        (1, _('[1] - Aumento da perspiração, a secreção permanece fina.')),
+        (2, _('[2] - Oleosidade óbvia presente. Secreção mais espessa.')),
+        (3, _('[3] - Seborréia acentuada toda a face e cabeça cobertas por uma secreção espessa.')),
+    ],
+    [
+        (0, _('[0] - Clara, sonora, ressonante, fácil de entender.')),
+        (1, _('[1] - Começando uma rouquidão com perda de inflexão e ressonância. Bom volume e ainda fácil de entender.')),
+        (2, _('[2] - Rouquidão e fraqueza moderadas. Monotonia constante, sem variações de altura. Início de disartria, hesitação, gaguejamento; dificuldade para ser compreendida.')),
+        (3, _('[3] - Rouquidão e fraqueza acentuadas. Muito difícil para ouvir e compreender.')),
+    ],
+    [
+        (0, _('[0] - Sem comprometimento.')),
+        (1, _('[1] - Ainda capaz de todos os cuidados pessoais mas a velocidade com que se veste torna-se um empecílio difinitivo. Capaz de viver sozinho e frequentemente ainda empregado.')),
+        (2, _('[2] - Requer ajuda em certas críticas, como para virar-se na cama levantar de cadeiras etc. Muito lento no desempenho da maioria das atividades mas trata esse problema designando mais tempo para cada atividade.')),
+        (3, _('[3] - Continuamente incapacitado. Incapaz de vestir-se, alimentar-se ou andar sozinho.')),
+    ],
+]
+
 ESCALA_FUNCIONAL_BERG = [
     [],
     [

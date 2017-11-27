@@ -592,3 +592,35 @@ FisioterapiaNeurologica:
   - desenvolvimento_conduta desenvolvimento_objetivo
   Atendimento:
   - atendimento_estagiario atendimento_supervisor
+
+FisioterapiaParkinson:
+  Avaliação:
+  - data
+  Dados Pessoais:
+  - paciente data_nascimento idade
+  - sexo endereco telefone
+  - profissao estado_civil diagnostico_clinico diagnostico_fisioterapico
+  Dados Vitais:
+  - dados_pa dados_fc
+  - dados_fr dados_t
+  Informações:
+  - info_medicamentos info_patologias info_antecedentes
+  Anamnese:
+  - anamnese_hmpa anamnese_qp
+  Exame Físico:
+  - exame_1
+  - exame_2
+  - exame_3
+  - exame_4
+  - exame_5
+  - exame_6
+  - exame_7
+  - exame_8
+  - exame_9
+  - exame_10
+  - exame_total
+  - exame_adm exame_trofismo
+  Desenvolvimento:
+  - desenvolvimento_objetivo desenvolvimento_conduta desenvolvimento_complemento
+  Atendimento:
+  - atendimento_estagiario atendimento_supervisor

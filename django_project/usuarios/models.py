@@ -1239,3 +1239,102 @@ class FisioterapiaNeurologica(models.Model):
 
     def __str__(self):
         return _('%(data)s') % {'data': self.data.strftime('%d/%m/%Y')}
+
+
+class FisioterapiaParkinson(models.Model):
+    data = models.DateField(verbose_name=_('Data da Avaliação'), blank=True)
+
+    paciente = models.ForeignKey(Paciente, verbose_name=_('Nome'))
+    data_nascimento = models.DateField(verbose_name=_('Data de Nascimento'), blank=True)
+    idade = models.CharField(max_length=40, verbose_name=_('Idade'), blank=True)
+    sexo = models.CharField(max_length=1, verbose_name=_('Sexo'), choices=RANGE_SEXO)
+    endereco = models.CharField(max_length=40, verbose_name=_('Endereço'), blank=True)
+    telefone = models.CharField(max_length=40, verbose_name=_('Telefone'), blank=True)
+    profissao = models.CharField(max_length=40, verbose_name=_('Profissão'), blank=True)
+    estado_civil = models.CharField(max_length=40, verbose_name=_('Estado Civil'), blank=True)
+    diagnostico_clinico = models.CharField(max_length=40, verbose_name=_('Diagnóstico Clínico'), blank=True)
+    diagnostico_fisioterapico = models.CharField(max_length=40, verbose_name=_('Diagnóstico Fisioterápico'), blank=True)
+
+
+    dados_pa = models.CharField(max_length=40, verbose_name=_('P.A.'), blank=True)
+    dados_fc = models.CharField(max_length=40, verbose_name=_('F.C.'), blank=True)
+    dados_fr = models.CharField(max_length=40, verbose_name=_('F.R.'), blank=True)
+    dados_t = models.CharField(max_length=40, verbose_name=_('T°'), blank=True)
+
+    info_medicamentos = models.TextField(verbose_name=_('Medicamentos Utilizados'), blank=True)
+    info_patologias = models.TextField(verbose_name=_('Patologias Associadas'), blank=True)
+    info_antecedentes = models.TextField(verbose_name=_('Antecedentes Cirúrgicos'), blank=True)
+
+    anamnese_qp = models.TextField(verbose_name=_('Q.P.'), blank=True)
+    anamnese_hmpa = models.TextField(verbose_name=_('H.M.P.A.'), blank=True)
+
+    exame_1 = models.CharField(
+        max_length=10,
+        verbose_name=_('Bradicinesia de Mãos - Incluindo Escrita Manual: '),
+        default=0)
+
+    exame_2 = models.CharField(
+        max_length=10,
+        verbose_name=_('Rigidez: '),
+        default=0)
+
+    exame_3 = models.CharField(
+        max_length=10,
+        verbose_name=_('Postura: '),
+        default=0)
+
+    exame_4 = models.CharField(
+        max_length=10,
+        verbose_name=_('Balanceio de Membros Superior: '),
+        default=0)
+
+    exame_5 = models.CharField(
+        max_length=10,
+        verbose_name=_('Marcha: '),
+        default=0)
+
+    exame_6 = models.CharField(
+        max_length=10,
+        verbose_name=_('Tremor: '),
+        default=0)
+
+    exame_7 = models.CharField(
+        max_length=10,
+        verbose_name=_('Face: '),
+        default=0)
+
+    exame_8 = models.CharField(
+        max_length=10,
+        verbose_name=_('Seborréia: '),
+        default=0)
+
+    exame_9 = models.CharField(
+        max_length=10,
+        verbose_name=_('Fala: '),
+        default=0)
+
+    exame_10 = models.CharField(
+        max_length=10,
+        verbose_name=_('Cuidados Pessoais: '),
+        default=0)
+
+    exame_total = models.CharField(max_length=40, verbose_name=_('Total'), blank=True)
+
+    exame_adm = models.TextField(verbose_name=_('ADM'), blank=True)
+    exame_trofismo = models.TextField(verbose_name=_('Trofismo'), blank=True)
+
+    desenvolvimento_objetivo = models.TextField(verbose_name=_('Objetivos de Tratamento'), blank=True)
+    desenvolvimento_conduta = models.TextField(verbose_name=_('Conduta Fisioterapêutica'), blank=True)
+    desenvolvimento_complemento = models.TextField(verbose_name=_('Complementações'), blank=True)
+
+    atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'), blank=True)
+    atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervissor (a)'), blank=True)
+
+
+    class Meta:
+        verbose_name = _('Avaliação Parkinson')
+        verbose_name_plural = _('Avaliações Parkinson')
+        ordering = ['data']
+
+    def __str__(self):
+        return _('%(data)s') % {'data': self.data.strftime('%d/%m/%Y')}

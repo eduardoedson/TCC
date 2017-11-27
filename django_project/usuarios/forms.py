@@ -7,9 +7,9 @@ from django.db import transaction
 from django.forms import ModelForm
 from django.utils.translation import ugettext_lazy as _
 
-from utils import ESCALA_FUNCIONAL_BERG, YES_NO_CHOICES, get_or_create_grupo
+from utils import ESCALA_FUNCIONAL_BERG, YES_NO_CHOICES, get_or_create_grupo, AVALIACAO_PARKINSON
 
-from .models import Aluno, Supervisor, FisioterapiaBerg, Recepcionista
+from .models import Aluno, Supervisor, FisioterapiaBerg, Recepcionista, FisioterapiaParkinson
 
 
 class FisioterapiaBergForm(ModelForm):
@@ -417,3 +417,68 @@ class RecepcionistaEditForm(ModelForm):
 
         recepcionista.save()
         return recepcionista
+
+class FisioterapiaParkinsonForm(ModelForm):
+    exame_1 = forms.ChoiceField(
+        label=_('Bradicinesia de Mãos - Incluindo Escrita Manual:'),
+        required=True,
+        widget=forms.RadioSelect(attrs={'class': 'Radio'}),
+        choices=AVALIACAO_PARKINSON[1])
+
+    exame_2 = forms.ChoiceField(
+        label=_('Rigidez:'),
+        required=True,
+        widget=forms.RadioSelect(attrs={'class': 'Radio'}),
+        choices=AVALIACAO_PARKINSON[2])
+
+    exame_3 = forms.ChoiceField(
+        label=_('Postura:'),
+        required=True,
+        widget=forms.RadioSelect(attrs={'class': 'Radio'}),
+        choices=AVALIACAO_PARKINSON[3])
+
+    exame_4 = forms.ChoiceField(
+        label=_('Balanceio de Membros Superior:'),
+        required=True,
+        widget=forms.RadioSelect(attrs={'class': 'Radio'}),
+        choices=AVALIACAO_PARKINSON[4])
+
+    exame_5 = forms.ChoiceField(
+        label=_('Marcha:'),
+        required=True,
+        widget=forms.RadioSelect(attrs={'class': 'Radio'}),
+        choices=AVALIACAO_PARKINSON[5])
+
+    exame_6 = forms.ChoiceField(
+        label=_('Tremor:'),
+        required=True,
+        widget=forms.RadioSelect(attrs={'class': 'Radio'}),
+        choices=AVALIACAO_PARKINSON[6])
+
+    exame_7 = forms.ChoiceField(
+        label=_('Face:'),
+        required=True,
+        widget=forms.RadioSelect(attrs={'class': 'Radio'}),
+        choices=AVALIACAO_PARKINSON[7])
+
+    exame_8 = forms.ChoiceField(
+        label=_('Seborréia:'),
+        required=True,
+        widget=forms.RadioSelect(attrs={'class': 'Radio'}),
+        choices=AVALIACAO_PARKINSON[8])
+
+    exame_9 = forms.ChoiceField(
+        label=_('Fala:'),
+        required=True,
+        widget=forms.RadioSelect(attrs={'class': 'Radio'}),
+        choices=AVALIACAO_PARKINSON[9])
+
+    exame_10 = forms.ChoiceField(
+        label=_('Cuidados Pessoais:'),
+        required=True,
+        widget=forms.RadioSelect(attrs={'class': 'Radio'}),
+        choices=AVALIACAO_PARKINSON[10])
+
+    class Meta:
+        model = FisioterapiaParkinson
+        fields = '__all__'
