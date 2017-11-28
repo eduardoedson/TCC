@@ -1,20 +1,18 @@
 from django.conf.urls import include, url
 
-from .views import (AlunoCrud, SupervisorCrud, FisioterapiaBergCrud,
+from .views import (AlunoCrud, FisioterapiaAcidenteVascularEncefalicoCrud,
+                    FisioterapiaAvaliacaoFemininaCrud,
+                    FisioterapiaAvaliacaoGestacionalCrud,
+                    FisioterapiaAvaliacaoMasculinaCrud, FisioterapiaBergCrud,
+                    FisioterapiaEscleroseMultiplaCrud,
                     FisioterapiaEvolucaoCrud,
                     FisioterapiaGeriatriaAnamneseCrud,
                     FisioterapiaGeriatriaAvalicaoCrud,
                     FisioterapiaNeurologiaInfantilAvalicaoCrud,
-                    FisioterapiaTriagemCrud, PacienteCrud, administradores,
-                    mudar_senha, RecepcionistaCrud,
-                    FisioterapiaAvaliacaoGestacionalCrud,
-                    FisioterapiaAvaliacaoMasculinaCrud,
-                    FisioterapiaAvaliacaoFemininaCrud,
-                    FisioterapiaAcidenteVascularEncefalicoCrud,
-                    FisioterapiaEscleroseMultiplaCrud,
-                    FisioterapiaTRMCrud,
-                    FisioterapiaNeurologicaCrud, FisioterapiaParkinsonCrud,
-                    FisioterapiaParalisiaFacialCrud)
+                    FisioterapiaNeurologicaCrud,
+                    FisioterapiaParalisiaFacialCrud, FisioterapiaParkinsonCrud,
+                    FisioterapiaTriagemCrud, FisioterapiaTRMCrud, PacienteCrud,
+                    RecepcionistaCrud, SupervisorCrud, mudar_senha)
 
 app_name = 'usuarios'
 
@@ -42,5 +40,4 @@ urlpatterns = [
     url(r'^recepcionista/', include(RecepcionistaCrud.get_urls())),
     url(r'^paciente/', include(PacienteCrud.get_urls())),
     url(r'^mudar_senha/$', mudar_senha, name='mudar_senha'),
-    url(r'^administradores/$', administradores, name='administradores'),
 ] + fisioterapia_urls

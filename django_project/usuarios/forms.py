@@ -7,9 +7,11 @@ from django.db import transaction
 from django.forms import ModelForm
 from django.utils.translation import ugettext_lazy as _
 
-from utils import ESCALA_FUNCIONAL_BERG, YES_NO_CHOICES, get_or_create_grupo, AVALIACAO_PARKINSON
+from utils import (AVALIACAO_PARKINSON, ESCALA_FUNCIONAL_BERG, YES_NO_CHOICES,
+                   get_or_create_grupo)
 
-from .models import Aluno, Supervisor, FisioterapiaBerg, Recepcionista, FisioterapiaParkinson
+from .models import (Aluno, FisioterapiaBerg, FisioterapiaParkinson,
+                     Recepcionista, Supervisor)
 
 
 class FisioterapiaBergForm(ModelForm):

@@ -3,7 +3,8 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from servicos.models import AreaAtendimento, Disciplina, Setor
-from utils import ESCALA_FUNCIONAL_BERG, RANGE_SEXO, YES_NO_CHOICES, CONTRACAO, TONUS, SINSINESIAS
+from utils import (CONTRACAO, ESCALA_FUNCIONAL_BERG, RANGE_SEXO, SINSINESIAS,
+                   TONUS, YES_NO_CHOICES)
 
 
 def media_path(instance, filename):

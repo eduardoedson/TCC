@@ -13,21 +13,21 @@ from crud.base import Crud
 from prontuario.settings import LOGIN_REDIRECT_URL
 from utils import lista_grupos, valida_igualdade
 
-from .forms import (AlunoEditForm, AlunoForm, SupervisorEditForm,
-                    SupervisorForm, FisioterapiaBergForm, MudarSenhaForm,
-                    RecepcionistaForm, RecepcionistaEditForm, FisioterapiaParkinsonForm)
-from .models import (Aluno, Supervisor, FisioterapiaBerg,
-                     FisioterapiaEvolucao, FisioterapiaGeriatriaAnamnese,
+from .forms import (AlunoEditForm, AlunoForm, FisioterapiaBergForm,
+                    FisioterapiaParkinsonForm, MudarSenhaForm,
+                    RecepcionistaEditForm, RecepcionistaForm,
+                    SupervisorEditForm, SupervisorForm)
+from .models import (Aluno, FisioterapiaAcidenteVascularEncefalico,
+                     FisioterapiaAvaliacaoFeminina,
+                     FisioterapiaAvaliacaoGestacional,
+                     FisioterapiaAvaliacaoMasculina, FisioterapiaBerg,
+                     FisioterapiaEscleroseMultipla, FisioterapiaEvolucao,
+                     FisioterapiaGeriatriaAnamnese,
                      FisioterapiaGeriatriaAvalicao,
                      FisioterapiaNeurologiaInfantilAvalicao,
-                     FisioterapiaTriagem, Paciente, Recepcionista,
-                     FisioterapiaAvaliacaoGestacional,
-                     FisioterapiaAvaliacaoMasculina,
-                     FisioterapiaAvaliacaoFeminina,
-                     FisioterapiaAcidenteVascularEncefalico,
-                     FisioterapiaEscleroseMultipla,
-                     FisioterapiaTRM,
-                     FisioterapiaNeurologica, FisioterapiaParkinson, FisioterapiaParalisiaFacial)
+                     FisioterapiaNeurologica, FisioterapiaParalisiaFacial,
+                     FisioterapiaParkinson, FisioterapiaTriagem,
+                     FisioterapiaTRM, Paciente, Recepcionista, Supervisor)
 
 
 def get_medico(pk):
@@ -442,40 +442,6 @@ class AlunoCrud(Crud):
             self.object.user.delete()
             return redirect(self.get_success_url())
 
-
-def administradores(request):
-
-    if (not request.user.is_authenticated() or
-            request.user.groups.first().name != 'Supervisor'):
-        return render(request, '403.html', {})
-
-    if request.method == 'GET':
-        coords = Supervisor.objects.all()
-        adms = []
-        for c in coords:
-            adm = {'id': c.id,
-                   'nome': c.nome,
-                   'is_staff': c.user.is_superuser}
-            adms.append(adm)
-
-        context = {'adm_list': adms}
-        return render(request, 'administradores.html', context)
-
-    elif request.method == 'POST':
-        for id_supervisor in request.POST:
-            if id_supervisor != 'csrfmiddlewaretoken':
-                try:
-                    supervisor = Supervisor.objects.get(id=id_supervisor)
-                except ObjectDoesNotExist:
-                    pass
-                else:
-                    user = supervisor.user
-                    user.is_superuser = request.POST[id_supervisor]
-                    user.save()
-        return render(request,
-                      'index.html',
-                      {'msg':
-                       'Lista de administradores atualizada com sucesso.'})
 
 class RecepcionistaCrud(Crud):
     model = Recepcionista
