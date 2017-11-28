@@ -27,7 +27,7 @@ from .models import (Aluno, Supervisor, FisioterapiaBerg,
                      FisioterapiaAcidenteVascularEncefalico,
                      FisioterapiaEscleroseMultipla,
                      FisioterapiaTRM,
-                     FisioterapiaNeurologica, FisioterapiaParkinson)
+                     FisioterapiaNeurologica, FisioterapiaParkinson, FisioterapiaParalisiaFacial)
 
 
 def get_medico(pk):
@@ -893,3 +893,49 @@ class FisioterapiaParkinsonCrud(Crud):
 
     class UpdateView(crud.base.CrudUpdateView):
         form_class = FisioterapiaParkinsonForm
+
+
+class FisioterapiaParalisiaFacialCrud(Crud):
+    model = FisioterapiaParalisiaFacial
+    help_path = ''
+
+    class BaseMixin(GroupRequiredMixin,
+                    LoginRequiredMixin, crud.base.CrudBaseMixin):
+        list_field_names = ['data']
+
+        raise_exception = True
+        login_url = LOGIN_REDIRECT_URL
+
+    class ListView(crud.base.CrudListView):
+
+        @classmethod
+        def get_url_regex(cls):
+            return r'^(?P<pk>\d+)/list$'
+
+        def get_context_data(self, **kwargs):
+            context = super(crud.base.CrudListView, self).get_context_data(
+                **kwargs)
+            context['NO_ENTRIES_MSG'] = 'Nenhuma ficha encontrada.'
+            context['pk'] = self.kwargs['pk']
+            context['title'] = 'Avaliação Paralisia Facil'
+            context['headers'] = self.get_headers()
+            context['rows'] = self.get_rows(
+                    FisioterapiaParalisiaFacial.objects.filter(
+                        paciente_id=self.kwargs['pk']))
+            return context
+
+    class CreateView(crud.base.CrudCreateView):
+        @classmethod
+        def get_url_regex(cls):
+            return r'^(?P<pk>\d+)/create$'
+
+        def cancel_url(self):
+            return reverse('usuarios:fisioterapiaparalisiafacial_list',
+                        kwargs={'pk': self.kwargs['pk']})
+
+        def get_initial(self):
+            paciente = Paciente.objects.get(id=self.kwargs['pk'])
+            self.initial['paciente'] = self.kwargs['pk']
+            self.initial['data_nascimento'] = paciente.data_nascimento
+            self.initial['data'] = datetime.now().strftime('%d/%m/%Y')
+            return self.initial.copy()

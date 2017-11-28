@@ -24,6 +24,10 @@ RANGE_SEXO = [('F', _('Feminino')), ('M', _('Masculino')), ('O', _('Outro'))]
 
 YES_NO_CHOICES = [(None, _('----')), ('Não', _('Não')), ('Sim', _('Sim'))]
 
+CONTRACAO = [('[0] - Zero', _('[0] - Zero')), ('[1] - Regular', _('[1] - Regular')), ('[2] - Normal', _('[2] - Normal'))]
+TONUS = [('[0] - Atonia', _('[0] - Atonia')), ('[1] - Diminuído ou Aumentado', _('[1] - Diminuído ou Aumentado')), ('[2] - Normal', _('[2] - Normal'))]
+SINSINESIAS = [('[0] - Ausência', _('[0] - Ausência')), ('[1] - Inibição Voluntária', _('[1] - Inibição Voluntária')), ('[2] - Inibição Por Pressão Digital', _('[2] - Inibição Por Pressão Digital'))]
+
 def from_to(start, end):
     return list(range(start, end + 1))
 

@@ -3,7 +3,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from servicos.models import AreaAtendimento, Disciplina, Setor
-from utils import ESCALA_FUNCIONAL_BERG, RANGE_SEXO, YES_NO_CHOICES
+from utils import ESCALA_FUNCIONAL_BERG, RANGE_SEXO, YES_NO_CHOICES, CONTRACAO, TONUS, SINSINESIAS
 
 
 def media_path(instance, filename):
@@ -1255,7 +1255,6 @@ class FisioterapiaParkinson(models.Model):
     diagnostico_clinico = models.CharField(max_length=40, verbose_name=_('Diagnóstico Clínico'), blank=True)
     diagnostico_fisioterapico = models.CharField(max_length=40, verbose_name=_('Diagnóstico Fisioterápico'), blank=True)
 
-
     dados_pa = models.CharField(max_length=40, verbose_name=_('P.A.'), blank=True)
     dados_fc = models.CharField(max_length=40, verbose_name=_('F.C.'), blank=True)
     dados_fr = models.CharField(max_length=40, verbose_name=_('F.R.'), blank=True)
@@ -1334,6 +1333,332 @@ class FisioterapiaParkinson(models.Model):
     class Meta:
         verbose_name = _('Avaliação Parkinson')
         verbose_name_plural = _('Avaliações Parkinson')
+        ordering = ['data']
+
+    def __str__(self):
+        return _('%(data)s') % {'data': self.data.strftime('%d/%m/%Y')}
+
+
+class FisioterapiaParalisiaFacial(models.Model):
+    data = models.DateField(verbose_name=_('Data da Avaliação'), blank=True)
+
+    paciente = models.ForeignKey(Paciente, verbose_name=_('Nome'))
+    data_nascimento = models.DateField(verbose_name=_('Data de Nascimento'), blank=True)
+    idade = models.CharField(max_length=40, verbose_name=_('Idade'), blank=True)
+    sexo = models.CharField(max_length=1, verbose_name=_('Sexo'), choices=RANGE_SEXO)
+    endereco = models.CharField(max_length=40, verbose_name=_('Endereço'), blank=True)
+    telefone = models.CharField(max_length=40, verbose_name=_('Telefone'), blank=True)
+    profissao = models.CharField(max_length=40, verbose_name=_('Profissão'), blank=True)
+    estado_civil = models.CharField(max_length=40, verbose_name=_('Estado Civil'), blank=True)
+    diagnostico_clinico = models.CharField(max_length=40, verbose_name=_('Diagnóstico Clínico'), blank=True)
+    diagnostico_fisioterapico = models.CharField(max_length=40, verbose_name=_('Diagnóstico Fisioterápico'), blank=True)
+
+    dados_pa = models.CharField(max_length=40, verbose_name=_('P.A.'), blank=True)
+    dados_fc = models.CharField(max_length=40, verbose_name=_('F.C.'), blank=True)
+    dados_fr = models.CharField(max_length=40, verbose_name=_('F.R.'), blank=True)
+    dados_t = models.CharField(max_length=40, verbose_name=_('T°'), blank=True)
+
+    info_medicamentos = models.TextField(verbose_name=_('Medicamentos Utilizados'), blank=True)
+    info_patologias = models.TextField(verbose_name=_('Patologias Associadas'), blank=True)
+    info_antecedentes = models.TextField(verbose_name=_('Antecedentes Cirúrgicos'), blank=True)
+
+    anamnese_qp = models.TextField(verbose_name=_('Q.P.'), blank=True)
+    anamnese_hmpa = models.TextField(verbose_name=_('H.M.P.A.'), blank=True)
+
+    exame_desvio_facial = models.CharField(max_length=40, verbose_name=_('Desvio Facial'), choices=[('Presente', _('Presente')), ('Ausente', _('Ausente'))], blank=True)
+    exame_desvio_septo = models.CharField(max_length=40, verbose_name=_('Desvio do Septo Nasal'), choices=[('Presente', _('Presente')), ('Ausente', _('Ausente'))], blank=True)
+    exame_sulco_face = models.CharField(max_length=40, verbose_name=_('Sulcos da Face'), choices=[('Presente', _('Presente')), ('Ausente', _('Ausente'))], blank=True)
+    exame_conjuntivite = models.CharField(max_length=40, verbose_name=_('Conjuntivite'), choices=[('Presente', _('Presente')), ('Ausente', _('Ausente'))], blank=True)
+    exame_lagoftalmo = models.CharField(max_length=40, verbose_name=_('Lagoftalmo'), choices=[('Presente', _('Presente')), ('Ausente', _('Ausente'))], blank=True)
+    exame_sinal_bell = models.CharField(max_length=40, verbose_name=_('Sinal Bell'), choices=[('Presente', _('Presente')), ('Ausente', _('Ausente'))], blank=True)
+    exame_sinal_negro = models.CharField(max_length=40, verbose_name=_('Sinal Negro'), choices=[('Presente', _('Presente')), ('Ausente', _('Ausente'))], blank=True)
+    exame_reflexo_ciliar = models.CharField(max_length=40, verbose_name=_('Reflexo Ciliar'), choices=[('Presente', _('Presente')), ('Ausente', _('Ausente')), ('Retardado', _('Retardado'))], blank=True)
+    exame_linguagem = models.CharField(max_length=40, verbose_name=_('Alterações da Linguagem (P-B-M)'), choices=[('Presente', _('Presente')), ('Ausente', _('Ausente'))], blank=True)
+    exame_auditiva = models.CharField(max_length=40, verbose_name=_('Alteração Auditiva'), choices=[('Hipoacusia', _('Hipoacusia')),( 'Hiperacusia', _('Hiperacusia')), ('Ausente', _('Ausente'))], blank=True)
+    exame_gustativa = models.CharField(max_length=40, verbose_name=_('Alteração Gustativa'), choices=[('Presente', _('Presente')), ('Ausente', _('Ausente'))], blank=True)
+    exame_tonus = models.CharField(max_length=40, verbose_name=_('Tônus Muscular'), choices=[('Hipertônico', _('Hipertônico')), ('Hipotônico', _('Hipotônico')), ('Normal', _('Normal'))], blank=True)
+    exame_dor = models.CharField(max_length=40, verbose_name=_('Dor Retroauricular'), choices=[('Presente', _('Presente')), ('Ausente', _('Ausente'))], blank=True)
+    exame_sincinesias = models.CharField(max_length=40, verbose_name=_('Sincinésias'), choices=[('Presente', _('Presente')), ('Ausente', _('Ausente'))], blank=True)
+    exame_lingua = models.CharField(max_length=40, verbose_name=_('Motricidade da Língua'), choices=[('Presente', _('Presente')), ('Ausente', _('Ausente'))], blank=True)
+    exame_paralisia = models.CharField(max_length=40, verbose_name=_('Paralisia Facial Difinitiva'), choices=[('Central', _('Central')), ('Periférica', _('Periférica'))], blank=True)
+
+    prova_musculos_esq_c = models.CharField(max_length=40, verbose_name=_('Músculos Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_musculos_esq_t = models.CharField(max_length=40, verbose_name=_('Músculos Esq. [T]'), choices=TONUS, blank=True)
+    prova_musculos_esq_s = models.CharField(max_length=40, verbose_name=_('Músculos Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_musculos_dir_c = models.CharField(max_length=40, verbose_name=_('Músculos Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_musculos_dir_t = models.CharField(max_length=40, verbose_name=_('Músculos Dir. [T]'), choices=TONUS, blank=True)
+    prova_musculos_dir_S = models.CharField(max_length=40, verbose_name=_('Músculos Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_musculares_esq_c = models.CharField(max_length=40, verbose_name=_('Porções Musculares Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_musculares_esq_t = models.CharField(max_length=40, verbose_name=_('Porções Musculares Esq. [T]'), choices=TONUS, blank=True)
+    prova_musculares_esq_s = models.CharField(max_length=40, verbose_name=_('Porções Musculares Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_musculares_dir_c = models.CharField(max_length=40, verbose_name=_('Porções Musculares Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_musculares_dir_t = models.CharField(max_length=40, verbose_name=_('Porções Musculares Dir. [T]'), choices=TONUS, blank=True)
+    prova_musculares_dir_S = models.CharField(max_length=40, verbose_name=_('Porções Musculares Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_frontal_esq_c = models.CharField(max_length=40, verbose_name=_('Frontal Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_frontal_esq_t = models.CharField(max_length=40, verbose_name=_('Frontal Esq. [T]'), choices=TONUS, blank=True)
+    prova_frontal_esq_s = models.CharField(max_length=40, verbose_name=_('Frontal Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_frontal_dir_c = models.CharField(max_length=40, verbose_name=_('Frontal Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_frontal_dir_t = models.CharField(max_length=40, verbose_name=_('Frontal Dir. [T]'), choices=TONUS, blank=True)
+    prova_frontal_dir_S = models.CharField(max_length=40, verbose_name=_('Frontal Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_testa_esq_c = models.CharField(max_length=40, verbose_name=_('Franzir a Testa Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_testa_esq_t = models.CharField(max_length=40, verbose_name=_('Franzir a Testa Esq. [T]'), choices=TONUS, blank=True)
+    prova_testa_esq_s = models.CharField(max_length=40, verbose_name=_('Franzir a Testa Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_testa_dir_c = models.CharField(max_length=40, verbose_name=_('Franzir a Testa Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_testa_dir_t = models.CharField(max_length=40, verbose_name=_('Franzir a Testa Dir. [T]'), choices=TONUS, blank=True)
+    prova_testa_dir_S = models.CharField(max_length=40, verbose_name=_('Franzir a Testa Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_superciliar_esq_c = models.CharField(max_length=40, verbose_name=_('Superciliar Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_superciliar_esq_t = models.CharField(max_length=40, verbose_name=_('Superciliar Esq. [T]'), choices=TONUS, blank=True)
+    prova_superciliar_esq_s = models.CharField(max_length=40, verbose_name=_('Superciliar Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_superciliar_dir_c = models.CharField(max_length=40, verbose_name=_('Superciliar Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_superciliar_dir_t = models.CharField(max_length=40, verbose_name=_('Superciliar Dir. [T]'), choices=TONUS, blank=True)
+    prova_superciliar_dir_S = models.CharField(max_length=40, verbose_name=_('Superciliar Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_supercilios_esq_c = models.CharField(max_length=40, verbose_name=_('Aproximar os Supercílios Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_supercilios_esq_t = models.CharField(max_length=40, verbose_name=_('Aproximar os Supercílios Esq. [T]'), choices=TONUS, blank=True)
+    prova_supercilios_esq_s = models.CharField(max_length=40, verbose_name=_('Aproximar os Supercílios Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_supercilios_dir_c = models.CharField(max_length=40, verbose_name=_('Aproximar os Supercílios Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_supercilios_dir_t = models.CharField(max_length=40, verbose_name=_('Aproximar os Supercílios Dir. [T]'), choices=TONUS, blank=True)
+    prova_supercilios_dir_S = models.CharField(max_length=40, verbose_name=_('Aproximar os Supercílios Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_palpebral_esq_c = models.CharField(max_length=40, verbose_name=_('Porção Palpebral Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_palpebral_esq_t = models.CharField(max_length=40, verbose_name=_('Porção Palpebral Esq. [T]'), choices=TONUS, blank=True)
+    prova_palpebral_esq_s = models.CharField(max_length=40, verbose_name=_('Porção Palpebral Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_palpebral_dir_c = models.CharField(max_length=40, verbose_name=_('Porção Palpebral Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_palpebral_dir_t = models.CharField(max_length=40, verbose_name=_('Porção Palpebral Dir. [T]'), choices=TONUS, blank=True)
+    prova_palpebral_dir_S = models.CharField(max_length=40, verbose_name=_('Porção Palpebral Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_olhos_devagar_esq_c = models.CharField(max_length=40, verbose_name=_('Fechar os Olhos Devagar Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_olhos_devagar_esq_t = models.CharField(max_length=40, verbose_name=_('Fechar os Olhos Devagar Esq. [T]'), choices=TONUS, blank=True)
+    prova_olhos_devagar_esq_s = models.CharField(max_length=40, verbose_name=_('Fechar os Olhos Devagar Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_olhos_devagar_dir_c = models.CharField(max_length=40, verbose_name=_('Fechar os Olhos Devagar Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_olhos_devagar_dir_t = models.CharField(max_length=40, verbose_name=_('Fechar os Olhos Devagar Dir. [T]'), choices=TONUS, blank=True)
+    prova_olhos_devagar_dir_S = models.CharField(max_length=40, verbose_name=_('Fechar os Olhos Devagar Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_orbitaria_esq_c = models.CharField(max_length=40, verbose_name=_('Porção Orbitária Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_orbitaria_esq_t = models.CharField(max_length=40, verbose_name=_('Porção Orbitária Esq. [T]'), choices=TONUS, blank=True)
+    prova_orbitaria_esq_s = models.CharField(max_length=40, verbose_name=_('Porção Orbitária Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_orbitaria_dir_c = models.CharField(max_length=40, verbose_name=_('Porção Orbitária Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_orbitaria_dir_t = models.CharField(max_length=40, verbose_name=_('Porção Orbitária Dir. [T]'), choices=TONUS, blank=True)
+    prova_orbitaria_dir_S = models.CharField(max_length=40, verbose_name=_('Porção Orbitária Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_olhos_forca_esq_c = models.CharField(max_length=40, verbose_name=_('Fechar os Olhos com Força Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_olhos_forca_esq_t = models.CharField(max_length=40, verbose_name=_('Fechar os Olhos com Força Esq. [T]'), choices=TONUS, blank=True)
+    prova_olhos_forca_esq_s = models.CharField(max_length=40, verbose_name=_('Fechar os Olhos com Força Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_olhos_forca_dir_c = models.CharField(max_length=40, verbose_name=_('Fechar os Olhos com Força Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_olhos_forca_dir_t = models.CharField(max_length=40, verbose_name=_('Fechar os Olhos com Força Dir. [T]'), choices=TONUS, blank=True)
+    prova_olhos_forca_dir_S = models.CharField(max_length=40, verbose_name=_('Fechar os Olhos com Força Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_piramidal_esq_c = models.CharField(max_length=40, verbose_name=_('Piramidal Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_piramidal_esq_t = models.CharField(max_length=40, verbose_name=_('Piramidal Esq. [T]'), choices=TONUS, blank=True)
+    prova_piramidal_esq_s = models.CharField(max_length=40, verbose_name=_('Piramidal Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_piramidal_dir_c = models.CharField(max_length=40, verbose_name=_('Piramidal Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_piramidal_dir_t = models.CharField(max_length=40, verbose_name=_('Piramidal Dir. [T]'), choices=TONUS, blank=True)
+    prova_piramidal_dir_S = models.CharField(max_length=40, verbose_name=_('Piramidal Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_nariz_esq_c = models.CharField(max_length=40, verbose_name=_('Franzir o Nariz Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_nariz_esq_t = models.CharField(max_length=40, verbose_name=_('Franzir o Nariz Esq. [T]'), choices=TONUS, blank=True)
+    prova_nariz_esq_s = models.CharField(max_length=40, verbose_name=_('Franzir o Nariz Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_nariz_dir_c = models.CharField(max_length=40, verbose_name=_('Franzir o Nariz Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_nariz_dir_t = models.CharField(max_length=40, verbose_name=_('Franzir o Nariz Dir. [T]'), choices=TONUS, blank=True)
+    prova_nariz_dir_S = models.CharField(max_length=40, verbose_name=_('Franzir o Nariz Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_alar_esq_c = models.CharField(max_length=40, verbose_name=_('Porção Alar Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_alar_esq_t = models.CharField(max_length=40, verbose_name=_('Porção Alar Esq. [T]'), choices=TONUS, blank=True)
+    prova_alar_esq_s = models.CharField(max_length=40, verbose_name=_('Porção Alar Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_alar_dir_c = models.CharField(max_length=40, verbose_name=_('Porção Alar Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_alar_dir_t = models.CharField(max_length=40, verbose_name=_('Porção Alar Dir. [T]'), choices=TONUS, blank=True)
+    prova_alar_dir_S = models.CharField(max_length=40, verbose_name=_('Porção Alar Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_dilatar_narinas_esq_c = models.CharField(max_length=40, verbose_name=_('Dilatar as Narinas Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_dilatar_narinas_esq_t = models.CharField(max_length=40, verbose_name=_('Dilatar as Narinas Esq. [T]'), choices=TONUS, blank=True)
+    prova_dilatar_narinas_esq_s = models.CharField(max_length=40, verbose_name=_('Dilatar as Narinas Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_dilatar_narinas_dir_c = models.CharField(max_length=40, verbose_name=_('Dilatar as Narinas Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_dilatar_narinas_dir_t = models.CharField(max_length=40, verbose_name=_('Dilatar as Narinas Dir. [T]'), choices=TONUS, blank=True)
+    prova_dilatar_narinas_dir_S = models.CharField(max_length=40, verbose_name=_('Dilatar as Narinas Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_transversal_esq_c = models.CharField(max_length=40, verbose_name=_('Porção Transversal Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_transversal_esq_t = models.CharField(max_length=40, verbose_name=_('Porção Transversal Esq. [T]'), choices=TONUS, blank=True)
+    prova_transversal_esq_s = models.CharField(max_length=40, verbose_name=_('Porção Transversal Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_transversal_dir_c = models.CharField(max_length=40, verbose_name=_('Porção Transversal Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_transversal_dir_t = models.CharField(max_length=40, verbose_name=_('Porção Transversal Dir. [T]'), choices=TONUS, blank=True)
+    prova_transversal_dir_S = models.CharField(max_length=40, verbose_name=_('Porção Transversal Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_comprimir_narinas_esq_c = models.CharField(max_length=40, verbose_name=_('Comprimir as Narinas Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_comprimir_narinas_esq_t = models.CharField(max_length=40, verbose_name=_('Comprimir as Narinas Esq. [T]'), choices=TONUS, blank=True)
+    prova_comprimir_narinas_esq_s = models.CharField(max_length=40, verbose_name=_('Comprimir as Narinas Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_comprimir_narinas_dir_c = models.CharField(max_length=40, verbose_name=_('Comprimir as Narinas Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_comprimir_narinas_dir_t = models.CharField(max_length=40, verbose_name=_('Comprimir as Narinas Dir. [T]'), choices=TONUS, blank=True)
+    prova_comprimir_narinas_dir_S = models.CharField(max_length=40, verbose_name=_('Comprimir as Narinas Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_elevador_labio_esq_c = models.CharField(max_length=40, verbose_name=_('Elevador do Lábio Superior e Zigomático Menor Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_elevador_labio_esq_t = models.CharField(max_length=40, verbose_name=_('Elevador do Lábio Superior e Zigomático Menor Esq. [T]'), choices=TONUS, blank=True)
+    prova_elevador_labio_esq_s = models.CharField(max_length=40, verbose_name=_('Elevador do Lábio Superior e Zigomático Menor Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_elevador_labio_dir_c = models.CharField(max_length=40, verbose_name=_('Elevador do Lábio Superior e Zigomático Menor Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_elevador_labio_dir_t = models.CharField(max_length=40, verbose_name=_('Elevador do Lábio Superior e Zigomático Menor Dir. [T]'), choices=TONUS, blank=True)
+    prova_elevador_labio_dir_S = models.CharField(max_length=40, verbose_name=_('Elevador do Lábio Superior e Zigomático Menor Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_elevar_labio_esq_c = models.CharField(max_length=40, verbose_name=_('Elevar o Lábio Superior Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_elevar_labio_esq_t = models.CharField(max_length=40, verbose_name=_('Elevar o Lábio Superior Esq. [T]'), choices=TONUS, blank=True)
+    prova_elevar_labio_esq_s = models.CharField(max_length=40, verbose_name=_('Elevar o Lábio Superior Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_elevar_labio_dir_c = models.CharField(max_length=40, verbose_name=_('Elevar o Lábio Superior Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_elevar_labio_dir_t = models.CharField(max_length=40, verbose_name=_('Elevar o Lábio Superior Dir. [T]'), choices=TONUS, blank=True)
+    prova_elevar_labio_dir_S = models.CharField(max_length=40, verbose_name=_('Elevar o Lábio Superior Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_zigomatico_esq_c = models.CharField(max_length=40, verbose_name=_('Zigomático Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_zigomatico_esq_t = models.CharField(max_length=40, verbose_name=_('Zigomático Esq. [T]'), choices=TONUS, blank=True)
+    prova_zigomatico_esq_s = models.CharField(max_length=40, verbose_name=_('Zigomático Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_zigomatico_dir_c = models.CharField(max_length=40, verbose_name=_('Zigomático Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_zigomatico_dir_t = models.CharField(max_length=40, verbose_name=_('Zigomático Dir. [T]'), choices=TONUS, blank=True)
+    prova_zigomatico_dir_S = models.CharField(max_length=40, verbose_name=_('Zigomático Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_comissura_labial_esq_c = models.CharField(max_length=40, verbose_name=_('Elevar a Comissura Labial por Trás Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_comissura_labial_esq_t = models.CharField(max_length=40, verbose_name=_('Elevar a Comissura Labial por Trás Esq. [T]'), choices=TONUS, blank=True)
+    prova_comissura_labial_esq_s = models.CharField(max_length=40, verbose_name=_('Elevar a Comissura Labial por Trás Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_comissura_labial_dir_c = models.CharField(max_length=40, verbose_name=_('Elevar a Comissura Labial por Trás Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_comissura_labial_dir_t = models.CharField(max_length=40, verbose_name=_('Elevar a Comissura Labial por Trás Dir. [T]'), choices=TONUS, blank=True)
+    prova_comissura_labial_dir_S = models.CharField(max_length=40, verbose_name=_('Elevar a Comissura Labial por Trás Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_canino_esq_c = models.CharField(max_length=40, verbose_name=_('Canino Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_canino_esq_t = models.CharField(max_length=40, verbose_name=_('Canino Esq. [T]'), choices=TONUS, blank=True)
+    prova_canino_esq_s = models.CharField(max_length=40, verbose_name=_('Canino Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_canino_dir_c = models.CharField(max_length=40, verbose_name=_('Canino Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_canino_dir_t = models.CharField(max_length=40, verbose_name=_('Canino Dir. [T]'), choices=TONUS, blank=True)
+    prova_canino_dir_S = models.CharField(max_length=40, verbose_name=_('Canino Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_elevar_canto_labio_esq_c = models.CharField(max_length=40, verbose_name=_('Elevar o Canto do Lábio Superior Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_elevar_canto_labio_esq_t = models.CharField(max_length=40, verbose_name=_('Elevar o Canto do Lábio Superior Esq. [T]'), choices=TONUS, blank=True)
+    prova_elevar_canto_labio_esq_s = models.CharField(max_length=40, verbose_name=_('Elevar o Canto do Lábio Superior Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_elevar_canto_labio_dir_c = models.CharField(max_length=40, verbose_name=_('Elevar o Canto do Lábio Superior Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_elevar_canto_labio_dir_t = models.CharField(max_length=40, verbose_name=_('Elevar o Canto do Lábio Superior Dir. [T]'), choices=TONUS, blank=True)
+    prova_elevar_canto_labio_dir_S = models.CharField(max_length=40, verbose_name=_('Elevar o Canto do Lábio Superior Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_depressor_septo_esq_c = models.CharField(max_length=40, verbose_name=_('Depressor do Septo Nasal Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_depressor_septo_esq_t = models.CharField(max_length=40, verbose_name=_('Depressor do Septo Nasal Esq. [T]'), choices=TONUS, blank=True)
+    prova_depressor_septo_esq_s = models.CharField(max_length=40, verbose_name=_('Depressor do Septo Nasal Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_depressor_septo_dir_c = models.CharField(max_length=40, verbose_name=_('Depressor do Septo Nasal Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_depressor_septo_dir_t = models.CharField(max_length=40, verbose_name=_('Depressor do Septo Nasal Dir. [T]'), choices=TONUS, blank=True)
+    prova_depressor_septo_dir_S = models.CharField(max_length=40, verbose_name=_('Depressor do Septo Nasal Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_deprimir_septo_esq_c = models.CharField(max_length=40, verbose_name=_('Deprimir o Septo Nasal Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_deprimir_septo_esq_t = models.CharField(max_length=40, verbose_name=_('Deprimir o Septo Nasal Esq. [T]'), choices=TONUS, blank=True)
+    prova_deprimir_septo_esq_s = models.CharField(max_length=40, verbose_name=_('Deprimir o Septo Nasal Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_deprimir_septo_dir_c = models.CharField(max_length=40, verbose_name=_('Deprimir o Septo Nasal Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_deprimir_septo_dir_t = models.CharField(max_length=40, verbose_name=_('Deprimir o Septo Nasal Dir. [T]'), choices=TONUS, blank=True)
+    prova_deprimir_septo_dir_S = models.CharField(max_length=40, verbose_name=_('Deprimir o Septo Nasal Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_orbicular_labio_esq_c = models.CharField(max_length=40, verbose_name=_('Obicular do Lábio Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_orbicular_labio_esq_t = models.CharField(max_length=40, verbose_name=_('Obicular do Lábio Esq. [T]'), choices=TONUS, blank=True)
+    prova_orbicular_labio_esq_s = models.CharField(max_length=40, verbose_name=_('Obicular do Lábio Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_orbicular_labio_dir_c = models.CharField(max_length=40, verbose_name=_('Obicular do Lábio Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_orbicular_labio_dir_t = models.CharField(max_length=40, verbose_name=_('Obicular do Lábio Dir. [T]'), choices=TONUS, blank=True)
+    prova_orbicular_labio_dir_S = models.CharField(max_length=40, verbose_name=_('Obicular do Lábio Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_bico_esq_c = models.CharField(max_length=40, verbose_name=_('Fazer Bico Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_bico_esq_t = models.CharField(max_length=40, verbose_name=_('Fazer Bico Esq. [T]'), choices=TONUS, blank=True)
+    prova_bico_esq_s = models.CharField(max_length=40, verbose_name=_('Fazer Bico Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_bico_dir_c = models.CharField(max_length=40, verbose_name=_('Fazer Bico Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_bico_dir_t = models.CharField(max_length=40, verbose_name=_('Fazer Bico Dir. [T]'), choices=TONUS, blank=True)
+    prova_bico_dir_S = models.CharField(max_length=40, verbose_name=_('Fazer Bico Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_bucinador_esq_c = models.CharField(max_length=40, verbose_name=_('Bucinador Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_bucinador_esq_t = models.CharField(max_length=40, verbose_name=_('Bucinador Esq. [T]'), choices=TONUS, blank=True)
+    prova_bucinador_esq_s = models.CharField(max_length=40, verbose_name=_('Bucinador Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_bucinador_dir_c = models.CharField(max_length=40, verbose_name=_('Bucinador Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_bucinador_dir_t = models.CharField(max_length=40, verbose_name=_('Bucinador Dir. [T]'), choices=TONUS, blank=True)
+    prova_bucinador_dir_S = models.CharField(max_length=40, verbose_name=_('Bucinador Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_labio_bochecha_esq_c = models.CharField(max_length=40, verbose_name=_('Aproximar os Lábios e Comprimir as Bochechas Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_labio_bochecha_esq_t = models.CharField(max_length=40, verbose_name=_('Aproximar os Lábios e Comprimir as Bochechas Esq. [T]'), choices=TONUS, blank=True)
+    prova_labio_bochecha_esq_s = models.CharField(max_length=40, verbose_name=_('Aproximar os Lábios e Comprimir as Bochechas Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_labio_bochecha_dir_c = models.CharField(max_length=40, verbose_name=_('Aproximar os Lábios e Comprimir as Bochechas Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_labio_bochecha_dir_t = models.CharField(max_length=40, verbose_name=_('Aproximar os Lábios e Comprimir as Bochechas Dir. [T]'), choices=TONUS, blank=True)
+    prova_labio_bochecha_dir_S = models.CharField(max_length=40, verbose_name=_('Aproximar os Lábios e Comprimir as Bochechas Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_risorio_esq_c = models.CharField(max_length=40, verbose_name=_('Risório Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_risorio_esq_t = models.CharField(max_length=40, verbose_name=_('Risório Esq. [T]'), choices=TONUS, blank=True)
+    prova_risorio_esq_s = models.CharField(max_length=40, verbose_name=_('Risório Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_risorio_dir_c = models.CharField(max_length=40, verbose_name=_('Risório Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_risorio_dir_t = models.CharField(max_length=40, verbose_name=_('Risório Dir. [T]'), choices=TONUS, blank=True)
+    prova_risorio_dir_S = models.CharField(max_length=40, verbose_name=_('Risório Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_labio_fechado_esq_c = models.CharField(max_length=40, verbose_name=_('Lábios Fechados, Levar Canto da Boca P/ Lateral Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_labio_fechado_esq_t = models.CharField(max_length=40, verbose_name=_('Lábios Fechados, Levar Canto da Boca P/ Lateral Esq. [T]'), choices=TONUS, blank=True)
+    prova_labio_fechado_esq_s = models.CharField(max_length=40, verbose_name=_('Lábios Fechados, Levar Canto da Boca P/ Lateral Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_labio_fechado_dir_c = models.CharField(max_length=40, verbose_name=_('Lábios Fechados, Levar Canto da Boca P/ Lateral Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_labio_fechado_dir_t = models.CharField(max_length=40, verbose_name=_('Lábios Fechados, Levar Canto da Boca P/ Lateral Dir. [T]'), choices=TONUS, blank=True)
+    prova_labio_fechado_dir_S = models.CharField(max_length=40, verbose_name=_('Lábios Fechados, Levar Canto da Boca P/ Lateral Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_mento_esq_c = models.CharField(max_length=40, verbose_name=_('Quadrado do Mento Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_mento_esq_t = models.CharField(max_length=40, verbose_name=_('Quadrado do Mento Esq. [T]'), choices=TONUS, blank=True)
+    prova_mento_esq_s = models.CharField(max_length=40, verbose_name=_('Quadrado do Mento Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_mento_dir_c = models.CharField(max_length=40, verbose_name=_('Quadrado do Mento Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_mento_dir_t = models.CharField(max_length=40, verbose_name=_('Quadrado do Mento Dir. [T]'), choices=TONUS, blank=True)
+    prova_mento_dir_S = models.CharField(max_length=40, verbose_name=_('Quadrado do Mento Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_enrugar_mento_esq_c = models.CharField(max_length=40, verbose_name=_('Enrugar o Mento Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_enrugar_mento_esq_t = models.CharField(max_length=40, verbose_name=_('Enrugar o Mento Esq. [T]'), choices=TONUS, blank=True)
+    prova_enrugar_mento_esq_s = models.CharField(max_length=40, verbose_name=_('Enrugar o Mento Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_enrugar_mento_dir_c = models.CharField(max_length=40, verbose_name=_('Enrugar o Mento Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_enrugar_mento_dir_t = models.CharField(max_length=40, verbose_name=_('Enrugar o Mento Dir. [T]'), choices=TONUS, blank=True)
+    prova_enrugar_mento_dir_S = models.CharField(max_length=40, verbose_name=_('Enrugar o Mento Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_depresor_labio_esq_c = models.CharField(max_length=40, verbose_name=_('Depressor do Lábio Inferior Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_depresor_labio_esq_t = models.CharField(max_length=40, verbose_name=_('Depressor do Lábio Inferior Esq. [T]'), choices=TONUS, blank=True)
+    prova_depresor_labio_esq_s = models.CharField(max_length=40, verbose_name=_('Depressor do Lábio Inferior Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_depresor_labio_dir_c = models.CharField(max_length=40, verbose_name=_('Depressor do Lábio Inferior Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_depresor_labio_dir_t = models.CharField(max_length=40, verbose_name=_('Depressor do Lábio Inferior Dir. [T]'), choices=TONUS, blank=True)
+    prova_depresor_labio_dir_S = models.CharField(max_length=40, verbose_name=_('Depressor do Lábio Inferior Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_deprimir_labio_esq_c = models.CharField(max_length=40, verbose_name=_('Deprimir Lábio Inferior, Ângulo da Boca P/ Baixo Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_deprimir_labio_esq_t = models.CharField(max_length=40, verbose_name=_('Deprimir Lábio Inferior, Ângulo da Boca P/ Baixo Esq. [T]'), choices=TONUS, blank=True)
+    prova_deprimir_labio_esq_s = models.CharField(max_length=40, verbose_name=_('Deprimir Lábio Inferior, Ângulo da Boca P/ Baixo Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_deprimir_labio_dir_c = models.CharField(max_length=40, verbose_name=_('Deprimir Lábio Inferior, Ângulo da Boca P/ Baixo Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_deprimir_labio_dir_t = models.CharField(max_length=40, verbose_name=_('Deprimir Lábio Inferior, Ângulo da Boca P/ Baixo Dir. [T]'), choices=TONUS, blank=True)
+    prova_deprimir_labio_dir_S = models.CharField(max_length=40, verbose_name=_('Deprimir Lábio Inferior, Ângulo da Boca P/ Baixo Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_triangular_labio_esq_c = models.CharField(max_length=40, verbose_name=_('Triangular do Lábio Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_triangular_labio_esq_t = models.CharField(max_length=40, verbose_name=_('Triangular do Lábio Esq. [T]'), choices=TONUS, blank=True)
+    prova_triangular_labio_esq_s = models.CharField(max_length=40, verbose_name=_('Triangular do Lábio Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_triangular_labio_dir_c = models.CharField(max_length=40, verbose_name=_('Triangular do Lábio Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_triangular_labio_dir_t = models.CharField(max_length=40, verbose_name=_('Triangular do Lábio Dir. [T]'), choices=TONUS, blank=True)
+    prova_triangular_labio_dir_S = models.CharField(max_length=40, verbose_name=_('Triangular do Lábio Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_canto_boca_esq_c = models.CharField(max_length=40, verbose_name=_('Levar o Canto da Boca P/ Baixo Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_canto_boca_esq_t = models.CharField(max_length=40, verbose_name=_('Levar o Canto da Boca P/ Baixo Esq. [T]'), choices=TONUS, blank=True)
+    prova_canto_boca_esq_s = models.CharField(max_length=40, verbose_name=_('Levar o Canto da Boca P/ Baixo Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_canto_boca_dir_c = models.CharField(max_length=40, verbose_name=_('Levar o Canto da Boca P/ Baixo Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_canto_boca_dir_t = models.CharField(max_length=40, verbose_name=_('Levar o Canto da Boca P/ Baixo Dir. [T]'), choices=TONUS, blank=True)
+    prova_canto_boca_dir_S = models.CharField(max_length=40, verbose_name=_('Levar o Canto da Boca P/ Baixo Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_platisma_esq_c = models.CharField(max_length=40, verbose_name=_('Platisma Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_platisma_esq_t = models.CharField(max_length=40, verbose_name=_('Platisma Esq. [T]'), choices=TONUS, blank=True)
+    prova_platisma_esq_s = models.CharField(max_length=40, verbose_name=_('Platisma Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_platisma_dir_c = models.CharField(max_length=40, verbose_name=_('Platisma Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_platisma_dir_t = models.CharField(max_length=40, verbose_name=_('Platisma Dir. [T]'), choices=TONUS, blank=True)
+    prova_platisma_dir_S = models.CharField(max_length=40, verbose_name=_('Platisma Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    prova_pescoco_esq_c = models.CharField(max_length=40, verbose_name=_('Contrair Pescoço Esq. [C]'), choices=CONTRACAO, blank=True)
+    prova_pescoco_esq_t = models.CharField(max_length=40, verbose_name=_('Contrair Pescoço Esq. [T]'), choices=TONUS, blank=True)
+    prova_pescoco_esq_s = models.CharField(max_length=40, verbose_name=_('Contrair Pescoço Esq. [S]'), choices=SINSINESIAS, blank=True)
+    prova_pescoco_dir_c = models.CharField(max_length=40, verbose_name=_('Contrair Pescoço Dir. [C]'), choices=CONTRACAO, blank=True)
+    prova_pescoco_dir_t = models.CharField(max_length=40, verbose_name=_('Contrair Pescoço Dir. [T]'), choices=TONUS, blank=True)
+    prova_pescoco_dir_S = models.CharField(max_length=40, verbose_name=_('Contrair Pescoço Dir. [S]'), choices=SINSINESIAS, blank=True)
+
+    desenvolvimento_conclusao = models.TextField(verbose_name=_('Conclusão da Prova de Função'), blank=True)
+    desenvolvimento_objetivo = models.TextField(verbose_name=_('Objetivos do Tratamento'), blank=True)
+    desenvolvimento_conduta = models.TextField(verbose_name=_('Conduta Fisioterápica'), blank=True)
+
+    atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'), blank=True)
+    atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervissor (a)'), blank=True)
+
+
+    class Meta:
+        verbose_name = _('Avaliação Paralisia Facial')
+        verbose_name_plural = _('Avaliações Paralisia Facial')
         ordering = ['data']
 
     def __str__(self):
