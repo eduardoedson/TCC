@@ -687,3 +687,35 @@ FisioterapiaParalisiaFacial:
   - desenvolvimento_conclusao desenvolvimento_objetivo desenvolvimento_conduta
   Atendimento:
   - atendimento_estagiario atendimento_supervisor
+
+FisioterapiaOrtopediaReavaliacao:
+  Ficha de Reavaliação:
+  - data estagiario paciente
+  Exame Mecânico - Teste de Uma Repetição - Movimento Ativos:
+  - movimento_ativo_1 movimento_ativo_1_eva movimento_ativo_1_amplitude
+  - movimento_ativo_2 movimento_ativo_2_eva movimento_ativo_2_amplitude
+  - movimento_ativo_3 movimento_ativo_3_eva movimento_ativo_3_amplitude
+  - movimento_ativo_4 movimento_ativo_4_eva movimento_ativo_4_amplitude
+  Exame Mecânico - Teste de Uma Repetição - Movimento Passivos:
+  - movimento_passivo_1 movimento_passivo_1_eva movimento_passivo_1_amplitude
+  - movimento_passivo_2 movimento_passivo_2_eva movimento_passivo_2_amplitude
+  - movimento_passivo_3 movimento_passivo_3_eva movimento_passivo_3_amplitude
+  - movimento_passivo_4 movimento_passivo_4_eva movimento_passivo_4_amplitude
+  Teste de 10 Repetições:
+  - teste_repeticao_1 teste_repeticao_2
+  - teste_repeticao_3 teste_repeticao_4
+  Diagnóstico:
+  - diagnostico_fisioterapeutico
+  Objetivos do Tratamento:
+  - objetivo_dor objetivo_tonus
+  - objetivo_propriocepcao objetivo_marcha objetivo_adm
+  - objetivo_sensibilidade objetivo_inflamacao objetivo_aderencia
+  - objetivo_fortalecer_musculatura objetivo_trofismo objetivo_alongar_musculatura
+  - objetivo_edema objetivo_avd objetivo_postura
+  Proposta Terapêutica:
+  - proposta_crioterapia proposta_ultra_som proposta_microondas
+  - proposta_ondas_curtas proposta_infravermelho proposta_laser
+  - proposta_tens proposta_interferencial proposta_fes
+  - proposta_russa proposta_diadinamica proposta_turbilhao
+  - proposta_contraste
+  - proposta_outras

@@ -12,7 +12,7 @@ from .views import (AlunoCrud, FisioterapiaAcidenteVascularEncefalicoCrud,
                     FisioterapiaNeurologicaCrud,
                     FisioterapiaParalisiaFacialCrud, FisioterapiaParkinsonCrud,
                     FisioterapiaTriagemCrud, FisioterapiaTRMCrud, PacienteCrud,
-                    RecepcionistaCrud, SupervisorCrud, mudar_senha)
+                    RecepcionistaCrud, SupervisorCrud, mudar_senha, FisioterapiaOrtopediaReavaliacaoCrud)
 
 app_name = 'usuarios'
 
@@ -32,6 +32,7 @@ fisioterapia_urls = [
         url(r'^fisioterapia-neurologia-base/', include(FisioterapiaNeurologicaCrud.get_urls())),
         url(r'^fisioterapia-neurologia-parkinson/', include(FisioterapiaParkinsonCrud.get_urls())),
         url(r'^fisioterapia-neurologia-paralisia-facial/', include(FisioterapiaParalisiaFacialCrud.get_urls())),
+        url(r'^fisioterapia-ortopedia-reavaliacao/', include(FisioterapiaOrtopediaReavaliacaoCrud.get_urls())),
 ]
 
 urlpatterns = [

@@ -27,7 +27,7 @@ from .models import (Aluno, FisioterapiaAcidenteVascularEncefalico,
                      FisioterapiaNeurologiaInfantilAvalicao,
                      FisioterapiaNeurologica, FisioterapiaParalisiaFacial,
                      FisioterapiaParkinson, FisioterapiaTriagem,
-                     FisioterapiaTRM, Paciente, Recepcionista, Supervisor)
+                     FisioterapiaTRM, Paciente, Recepcionista, Supervisor, FisioterapiaOrtopediaReavaliacao)
 
 
 def get_medico(pk):
@@ -903,5 +903,50 @@ class FisioterapiaParalisiaFacialCrud(Crud):
             paciente = Paciente.objects.get(id=self.kwargs['pk'])
             self.initial['paciente'] = self.kwargs['pk']
             self.initial['data_nascimento'] = paciente.data_nascimento
+            self.initial['data'] = datetime.now().strftime('%d/%m/%Y')
+            return self.initial.copy()
+
+
+class FisioterapiaOrtopediaReavaliacaoCrud(Crud):
+    model = FisioterapiaOrtopediaReavaliacao
+    help_path = ''
+
+    class BaseMixin(GroupRequiredMixin,
+                    LoginRequiredMixin, crud.base.CrudBaseMixin):
+        list_field_names = ['data']
+
+        raise_exception = True
+        login_url = LOGIN_REDIRECT_URL
+
+    class ListView(crud.base.CrudListView):
+
+        @classmethod
+        def get_url_regex(cls):
+            return r'^(?P<pk>\d+)/list$'
+
+        def get_context_data(self, **kwargs):
+            context = super(crud.base.CrudListView, self).get_context_data(
+                **kwargs)
+            context['NO_ENTRIES_MSG'] = 'Nenhuma ficha encontrada.'
+            context['pk'] = self.kwargs['pk']
+            context['title'] = 'Ficha de Reavaliação'
+            context['headers'] = self.get_headers()
+            context['rows'] = self.get_rows(
+                    FisioterapiaOrtopediaReavaliacao.objects.filter(
+                        paciente_id=self.kwargs['pk']))
+            return context
+
+    class CreateView(crud.base.CrudCreateView):
+        @classmethod
+        def get_url_regex(cls):
+            return r'^(?P<pk>\d+)/create$'
+
+        def cancel_url(self):
+            return reverse('usuarios:fisioterapiaortopediareavaliacao_list',
+                        kwargs={'pk': self.kwargs['pk']})
+
+        def get_initial(self):
+            paciente = Paciente.objects.get(id=self.kwargs['pk'])
+            self.initial['paciente'] = self.kwargs['pk']
             self.initial['data'] = datetime.now().strftime('%d/%m/%Y')
             return self.initial.copy()

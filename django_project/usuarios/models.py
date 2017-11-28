@@ -1664,3 +1664,89 @@ class FisioterapiaParalisiaFacial(models.Model):
 
     def __str__(self):
         return _('%(data)s') % {'data': self.data.strftime('%d/%m/%Y')}
+
+
+class FisioterapiaOrtopediaReavaliacao(models.Model):
+    data = models.DateField(verbose_name=_('Data'), blank=True)
+    paciente = models.ForeignKey(Paciente, verbose_name=_('Paciente'))
+    estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'), blank=True)
+
+    # Exame Mecânico - Teste de Uma Repetição - Movimentos Ativos
+    movimento_ativo_1 = models.CharField(max_length=40, verbose_name=_('Movimento Realizado [1]'), blank=True)
+    movimento_ativo_1_eva = models.CharField(max_length=40, verbose_name=_('EVA [1]'), blank=True, choices=[('Dor Durante o Movimento', _('Dor Durante o Movimento')), ('Dor no Final do Movimento', _('Dor no Final do Movimento'))])
+    movimento_ativo_1_amplitude = models.CharField(max_length=40, verbose_name=_('Amplitude [1]'), blank=True, choices=[('Normal', _('Normal')), ('Reduzida', _('Reduzida'))])
+
+    movimento_ativo_2 = models.CharField(max_length=40, verbose_name=_('Movimento Realizado [2]'), blank=True)
+    movimento_ativo_2_eva = models.CharField(max_length=40, verbose_name=_('EVA [2]'), blank=True, choices=[('Dor Durante o Movimento', _('Dor Durante o Movimento')), ('Dor no Final do Movimento', _('Dor no Final do Movimento'))])
+    movimento_ativo_2_amplitude = models.CharField(max_length=40, verbose_name=_('Amplitude [2]'), blank=True, choices=[('Normal', _('Normal')), ('Reduzida', _('Reduzida'))])
+
+    movimento_ativo_3 = models.CharField(max_length=40, verbose_name=_('Movimento Realizado [3]'), blank=True)
+    movimento_ativo_3_eva = models.CharField(max_length=40, verbose_name=_('EVA [3]'), blank=True, choices=[('Dor Durante o Movimento', _('Dor Durante o Movimento')), ('Dor no Final do Movimento', _('Dor no Final do Movimento'))])
+    movimento_ativo_3_amplitude = models.CharField(max_length=40, verbose_name=_('Amplitude [3]'), blank=True, choices=[('Normal', _('Normal')), ('Reduzida', _('Reduzida'))])
+
+    movimento_ativo_4 = models.CharField(max_length=40, verbose_name=_('Movimento Realizado [4]'), blank=True)
+    movimento_ativo_4_eva = models.CharField(max_length=40, verbose_name=_('EVA [4]'), blank=True, choices=[('Dor Durante o Movimento', _('Dor Durante o Movimento')), ('Dor no Final do Movimento', _('Dor no Final do Movimento'))])
+    movimento_ativo_4_amplitude = models.CharField(max_length=40, verbose_name=_('Amplitude [4]'), blank=True, choices=[('Normal', _('Normal')), ('Reduzida', _('Reduzida'))])
+
+    # Exame Mecânico - Teste de Uma Repetição - Movimentos Passivos
+    movimento_passivo_1 = models.CharField(max_length=40, verbose_name=_('Movimento Realizado [1]'), blank=True)
+    movimento_passivo_1_eva = models.CharField(max_length=40, verbose_name=_('EVA [1]'), blank=True, choices=[('Dor Durante o Movimento', _('Dor Durante o Movimento')), ('Dor no Final do Movimento', _('Dor no Final do Movimento'))])
+    movimento_passivo_1_amplitude = models.CharField(max_length=40, verbose_name=_('Amplitude [1]'), blank=True, choices=[('Normal', _('Normal')), ('Reduzida', _('Reduzida'))])
+
+    movimento_passivo_2 = models.CharField(max_length=40, verbose_name=_('Movimento Realizado [2]'), blank=True)
+    movimento_passivo_2_eva = models.CharField(max_length=40, verbose_name=_('EVA [2]'), blank=True, choices=[('Dor Durante o Movimento', _('Dor Durante o Movimento')), ('Dor no Final do Movimento', _('Dor no Final do Movimento'))])
+    movimento_passivo_2_amplitude = models.CharField(max_length=40, verbose_name=_('Amplitude [2]'), blank=True, choices=[('Normal', _('Normal')), ('Reduzida', _('Reduzida'))])
+
+    movimento_passivo_3 = models.CharField(max_length=40, verbose_name=_('Movimento Realizado [3]'), blank=True)
+    movimento_passivo_3_eva = models.CharField(max_length=40, verbose_name=_('EVA [3]'), blank=True, choices=[('Dor Durante o Movimento', _('Dor Durante o Movimento')), ('Dor no Final do Movimento', _('Dor no Final do Movimento'))])
+    movimento_passivo_3_amplitude = models.CharField(max_length=40, verbose_name=_('Amplitude [3]'), blank=True, choices=[('Normal', _('Normal')), ('Reduzida', _('Reduzida'))])
+
+    movimento_passivo_4 = models.CharField(max_length=40, verbose_name=_('Movimento Realizado [4]'), blank=True)
+    movimento_passivo_4_eva = models.CharField(max_length=40, verbose_name=_('EVA [4]'), blank=True, choices=[('Dor Durante o Movimento', _('Dor Durante o Movimento')), ('Dor no Final do Movimento', _('Dor no Final do Movimento'))])
+    movimento_passivo_4_amplitude = models.CharField(max_length=40, verbose_name=_('Amplitude [4]'), blank=True, choices=[('Normal', _('Normal')), ('Reduzida', _('Reduzida'))])
+
+    # Teste de 10 Repetições
+    teste_repeticao_1 = models.TextField(verbose_name=_('Movimento ou postura realizados'), blank=True)
+    teste_repeticao_2 = models.TextField(verbose_name=_('O que ocorreu com a dor durante o movimento? (Produz, abole, aumenta, diminui, nenhum efeito.)'), blank=True)
+    teste_repeticao_3 = models.TextField(verbose_name=_('O que ocorreu com a dor após o movimento? (Melhor, pior, não melhor, não pior, nenhum efeito)'), blank=True)
+    teste_repeticao_4 = models.TextField(verbose_name=_('O que ocorreu com a amplitude de movimento? (Aumento, diminuiu, nenhum efeito.)'), blank=True)
+
+    diagnostico_fisioterapeutico = models.TextField(verbose_name=_('Diagnóstico Fisioterapeutico'), blank=True)
+
+    objetivo_dor = models.CharField(max_length=40, verbose_name=_('Abolir a Dor'), blank=True, choices=YES_NO_CHOICES)
+    objetivo_tonus = models.CharField(max_length=40, verbose_name=_('Normalizar Tônus'), blank=True, choices=YES_NO_CHOICES)
+    objetivo_propriocepcao = models.CharField(max_length=40, verbose_name=_('Normalizar Propriocepção'), blank=True, choices=YES_NO_CHOICES)
+    objetivo_marcha = models.CharField(max_length=40, verbose_name=_('Normalizar Marcha'), blank=True, choices=YES_NO_CHOICES)
+    objetivo_adm = models.CharField(max_length=40, verbose_name=_('Normalizar Adm\'s'), blank=True, choices=YES_NO_CHOICES)
+    objetivo_sensibilidade = models.CharField(max_length=40, verbose_name=_('Estimular Sensibilidade'), blank=True, choices=YES_NO_CHOICES)
+    objetivo_inflamacao = models.CharField(max_length=40, verbose_name=_('Abolir Inflamação'), blank=True, choices=YES_NO_CHOICES)
+    objetivo_aderencia = models.CharField(max_length=40, verbose_name=_('Liberar Aderências'), blank=True, choices=YES_NO_CHOICES)
+    objetivo_fortalecer_musculatura = models.CharField(max_length=40, verbose_name=_('Fortalecer Musculatura'), blank=True, choices=YES_NO_CHOICES)
+    objetivo_trofismo = models.CharField(max_length=40, verbose_name=_('Normalizar Trofismo'), blank=True, choices=YES_NO_CHOICES)
+    objetivo_alongar_musculatura = models.CharField(max_length=40, verbose_name=_('Alongar Musculatura'), blank=True, choices=YES_NO_CHOICES)
+    objetivo_edema = models.CharField(max_length=40, verbose_name=_('Abolir Edema'), blank=True, choices=YES_NO_CHOICES)
+    objetivo_avd = models.CharField(max_length=40, verbose_name=_('Normalizar Avd\'s'), blank=True, choices=YES_NO_CHOICES)
+    objetivo_postura = models.CharField(max_length=40, verbose_name=_('Corrigir Postura'), blank=True, choices=YES_NO_CHOICES)
+
+    proposta_crioterapia = models.CharField(max_length=40, verbose_name=_('Crioterapia'), blank=True, choices=YES_NO_CHOICES)
+    proposta_ultra_som = models.CharField(max_length=40, verbose_name=_('Ultra Som'), blank=True, choices=YES_NO_CHOICES)
+    proposta_microondas = models.CharField(max_length=40, verbose_name=_('Microondas'), blank=True, choices=YES_NO_CHOICES)
+    proposta_ondas_curtas = models.CharField(max_length=40, verbose_name=_('Ondas Curtas'), blank=True, choices=YES_NO_CHOICES)
+    proposta_infravermelho = models.CharField(max_length=40, verbose_name=_('Infravermelho'), blank=True, choices=YES_NO_CHOICES)
+    proposta_laser = models.CharField(max_length=40, verbose_name=_('Laser'), blank=True, choices=YES_NO_CHOICES)
+    proposta_tens = models.CharField(max_length=40, verbose_name=_('T.E.N.S.'), blank=True, choices=YES_NO_CHOICES)
+    proposta_interferencial = models.CharField(max_length=40, verbose_name=_('Interferencial'), blank=True, choices=YES_NO_CHOICES)
+    proposta_fes = models.CharField(max_length=40, verbose_name=_('FES'), blank=True, choices=YES_NO_CHOICES)
+    proposta_russa = models.CharField(max_length=40, verbose_name=_('Russa'), blank=True, choices=YES_NO_CHOICES)
+    proposta_diadinamica = models.CharField(max_length=40, verbose_name=_('Diadinâmica'), blank=True, choices=YES_NO_CHOICES)
+    proposta_turbilhao = models.CharField(max_length=40, verbose_name=_('Turbilhão'), blank=True, choices=YES_NO_CHOICES)
+    proposta_contraste = models.CharField(max_length=40, verbose_name=_('Contraste'), blank=True, choices=YES_NO_CHOICES)
+    proposta_outras = models.TextField(verbose_name=_('Outros'), blank=True)
+
+    class Meta:
+        verbose_name = _('Ficha de Reavaliação')
+        verbose_name_plural = _('Fichas de Reavaliação')
+        ordering = ['data']
+
+    def __str__(self):
+        return _('%(data)s') % {'data': self.data.strftime('%d/%m/%Y')}
