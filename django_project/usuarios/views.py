@@ -25,9 +25,11 @@ from .models import (Aluno, FisioterapiaAcidenteVascularEncefalico,
                      FisioterapiaGeriatriaAnamnese,
                      FisioterapiaGeriatriaAvalicao,
                      FisioterapiaNeurologiaInfantilAvalicao,
-                     FisioterapiaNeurologica, FisioterapiaParalisiaFacial,
-                     FisioterapiaParkinson, FisioterapiaTriagem,
-                     FisioterapiaTRM, Paciente, Recepcionista, Supervisor, FisioterapiaOrtopediaReavaliacao, FisioterapiaOrtopediaAvaliacao)
+                     FisioterapiaNeurologica, FisioterapiaOrtopediaAvaliacao,
+                     FisioterapiaOrtopediaReavaliacao,
+                     FisioterapiaParalisiaFacial, FisioterapiaParkinson,
+                     FisioterapiaTriagem, FisioterapiaTRM, Paciente,
+                     Recepcionista, Supervisor)
 
 
 def get_medico(pk):

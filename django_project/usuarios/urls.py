@@ -10,11 +10,11 @@ from .views import (AlunoCrud, FisioterapiaAcidenteVascularEncefalicoCrud,
                     FisioterapiaGeriatriaAvalicaoCrud,
                     FisioterapiaNeurologiaInfantilAvalicaoCrud,
                     FisioterapiaNeurologicaCrud,
+                    FisioterapiaOrtopediaAvaliacaoCrud,
+                    FisioterapiaOrtopediaReavaliacaoCrud,
                     FisioterapiaParalisiaFacialCrud, FisioterapiaParkinsonCrud,
                     FisioterapiaTriagemCrud, FisioterapiaTRMCrud, PacienteCrud,
-                    RecepcionistaCrud, SupervisorCrud, mudar_senha,
-                    FisioterapiaOrtopediaReavaliacaoCrud,
-                    FisioterapiaOrtopediaAvaliacaoCrud)
+                    RecepcionistaCrud, SupervisorCrud, mudar_senha)
 
 app_name = 'usuarios'
 
