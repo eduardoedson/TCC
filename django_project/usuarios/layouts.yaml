@@ -36,7 +36,7 @@ Aluno:
   Dados do sistema:
   - email:8 username
   - password password_confirm
-  Dados Orientador (es):
+  Dados Supervisor:
   - supervisor
 
 AlunoEdit:
@@ -46,8 +46,8 @@ AlunoEdit:
   - celular telefone
   Dados do sistema:
   - email:8 username
-  Dados Orientador (es):
-  - orientador coorientador
+  Dados Supervisor:
+  - supervisor
 
 Paciente:
   Dados Pessoais:

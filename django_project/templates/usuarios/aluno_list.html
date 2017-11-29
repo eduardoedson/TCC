@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {% block buttons %}
-  {% if tipo == 'Supervisor' %}
+  {% if tipo == 'Supervisor' or tipo == 'Recepcionista' %}
     <div class="actions btn-group pull-right" role="group">
       <a href="{{ view.create_url }}" class="btn btn-default">
         {% blocktrans with verbose_name=view.verbose_name %} Adicionar {{ verbose_name }} {% endblocktrans %}

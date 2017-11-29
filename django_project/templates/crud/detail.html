@@ -15,6 +15,18 @@
                 {% blocktrans with verbose_name=view.verbose_name %} Adicionar {{ verbose_name }} {% endblocktrans %}
               </a>
           </div>
+
+          <div class="editons pull-right">
+            {% block editions %}
+              {% if view.update_url or view.delete_url %}
+                <div class="actions btn-group" role="group">
+                  {% if tipo == 'Supervisor' or tipo == 'Recepcionista' %}
+                    <a href="{{ view.update_url }}" class="btn btn-default">{% trans 'Editar' %}</a>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endblock %}
+          </div>
       {% endblock sub_actions %}
 
       {% block extra_actions %} {% endblock extra_actions %}
