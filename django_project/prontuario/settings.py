@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 APPS = [
+    # apps
     'usuarios',
     'servicos',
     'crud',

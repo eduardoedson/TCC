@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -7,7 +8,6 @@ from utils import (CONTRACAO, ESCALA_FUNCIONAL_BERG, MAPA_MUSCULAR,
                    POSITIVO_NEGATIVO_CHOICES, RANGE_SEXO, SINSINESIAS, TONUS,
                    YES_NO_CHOICES)
 
-
 def media_path(instance, filename):
     dir = _('./prontuario/%(nome)s/%(especialidade)s/%(data)s/%(arq)s') % {
         'nome' : instance.paciente.nome,
@@ -15,7 +15,7 @@ def media_path(instance, filename):
         'data' : instance.data.strftime('%d-%m-%Y'),
         'arq' : filename
     }
-    return zdir
+    return dir
 
 class Recepcionista(models.Model):
     nome = models.CharField(max_length=80, verbose_name=_('Nome Completo'))
