@@ -24,9 +24,27 @@ RANGE_SEXO = [('F', _('Feminino')), ('M', _('Masculino')), ('O', _('Outro'))]
 
 YES_NO_CHOICES = [(None, _('----')), ('Não', _('Não')), ('Sim', _('Sim'))]
 
+POSITIVO_NEGATIVO_CHOICES = [('Positivo', _('Positivo')), ('Negativo', _('Negativo'))]
+
 CONTRACAO = [('[0] - Zero', _('[0] - Zero')), ('[1] - Regular', _('[1] - Regular')), ('[2] - Normal', _('[2] - Normal'))]
 TONUS = [('[0] - Atonia', _('[0] - Atonia')), ('[1] - Diminuído ou Aumentado', _('[1] - Diminuído ou Aumentado')), ('[2] - Normal', _('[2] - Normal'))]
 SINSINESIAS = [('[0] - Ausência', _('[0] - Ausência')), ('[1] - Inibição Voluntária', _('[1] - Inibição Voluntária')), ('[2] - Inibição Por Pressão Digital', _('[2] - Inibição Por Pressão Digital'))]
+
+MAPA_MUSCULAR = [
+    ('[0] - Zero', '[0] - Zero'),
+    ('[1] - Esboço', '[1] - Esboço'),
+    ('[2] - Adm. incompleta c/ gravidade eliminada', '[2] - Adm. incompleta c/ gravidade eliminada'),
+    ('[2] - Adm. completa c/ gravidade eliminada', '[2] - Adm. completa c/ gravidade eliminada'),
+    ('[3] - Adm. incompleta contra a gravidade', '[3] - Adm. incompleta contra a gravidade'),
+    ('[3] - Adm. completa contra a gravidade', '[3] - Adm. completa contra a gravidade'),
+    ('[4] - Adm. completa contra a gravidade c/ level resistência', '[3] - Adm. completa contra a gravidade c/ level resistência'),
+    ('[4] - Adm. completa contra a gravidade c/ considerável resistência', '[3] - Adm. completa contra a gravidade c/ considerável resistência'),
+    ('[5] - Aparentemente Normal', '[5] - Aparentemente Normal'),
+    ('[L] - Limitação do momento passivo', '[L] - Limitação do momento passivo'),
+    ('[D] - Dor', '[D] - Dor'),
+    ('[I] - Incapacidade para testar exatamente (Déficit cognitivo, idade, deformidades, etc.)', '[I] - Incapacidade para testar exatamente (Déficit cognitivo, idade, deformidades, etc.)'),
+    ('[NT] - Não testado', '[NT] - Não testado'),
+]
 
 def from_to(start, end):
     return list(range(start, end + 1))

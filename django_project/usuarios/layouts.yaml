@@ -719,3 +719,275 @@ FisioterapiaOrtopediaReavaliacao:
   - proposta_russa proposta_diadinamica proposta_turbilhao
   - proposta_contraste
   - proposta_outras
+
+FisioterapiaOrtopediaAvaliacao:
+  Avaliação:
+  - data
+  Dados Pessoais:
+  - paciente
+  - sexo data_nascimento
+  - profissao estado_civil
+  - telefone
+  - endereco
+  - trabalho dominancia
+  Atendimento:
+  - atendimento_estagiario atendimento_supervisor
+  - diagnostico_fisioterapico
+  Anamnese:
+  - anamnese_data_inicio anamnese_lesao anamnese_tipo_trauma
+  - anamnese_qp
+  Tratamento:
+  - tratamento_medicamentoso tratamento_imobilizacao
+  - tratamento_cirurgico tratamento_outros
+  - tratamento_resultado
+  - tratamento_fisioterapia_anterior tratamento_fisioterapia_anterior_resultado
+  - tratamento_observacoes
+  Avaliação da Dor:
+  - avaliacao_localizacao avaliacao_historia avaliacao_frequencia avaliacao_intensidade
+  - avaliacao_irradiacao avaliacao_tipo avaliacao_agrava avaliacao_melhora
+  Distúrbios/Patologias Associadas:
+  - patologias_cardiaco patologias_vascular patologias_dermatologico
+  - patologias_metabolico patologias_osteoarticular patologias_tumoral
+  - patologias_visual patologias_neurologico patologias_outros
+  Exames Complementares:
+  - exames_complementares_rx exames_complementares_tc exames_complementares_rm
+  - exames_complementares_outros exames_complementares_laudo
+  Exame Físico:
+  - exame_fisico_inspencao
+  - exame_fisico_hipotrofia exame_fisico_hipotrofia_local
+  - exame_fisico_coloracao exame_fisico_coloracao_local
+  - exame_fisico_edema exame_fisico_edema_local
+  - exame_fisico_deformidade exame_fisico_deformidade_local
+  - exame_fisico_cicatriz exame_fisico_cicatriz_local
+  - exame_fisico_ulceracoes exame_fisico_ulceracoes_local
+  - exame_fisico_pele exame_fisico_marcha
+  Palpação:
+  - palpacao_dor_local palpacao_dor_movimento palpacao_edema
+  - palpacao_derrame palpacao_tonus palpacao_temperatura
+  - palpacao_crepto palpacao_cicatriz palpacao_patela
+  Sensibilidade:
+  - sensibilidade_termica sensibilidade_tatil sensibilidade_dolorosa
+  - sensibilidade_estesiometria sensibilidade_perimetria sensibilidade_cicumetria
+  Circumetria 1:
+  - membro_1
+  - membro_1_direito_7 membro_1_direito_14 membro_1_direito_21
+  - membro_1_esquerdo_7 membro_1_esquerdo_14 membro_1_esquerdo_21
+  Circumetria 2:
+  - membro_2
+  - membro_2_direito_7 membro_2_direito_14 membro_2_direito_21
+  - membro_2_esquerdo_7 membro_2_esquerdo_14 membro_2_esquerdo_21
+  Coluna:
+  - coluna_perda coluna_movimentos coluna_posicoes
+  Testes Especiais:
+  - teste_especial_apley teste_especial_queda_braco
+  - teste_especial_lift teste_especial_tinel
+  - teste_especial_golfista teste_especial_phalen
+  - teste_especial_dedos teste_especial_retinacular
+  - teste_especial_cervical teste_especial_valsalva
+  - teste_especial_lasegue teste_especial_trendelemburg
+  - teste_especial_varo teste_especial_gaveta
+  - teste_especial_murray teste_especial_patela
+  - teste_especial_ant_tornoz teste_especial_med_tornoz
+  - teste_especial_pe teste_especial_thompson
+  - teste_especial_yergason teste_especial_cotovelo
+  - teste_especial_cotovelo_tenista teste_especial_finkelstein
+  - teste_especial_flex_dedos teste_especial_bunner
+  - teste_especial_allen teste_especial_compressao_cervical
+  - teste_especial_adson teste_especial_patrick
+  - teste_especial_valgo_joelho teste_especial_gaveta_anterior
+  - teste_especial_lackman teste_especial_compressao_patela
+  - teste_especial_tecla teste_especial_post_tornoz
+  - teste_especial_lat_tornoz teste_especial_homan
+  - teste_especial_outros
+  Encurtamentos:
+  - encurtamento_peitoral_dir encurtamento_peitoral_esq
+  - encurtamento_thomas_dir encurtamento_thomas_esq
+  - encurtamento_thomas_mod_dir encurtamento_thomas_mod_esq
+  - encurtamento_isquios_dir encurtamento_isquios_esq
+  - encurtamento_ober_dir encurtamento_ober_esq
+  - encurtamento_aquiles_dir encurtamento_aquiles_esq
+  Propriocepção:
+  - propriocepcao
+  AVD's:
+  - avd
+  Exame Mecânico - Teste de Uma Repetição - Movimentos Ativos:
+  - movimento_ativo_1 movimento_ativo_1_eva movimento_ativo_1_amplitude
+  - movimento_ativo_2 movimento_ativo_2_eva movimento_ativo_2_amplitude
+  - movimento_ativo_3 movimento_ativo_3_eva movimento_ativo_3_amplitude
+  - movimento_ativo_4 movimento_ativo_4_eva movimento_ativo_4_amplitude
+  Exame Mecânico - Teste de Uma Repetição - Movimentos Passivos:
+  - movimento_passivo_1 movimento_passivo_1_eva movimento_passivo_1_amplitude
+  - movimento_passivo_2 movimento_passivo_2_eva movimento_passivo_2_amplitude
+  - movimento_passivo_3 movimento_passivo_3_eva movimento_passivo_3_amplitude
+  - movimento_passivo_4 movimento_passivo_4_eva movimento_passivo_4_amplitude
+  Teste de 10 Repetições:
+  - teste_repeticao_1 teste_repeticao_2 teste_repeticao_3 teste_repeticao_4
+  Ficha de Goniometria:
+  - ombro_esq_160 ombro_dir_160
+  - ombro_esq_50 ombro_dir_50
+  - ombro_esq_0 ombro_dir_0
+  - ombro_esq_170 ombro_dir_170
+  - ombro_esq_60 ombro_dir_60
+  - ombro_esq_80 ombro_dir_80
+  - cotovelo_esq_140 cotovelo_dir_140
+  - cotovelo_esq_0 cotovelo_dir_0
+  - antebraco_esq_90 antebraco_dir_90
+  - antebraco_esq_80 antebraco_dir_80
+  - punho_esq_80 punho_dir_80
+  - punho_esq_70 punho_dir_70
+  - punho_esq_20 punho_dir_20
+  - punho_esq_30 punho_dir_30
+  - mao_dedo_esq_60 mao_dedo_dir_60
+  - mao_dedo_esq_50 mao_dedo_dir_50
+  - mao_dedo_esq_flexao_metacarpofalangeana mao_dedo_dir_flexao_metacarpofalangeana
+  - mao_dedo_esq_extensao_metacarpofalangeana mao_dedo_dir_extensao_metacarpofalangeana
+  - mao_dedo_esq_flexao_interafalangeana_proximal mao_dedo_dir_flexao_interafalangeana_proximal
+  - mao_dedo_esq_extensao_interafalangeana_proximal mao_dedo_dir_extensao_interafalangeana_proximal
+  - mao_dedo_esq_flexao_interafalangeana_Distal mao_dedo_dir_flexao_interafalangeana_Distal
+  - mao_dedo_esq_extensao_interafalangeana_Distal mao_dedo_dir_extensao_interafalangeana_Distal
+  - quadril_esq_110 quadril_dir_110
+  - quadril_esq_10 quadril_dir_10
+  - quadril_esq_30 quadril_dir_30
+  - quadril_esq_30_2 quadril_dir_30_2
+  - quadril_esq_30_3 quadril_dir_30_3
+  - quadril_esq_40 quadril_dir_40
+  - joelho_esq_130 joelho_dir_130
+  - joelho_esq_0 joelho_dir_0
+  - joelho_esq_valgo joelho_dir_valgo
+  - joelho_esq_varo joelho_dir_varo
+  - joelho_esq_recurvatum joelho_dir_recurvatum
+  - tornozelo_pe_esq_20 tornozelo_pe_dir_20
+  - tornozelo_pe_esq_50 tornozelo_pe_dir_50
+  - tornozelo_pe_esq_30 tornozelo_pe_dir_30
+  - tornozelo_pe_esq_15 tornozelo_pe_dir_15
+  Mapa Muscular:
+  - reto_abdominal_esq_1 reto_abdominal_esq_2 reto_abdominal_esq_3
+  - reto_abdominal_dir_1 reto_abdominal_dir_2 reto_abdominal_dir_3
+  - obliquo_esq_1 obliquo_esq_2 obliquo_esq_3
+  - obliquo_dir_1 obliquo_dir_2 obliquo_dir_3
+  - toracico_lombar_esq_1 toracico_lombar_esq_2 toracico_lombar_esq_3
+  - toracico_lombar_dir_1 toracico_lombar_dir_2 toracico_lombar_dir_3
+  - quadrado_lombar_esq_1 quadrado_lombar_esq_2 quadrado_lombar_esq_3
+  - quadrado_lombar_dir_1 quadrado_lombar_dir_2 quadrado_lombar_dir_3
+  - iliopsoas_esq_1 iliopsoas_esq_2 iliopsoas_esq_3
+  - iliopsoas_dir_1 iliopsoas_dir_2 iliopsoas_dir_3
+  - sartorio_esq_1 sartorio_esq_2 sartorio_esq_3
+  - sartorio_dir_1 sartorio_dir_2 sartorio_dir_3
+  - gluteo_maximo_esq_1 gluteo_maximo_esq_2 gluteo_maximo_esq_3
+  - gluteo_maximo_dir_1 gluteo_maximo_dir_2 gluteo_maximo_dir_3
+  - tensor_esq_1 tensor_esq_2 tensor_esq_3
+  - tensor_dir_1 tensor_dir_2 tensor_dir_3
+  - gluteo_medio_esq_1 gluteo_medio_esq_2 gluteo_medio_esq_3
+  - gluteo_medio_dir_1 gluteo_medio_dir_2 gluteo_medio_dir_3
+  - adutores_esq_1 adutores_esq_2 adutores_esq_3
+  - adutores_dir_1 adutores_dir_2 adutores_dir_3
+  - rotacao_externa_esq_1 rotacao_externa_esq_2 rotacao_externa_esq_3
+  - rotacao_externa_dir_1 rotacao_externa_dir_2 rotacao_externa_dir_3
+  - gluteo_minimo_esq_1 gluteo_minimo_esq_2 gluteo_minimo_esq_3
+  - gluteo_minimo_dir_1 gluteo_minimo_dir_2 gluteo_minimo_dir_3
+  - biceps_femural_esq_1 biceps_femural_esq_2 biceps_femural_esq_3
+  - biceps_femural_dir_1 biceps_femural_dir_2 biceps_femural_dir_3
+  - semitendinoso_esq_1 semitendinoso_esq_2 semitendinoso_esq_3
+  - semitendinoso_dir_1 semitendinoso_dir_2 semitendinoso_dir_3
+  - quadriceps_esq_1 quadriceps_esq_2 quadriceps_esq_3
+  - quadriceps_dir_1 quadriceps_dir_2 quadriceps_dir_3
+  - gastrocnemio_esq_1 gastrocnemio_esq_2 gastrocnemio_esq_3
+  - gastrocnemio_dir_1 gastrocnemio_dir_2 gastrocnemio_dir_3
+  - soleo_esq_1 soleo_esq_2 soleo_esq_3
+  - soleo_dir_1 soleo_dir_2 soleo_dir_3
+  - tibial_anterior_esq_1 tibial_anterior_esq_2 tibial_anterior_esq_3
+  - tibial_anterior_dir_1 tibial_anterior_dir_2 tibial_anterior_dir_3
+  - tibial_posterior_esq_1 tibial_posterior_esq_2 tibial_posterior_esq_3
+  - tibial_posterior_dir_1 tibial_posterior_dir_2 tibial_posterior_dir_3
+  - fibular_esq_1 fibular_esq_2 fibular_esq_3
+  - fibular_dir_1 fibular_dir_2 fibular_dir_3
+  - extensor_dedos_esq_1 extensor_dedos_esq_2 extensor_dedos_esq_3
+  - extensor_dedos_dir_1 extensor_dedos_dir_2 extensor_dedos_dir_3
+  - halux_esq_1 halux_esq_2 halux_esq_3
+  - halux_dir_1 halux_dir_2 halux_dir_3
+  - flexor_dedos_esq_1 flexor_dedos_esq_2 flexor_dedos_esq_3
+  - flexor_dedos_dir_1 flexor_dedos_dir_2 flexor_dedos_dir_3
+  - flexor_halux_esq_1 flexor_halux_esq_2 flexor_halux_esq_3
+  - flexor_halux_dir_1 flexor_halux_dir_2 flexor_halux_dir_3
+  - esternocleidomastoideo_esq_1 esternocleidomastoideo_esq_2 esternocleidomastoideo_esq_3
+  - esternocleidomastoideo_dir_1 esternocleidomastoideo_dir_2 esternocleidomastoideo_dir_3
+  - trapezio_extensores_esq_1 trapezio_extensores_esq_2 trapezio_extensores_esq_3
+  - trapezio_extensores_dir_1 trapezio_extensores_dir_2 trapezio_extensores_dir_3
+  - serratil_anterior_esq_1 serratil_anterior_esq_2 serratil_anterior_esq_3
+  - serratil_anterior_dir_1 serratil_anterior_dir_2 serratil_anterior_dir_3
+  - trapezio_elevador_esq_1 trapezio_elevador_esq_2 trapezio_elevador_esq_3
+  - trapezio_elevador_dir_1 trapezio_elevador_dir_2 trapezio_elevador_dir_3
+  - trapezio_inferior_esq_1 trapezio_inferior_esq_2 trapezio_inferior_esq_3
+  - trapezio_inferior_dir_1 trapezio_inferior_dir_2 trapezio_inferior_dir_3
+  - trapezio_medidas_esq_1 trapezio_medidas_esq_2 trapezio_medidas_esq_3
+  - trapezio_medidas_dir_1 trapezio_medidas_dir_2 trapezio_medidas_dir_3
+  - romboides_esq_1 romboides_esq_2 romboides_esq_3
+  - romboides_dir_1 romboides_dir_2 romboides_dir_3
+  - deltoide_caracobraquial_esq_1 deltoide_caracobraquial_esq_2 deltoide_caracobraquial_esq_3
+  - deltoide_caracobraquial_dir_1 deltoide_caracobraquial_dir_2 deltoide_caracobraquial_dir_3
+  - grande_dorsal_esq_1 grande_dorsal_esq_2 grande_dorsal_esq_3
+  - grande_dorsal_dir_1 grande_dorsal_dir_2 grande_dorsal_dir_3
+  - Subscapular_esq_1 Subscapular_esq_2 Subscapular_esq_3
+  - Subscapular_dir_1 Subscapular_dir_2 Subscapular_dir_3
+  - deltoide_medio_esq_1 deltoide_medio_esq_2 deltoide_medio_esq_3
+  - deltoide_medio_dir_1 deltoide_medio_dir_2 deltoide_medio_dir_3
+  - peitoral_maior_esq_1 peitoral_maior_esq_2 peitoral_maior_esq_3
+  - peitoral_maior_dir_1 peitoral_maior_dir_2 peitoral_maior_dir_3
+  - infraespinhoso_esq_1 infraespinhoso_esq_2 infraespinhoso_esq_3
+  - infraespinhoso_dir_1 infraespinhoso_dir_2 infraespinhoso_dir_3
+  - briceps_braquial_esq_1 briceps_braquial_esq_2 briceps_braquial_esq_3
+  - briceps_braquial_dir_1 briceps_braquial_dir_2 briceps_braquial_dir_3
+  - braquioradial_esq_1 braquioradial_esq_2 braquioradial_esq_3
+  - braquioradial_dir_1 braquioradial_dir_2 braquioradial_dir_3
+  - triceps_esq_1 triceps_esq_2 triceps_esq_3
+  - triceps_dir_1 triceps_dir_2 triceps_dir_3
+  - supinador_esq_1 supinador_esq_2 supinador_esq_3
+  - supinador_dir_1 supinador_dir_2 supinador_dir_3
+  - pronador_esq_1 pronador_esq_2 pronador_esq_3
+  - pronador_dir_1 pronador_dir_2 pronador_dir_3
+  - flexor_radial_esq_1 flexor_radial_esq_2 flexor_radial_esq_3
+  - flexor_radial_dir_1 flexor_radial_dir_2 flexor_radial_dir_3
+  - radial_carpo_ulnar_esq_1 radial_carpo_ulnar_esq_2 radial_carpo_ulnar_esq_3
+  - radial_carpo_ulnar_dir_1 radial_carpo_ulnar_dir_2 radial_carpo_ulnar_dir_3
+  - flexor_superficial_esq_1 flexor_superficial_esq_2 flexor_superficial_esq_3
+  - flexor_superficial_dir_1 flexor_superficial_dir_2 flexor_superficial_dir_3
+  - flexor_profundo_esq_1 flexor_profundo_esq_2 flexor_profundo_esq_3
+  - flexor_profundo_dir_1 flexor_profundo_dir_2 flexor_profundo_dir_3
+  - extensao_esq_1 extensao_esq_2 extensao_esq_3
+  - extensao_dir_1 extensao_dir_2 extensao_dir_3
+  - palmares_esq_1 palmares_esq_2 palmares_esq_3
+  - palmares_dir_1 palmares_dir_2 palmares_dir_3
+  - dorsais_esq_1 dorsais_esq_2 dorsais_esq_3
+  - dorsais_dir_1 dorsais_dir_2 dorsais_dir_3
+  - lumbricais_esq_1 lumbricais_esq_2 lumbricais_esq_3
+  - lumbricais_dir_1 lumbricais_dir_2 lumbricais_dir_3
+  - abdutor_minimo_esq_1 abdutor_minimo_esq_2 abdutor_minimo_esq_3
+  - abdutor_minimo_dir_1 abdutor_minimo_dir_2 abdutor_minimo_dir_3
+  - oponente_esq_1 oponente_esq_2 oponente_esq_3
+  - oponente_dir_1 oponente_dir_2 oponente_dir_3
+  - flexor_curto_esq_1 flexor_curto_esq_2 flexor_curto_esq_3
+  - flexor_curto_dir_1 flexor_curto_dir_2 flexor_curto_dir_3
+  - flexor_longo_esq_1 flexor_longo_esq_2 flexor_longo_esq_3
+  - flexor_longo_dir_1 flexor_longo_dir_2 flexor_longo_dir_3
+  - extensor_curto_longo_esq_1 extensor_curto_longo_esq_2 extensor_curto_longo_esq_3
+  - extensor_curto_longo_dir_1 extensor_curto_longo_dir_2 extensor_curto_longo_dir_3
+  - abdutor_curto_esq_1 abdutor_curto_esq_2 abdutor_curto_esq_3
+  - abdutor_curto_dir_1 abdutor_curto_dir_2 abdutor_curto_dir_3
+  - abdutor_longo_esq_1 abdutor_longo_esq_2 abdutor_longo_esq_3
+  - abdutor_longo_dir_1 abdutor_longo_dir_2 abdutor_longo_dir_3
+  - adutor_esq_1 adutor_esq_2 adutor_esq_3
+  - adutor_dir_1 adutor_dir_2 adutor_dir_3
+  - oponente_polegar_esq_1 oponente_polegar_esq_2 oponente_polegar_esq_3
+  - oponente_polegar_dir_1 oponente_polegar_dir_2 oponente_polegar_dir_3
+  Objetivos do Tratamento:
+  - objetivo_dor objetivo_tonus
+  - objetivo_propriocepcao objetivo_marcha objetivo_adm objetivo_sensibilidade
+  - objetivo_inflamacao objetivo_aderencia objetivo_fortalecer_musculatura objetivo_trofismo
+  - objetivo_alongar_musculatura objetivo_edema objetivo_avd objetivo_postura
+  Proposta Terapêutica:
+  - proposta_crioterapia proposta_ultra_som
+  - proposta_turbilhao proposta_contraste
+  - proposta_microondas proposta_ondas_curtas proposta_infravermelho
+  - proposta_laser proposta_tens proposta_interferencial
+  - proposta_fes proposta_russa proposta_diadinamica
+  - proposta_outras

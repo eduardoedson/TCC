@@ -1,0 +1,63 @@
+{% extends "crud/form.html" %}
+{% load i18n %}
+
+{% block extra_js %}
+  <script language="JavaScript">
+    function change_input(id, cond, id_change){
+      if(document.getElementById(id).value === cond)
+        $('#' + id_change).prop('disabled', false);
+      else
+        $('#' + id_change).prop('disabled', true);
+    }
+    window.onload = function(){
+      document.getElementById("id_telefone").placeholder = "(__) ____-____";
+
+      $('#id_paciente').prop('disabled', true);
+      $('#id_data_nascimento').prop('disabled', true);
+      $('#id_tratamento_fisioterapia_anterior_resultado').prop('disabled', true);
+      $('#id_exame_fisico_hipotrofia_local').prop('disabled', true);
+      $('#id_exame_fisico_coloracao_local').prop('disabled', true);
+      $('#id_exame_fisico_edema_local').prop('disabled', true);
+      $('#id_exame_fisico_deformidade_local').prop('disabled', true);
+      $('#id_exame_fisico_cicatriz_local').prop('disabled', true);
+      $('#id_exame_fisico_ulceracoes_local').prop('disabled', true);
+      $('#id_exame_fisico_pele_local').prop('disabled', true);
+    }
+    document.getElementById('submit-id-salvar').onclick = function(){
+      $('#id_paciente').prop('disabled', false);
+      $('#id_data_nascimento').prop('disabled', false);
+      $('#id_tratamento_fisioterapia_anterior_resultado').prop('disabled', false);
+      $('#id_exame_fisico_hipotrofia_local').prop('disabled', false);
+      $('#id_exame_fisico_coloracao_local').prop('disabled', false);
+      $('#id_exame_fisico_edema_local').prop('disabled', false);
+      $('#id_exame_fisico_deformidade_local').prop('disabled', false);
+      $('#id_exame_fisico_cicatriz_local').prop('disabled', false);
+      $('#id_exame_fisico_ulceracoes_local').prop('disabled', false);
+      $('#id_exame_fisico_pele_local').prop('disabled', false);
+    };
+    document.getElementById('id_tratamento_fisioterapia_anterior').onchange = function() {
+      change_input('id_tratamento_fisioterapia_anterior', 'Sim', 'id_tratamento_fisioterapia_anterior_resultado');
+    };
+    document.getElementById('id_exame_fisico_hipotrofia').onchange = function() {
+      change_input('id_exame_fisico_hipotrofia', 'Sim', 'id_exame_fisico_hipotrofia_local');
+    };
+    document.getElementById('id_exame_fisico_coloracao').onchange = function() {
+      change_input('id_exame_fisico_coloracao', 'Sim', 'id_exame_fisico_coloracao_local');
+    };
+    document.getElementById('id_exame_fisico_edema').onchange = function() {
+      change_input('id_exame_fisico_edema', 'Sim', 'id_exame_fisico_edema_local');
+    };
+    document.getElementById('id_exame_fisico_deformidade').onchange = function() {
+      change_input('id_exame_fisico_deformidade', 'Sim', 'id_exame_fisico_deformidade_local');
+    };
+    document.getElementById('id_exame_fisico_cicatriz').onchange = function() {
+      change_input('id_exame_fisico_cicatriz', 'Sim', 'id_exame_fisico_cicatriz_local');
+    };
+    document.getElementById('id_exame_fisico_ulceracoes').onchange = function() {
+      change_input('id_exame_fisico_ulceracoes', 'Sim', 'id_exame_fisico_ulceracoes_local');
+    };
+    document.getElementById('id_exame_fisico_pele').onchange = function() {
+      change_input('id_exame_fisico_pele', 'Sim', 'id_exame_fisico_pele_local');
+    };
+  </script>
+{% endblock extra_js %}

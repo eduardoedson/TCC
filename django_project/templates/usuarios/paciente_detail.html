@@ -56,7 +56,7 @@
     <li class="dropdown-submenu">
       <a class="test" tabindex="-1" href="#">Ortopedia</a>
       <ul class="dropdown-menu">
-        <li><a tabindex="-1" href="#">O-1</a></li>
+        <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaortopediaavaliacao_list' object.pk %}">Ficha de Avaliação</a></li>
         <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaortopediareavaliacao_list' object.pk %}">Ficha de Reavaliação</a></li>
       </ul>
     </li>
