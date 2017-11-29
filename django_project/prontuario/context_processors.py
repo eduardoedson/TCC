@@ -1,6 +1,6 @@
 from django.core.exceptions import ObjectDoesNotExist
 
-from usuarios.models import Aluno, Supervisor
+from usuarios.models import Aluno, Supervisor, Recepcionista
 
 
 def recupera_user(request):
@@ -9,20 +9,21 @@ def recupera_user(request):
     except:
         return [0, None]
     else:
-        if user:
-            if user.is_superuser:
-                return [user.pk, 'adm']
-            try:
+        if user.is_superuser:
+            return [user.pk, 'adm']
+        elif user.groups.first():
+            grupo = user.groups.first().name
+            if grupo == 'Recepcionista':
+                recepcionista = Recepcionista.objects.get(user_id=user.pk)
+                return [recepcionista.pk, 'Recepcão']
+            elif grupo == 'Aluno':
+                aluno = Aluno.objects.get(user_id=user.pk)
+                return [aluno.pk, 'Aluno']
+            elif grupo == 'Supervisor':
                 supervisor = Supervisor.objects.get(user_id=user.pk)
-            except ObjectDoesNotExist:
-                try:
-                    aluno = Aluno.objects.get(user_id=user.pk)
-                except ObjectDoesNotExist:
-                    return [0, None]
-                else:
-                    return [aluno.pk, 'Aluno']
-            else:
                 return [supervisor.pk, 'Supervisor']
+            else:
+                return [-1, None]
         else:
             return [-1, None]
 
@@ -43,13 +44,20 @@ def recupera_usuario(user_pk, tipo):
                        'nome': supervisor.nome,
                        'setor': supervisor.setor.descricao,
                        'tipo': 'Supervisor',
-                       'adm': supervisor.user.is_superuser}
+                       'adm': False}
         elif tipo == 'Aluno':
             aluno = Aluno.objects.get(pk=user_pk)
             context = {'user_pk': user_pk,
                        'nome': aluno.nome,
                        'disciplina': aluno.disciplina.descricao,
                        'tipo': 'Aluno',
+                       'adm': False}
+        elif tipo == 'Recepcão':
+            recepcionista = Recepcionista.objects.get(pk=user_pk)
+            context = {'user_pk': user_pk,
+                       'nome': recepcionista.nome,
+                       'setor': recepcionista.setor.descricao,
+                       'tipo': 'Recepcionista',
                        'adm': False}
         else:
             context = {'user_pk': user_pk,
