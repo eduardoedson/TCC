@@ -185,12 +185,10 @@ class FisioterapiaGeriatriaAvalicaoCrud(Crud):
                 paciente_id=self.kwargs['pk']).last()
             paciente = Paciente.objects.get(id=self.kwargs['pk'])
 
-            self.initial[
-                'data_nascimento'] = paciente.data_nascimento.strftime(
-                    '%d/%m/%Y')
+            self.initial['data_nascimento'] = paciente.data_nascimento.strftime('%d/%m/%Y')
             self.initial['sexo'] = paciente.sexo
             self.initial['paciente'] = self.kwargs['pk']
-            self.initial['diagnostico_clinico'] = triagem.diagnostico
+            self.initial['diagnostico_clinico'] = triagem.diagnostico if triagem else ''
 
             return self.initial.copy()
 

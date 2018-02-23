@@ -324,8 +324,8 @@ class FisioterapiaGeriatriaAvalicao(models.Model):
     planejamento_objetivos = models.TextField(verbose_name=_('Objetivos'), blank=True)
     planejamento_tratamento = models.TextField(verbose_name=_('Tratamento'), blank=True)
 
-    estagiario = models.ForeignKey(Aluno, verbose_name=_('Estagiário'))
-    supervisor = models.ForeignKey(Supervisor, verbose_name=_('Supervisor'))
+    estagiario = models.CharField(max_length=30, blank=True, verbose_name=_('Estagiário'))
+    supervisor = models.CharField(max_length=30, blank=True, verbose_name=_('Supervisor'))
 
     class Meta:
         verbose_name = _('Avaliação de Geriatria')
