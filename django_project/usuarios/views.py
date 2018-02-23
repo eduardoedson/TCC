@@ -238,8 +238,8 @@ class FisioterapiaNeurologiaInfantilAvalicaoCrud(Crud):
 
             self.initial['data'] = datetime.now().strftime('%d/%m/%Y')
             self.initial['paciente'] = self.kwargs['pk']
-            self.initial['diagnostico'] = triagem.diagnostico
-            self.initial['queixa_principal'] = triagem.queixa_principal
+            self.initial['diagnostico'] = triagem.diagnostico if triagem else ''
+            self.initial['queixa_principal'] = triagem.queixa_principal if triagem else ''
 
             return self.initial.copy()
 
