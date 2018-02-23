@@ -92,7 +92,7 @@ class Paciente(models.Model):
     data_nascimento = models.DateField(verbose_name=_('Data de Nascimento'))
     rg = models.CharField(max_length=9, verbose_name=_('RG'))
     cpf = models.CharField(max_length=14, verbose_name=_('CPF'))
-    profissao = models.CharField(max_length=14, verbose_name=_('Profissão'), blank=True)
+    profissao = models.CharField(max_length=30, verbose_name=_('Profissão'), blank=True)
     renda = models.CharField(max_length=14, verbose_name=_('Renda Mensal'), blank=True)
     convenio = models.CharField(max_length=14, verbose_name=_('Convênio Médico'), blank=True)
 
@@ -115,11 +115,16 @@ class Paciente(models.Model):
     colaborador = models.CharField(
         max_length=10,
         verbose_name=_('Colaborador da instituição?'),
-        choices=YES_NO_CHOICES,
-        default='Não')
+        choices=YES_NO_CHOICES)
 
-    moradia = models.CharField(max_length=30, verbose_name=_('Condição da Moradia'), blank=True)
-    valor_aluguel = models.CharField(max_length=30, verbose_name=_('Se alugada, Valor'), blank=True)
+    moradia = models.CharField(max_length=30,
+        verbose_name=_('Condição da Moradia'),
+        choices=[('Alugada', _('Alugada')), ('Propria', _('Própria'))],
+        blank=True)
+    valor_aluguel = models.CharField(
+        max_length=30,
+        verbose_name=_('Se alugada, Valor'),
+        blank=True)
 
     tratamento_sus = models.CharField(
         max_length=10,

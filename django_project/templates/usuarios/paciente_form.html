@@ -10,7 +10,19 @@
       document.getElementById("id_cpf").placeholder = "___.___.___-__";
       document.getElementById("id_cep").placeholder = "__.___-___";
       document.getElementById("id_rg").placeholder = "_.___.___";
+      $('#id_valor_aluguel').prop('disabled', true);
     }
+
+    function change_input(id, cond, id_change){
+      if(document.getElementById(id).value === cond)
+        $('#' + id_change).prop('disabled', false);
+      else
+        $('#' + id_change).prop('disabled', true);
+    }
+
+    document.getElementById('id_moradia').onchange = function() {
+      change_input('id_moradia', 'Alugada', 'id_valor_aluguel');
+    };
   </script>
 
 {% endblock extra_js %}
