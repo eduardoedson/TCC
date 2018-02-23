@@ -329,7 +329,6 @@ class FisioterapiaTriagemCrud(Crud):
                         kwargs={'pk': self.kwargs['pk']})
 
         def get_initial(self):
-            medico, especialidade = get_medico(self.request.user.id)
             self.initial['data_laudo'] = datetime.now().strftime('%d/%m/%Y')
             self.initial['paciente'] = self.kwargs['pk']
             return self.initial.copy()
