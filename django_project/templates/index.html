@@ -2,6 +2,7 @@
 {% load i18n %}
 
 {% block base_content %}
+
   <div class="btn-group" style="float:right;">
     {% if tipo == 'Supervisor' %}
       <a href="{% url 'usuarios:supervisor_detail' user_pk %}" class="btn btn-primary btn-lg">Perfil</a>
@@ -33,8 +34,8 @@
   <br /><br />
 
   <div class="dropdown">
-    <button class="btn btn-primary btn-lg dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-      Sistema
+    <button class="btn btn-primary btn-lg dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Sistema&nbsp;<span class="caret"></span>
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
       <li><a href="{% url 'usuarios:aluno_list' %}">Alunos</a></li>
