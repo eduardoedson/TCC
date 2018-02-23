@@ -4,7 +4,7 @@
 {% block sub_actions %}
   <div class="actions btn-group btn-group-sm" role="group">
     <a href="{% url 'usuarios:paciente_detail' object.paciente.pk %}" class="btn btn-default">Voltar para paciente</a>
-    <a href="{% url 'usuarios:fisioterapiageriatriaavalicao_list' object.paciente.pk %}" class="btn btn-default">Listar Escalas</a>
-    <a href="{% url 'usuarios:fisioterapiageriatriaavalicao_create' object.paciente.pk %}" class="btn btn-default">Nova Escala</a>
+    <a href="{% url 'usuarios:fisioterapiaberg_list' object.paciente.pk %}" class="btn btn-default">Listar Escalas</a>
+    <a href="{% url 'usuarios:fisioterapiaberg_create' object.paciente.pk %}" class="btn btn-default">Nova Escala</a>
   </div>
 {% endblock sub_actions %}
