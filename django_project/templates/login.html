@@ -35,6 +35,9 @@
 
   <form method="post">
     {% csrf_token %}
+    {% if form.errors %}
+      <p align="center"><font color="#d30000"><b>Usuário e/ou senha incorretos.</b></font></p>
+    {% endif %}
     <div class="box2">{{form.username}}</div>
     <div class="box2">{{form.password}}</div>
     <br />
