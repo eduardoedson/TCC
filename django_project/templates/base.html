@@ -41,7 +41,7 @@
             <img height="200" width="750" src="{% static 'img/logo.png' %}" alt="image"/></a>
           </p>
         </div>
-        {% if user.is_authenticated and request.path != '/home/'%}
+        {% if user.is_authenticated and request.path != '/home/' and request.path != '/' %}
           <br />
           <p align="center"><a href="/home" class="btn btn-default  ">Página Inicial</a></p>
         {% endif %}
