@@ -319,7 +319,7 @@ class FisioterapiaGeriatriaAvalicao(models.Model):
     atividade_escada = models.CharField(max_length=20, verbose_name=_('Escada'), choices=[('00', _('00')), ('05', _('05')), ('10', _('10'))], default='00')
     atividade_fecal = models.CharField(max_length=20, verbose_name=_('Controle Fecal'), choices=[('00', _('00')), ('05', _('05')), ('10', _('10'))], default='00')
     atividade_urinario = models.CharField(max_length=20, verbose_name=_('Controle Urinário'), choices=[('00', _('00')), ('05', _('05')), ('10', _('10'))], default='00')
-    atividade_total = models.CharField(max_length=30, verbose_name=_('Total de Pontos'), blank=True)
+    atividade_total = models.CharField(max_length=80, verbose_name=_('Total de Pontos'), blank=True)
 
     planejamento_objetivos = models.TextField(verbose_name=_('Objetivos'), blank=True)
     planejamento_tratamento = models.TextField(verbose_name=_('Tratamento'), blank=True)
