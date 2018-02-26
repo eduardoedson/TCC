@@ -700,8 +700,8 @@ class FisioterapiaAvaliacaoGestacional(models.Model):
 
 
 class FisioterapiaAvaliacaoMasculina(models.Model):
-    data = models.DateField(verbose_name=_('Data da Avaliação'), blank=True)
-    data_atendimento = models.DateField(verbose_name=_('Data do Atendimento'), blank=True)
+    data = models.DateField(verbose_name=_('Data da Avaliação'))
+    data_atendimento = models.DateField(verbose_name=_('Data do Atendimento'))
     paciente = models.ForeignKey(Paciente, verbose_name=_('Nome'))
     registro = models.CharField(max_length=40, verbose_name=_('Registro'), blank=True)
     data_nascimento = models.DateField(verbose_name=_('Data de Nascimento'), blank=True)
