@@ -454,7 +454,7 @@ class RecepcionistaCrud(Crud):
 
     class CreateView(crud.base.CrudCreateView, GroupRequiredMixin):
         form_class = RecepcionistaForm
-        group_required = ['Recepcionista']
+        group_required = ['Recepcionista', 'Supervisor']
 
     class UpdateView(crud.base.CrudUpdateView):
         form_class = RecepcionistaEditForm
