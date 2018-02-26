@@ -915,12 +915,12 @@ class FisioterapiaAcidenteVascularEncefalico(models.Model):
 
     medicamentos_utilizados = models.TextField(verbose_name=_('Medicamentos Utilizados'), blank=True)
 
-    patologias_hipertensao = models.CharField(max_length=1, verbose_name=_('Hipertensão Arterial'), choices=YES_NO_CHOICES, blank=True)
-    patologias_cardiopatias = models.CharField(max_length=1, verbose_name=_('Cardiopatias'), choices=YES_NO_CHOICES, blank=True)
-    patologias_diabetes = models.CharField(max_length=1, verbose_name=_('Diabetes'), choices=YES_NO_CHOICES, blank=True)
-    patologias_articular = models.CharField(max_length=1, verbose_name=_('Comprometimento Articular'), choices=YES_NO_CHOICES, blank=True)
-    patologias_alergias = models.CharField(max_length=1, verbose_name=_('Alergias'), choices=YES_NO_CHOICES, blank=True)
-    patologias_dor = models.CharField(max_length=1, verbose_name=_('Dor'), choices=YES_NO_CHOICES, blank=True)
+    patologias_hipertensao = models.CharField(max_length=3, verbose_name=_('Hipertensão Arterial'), choices=YES_NO_CHOICES, blank=True)
+    patologias_cardiopatias = models.CharField(max_length=3, verbose_name=_('Cardiopatias'), choices=YES_NO_CHOICES, blank=True)
+    patologias_diabetes = models.CharField(max_length=3, verbose_name=_('Diabetes'), choices=YES_NO_CHOICES, blank=True)
+    patologias_articular = models.CharField(max_length=3, verbose_name=_('Comprometimento Articular'), choices=YES_NO_CHOICES, blank=True)
+    patologias_alergias = models.CharField(max_length=3, verbose_name=_('Alergias'), choices=YES_NO_CHOICES, blank=True)
+    patologias_dor = models.CharField(max_length=3, verbose_name=_('Dor'), choices=YES_NO_CHOICES, blank=True)
     patologias_outras = models.TextField(verbose_name=_('Outras'), blank=True)
     patologias_cirurgico = models.TextField(verbose_name=_('Antecedentes Cirúrgicos'), blank=True)
 
