@@ -1759,7 +1759,7 @@ class FisioterapiaOrtopediaReavaliacao(models.Model):
 
 
 class FisioterapiaOrtopediaAvaliacao(models.Model):
-    data = models.DateField(verbose_name=_('Data da Avaliação'), blank=True)
+    data = models.DateField(verbose_name=_('Data da Avaliação'))
 
     paciente = models.ForeignKey(Paciente, verbose_name=_('Nome'))
     sexo = models.CharField(max_length=1, verbose_name=_('Sexo'), choices=RANGE_SEXO)
