@@ -274,8 +274,8 @@ class FisioterapiaGeriatriaAvalicao(models.Model):
     idade = models.CharField(max_length=50, verbose_name=_('Idade'), blank=True)
     sexo = models.CharField(max_length=1, verbose_name=_('Sexo'), choices=RANGE_SEXO, blank=True)
     data_nascimento = models.DateField(verbose_name=_('Data de Nascimento'), blank=True)
-    data_admissao = models.DateField(verbose_name=_('Data da Admissão'), blank=True)
-    data_avaliacao = models.DateField(verbose_name=_('Data da Avaliação'), blank=True)
+    data_admissao = models.DateField(verbose_name=_('Data da Admissão'), blank=True, null=True)
+    data_avaliacao = models.DateField(verbose_name=_('Data da Avaliação'))
 
     diagnostico_clinico = models.TextField(verbose_name=_('Diagnóstico Clínico'), blank=True)
     diagnostico_fisioterapeutico = models.TextField(verbose_name=_('Diagnóstico Fisioterapêutico'), blank=True)
