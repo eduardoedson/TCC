@@ -604,7 +604,7 @@ class FisioterapiaAvaliacaoGestacional(models.Model):
     gestacional_dum = models.CharField(max_length=40, verbose_name=_('DUM'), blank=True)
     gestacional_dpp = models.CharField(max_length=40, verbose_name=_('DPP'), blank=True)
     gestacional_idade = models.CharField(max_length=40, verbose_name=_('Idade Gestacional'), blank=True)
-    gestacional_data = models.DateField(verbose_name=_('Data dos Primeiros Movimentos Fetais'), blank=True)
+    gestacional_data = models.DateField(verbose_name=_('Data dos Primeiros Movimentos Fetais'), blank=True, null=True)
 
     antecedentes_idade_menarca = models.CharField(max_length=40, verbose_name=_('Idade da Menarca (Anos)'), blank=True)
     antecedentes_idade_sexual = models.CharField(max_length=40, verbose_name=_('Idade de Início da Atiidade Sexual (Anos)'), blank=True)
