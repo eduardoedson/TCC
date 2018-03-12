@@ -153,7 +153,7 @@ class FisioterapiaTriagem(models.Model):
     data_triagem = models.DateField(auto_now_add=True, verbose_name=_('Data Triagem'), blank=True)
     data_laudo = models.DateField(verbose_name=_('Data Laudo Médico'), blank=True)
 
-    area_atendimento = models.ForeignKey(AreaAtendimento, verbose_name=_('Área de Atendimento'), blank=True)
+    area_atendimento = models.ForeignKey(AreaAtendimento, verbose_name=_('Área de Atendimento'))
     paciente = models.ForeignKey(Paciente, verbose_name=_('Paciente'), blank=True)
 
     avds_independente = models.CharField(max_length=30, verbose_name=_('AVD\'S Independente'), blank=True)
