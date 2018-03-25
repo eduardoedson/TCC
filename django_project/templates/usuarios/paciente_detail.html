@@ -22,52 +22,126 @@
   </div>
 
   <br /><br /><br />
+  <div class="btn-group">
+    <div class="dropdown">
+      <div class="btn-group">
+      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Biomedicina&nbsp;<span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a tabindex="-1" href="">Triagem</a></li>
+        <li><a tabindex="-1" href="">Evolução</a></li>
+      </ul>
+    </div>
 
-  <div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Fisioterapia&nbsp;<span class="caret"></span></button>
-  <ul class="dropdown-menu">
-    <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaevolucao_list' object.pk %}">Evolução</a></li>
-    <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiatriagem_list' object.pk %}">Triagem</a></li>
-    <li class="dropdown-submenu">
-      <a class="test" tabindex="-1" href="#">Geriatria</a>
+    <div class="btn-group">
+      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Educação Física&nbsp;<span class="caret"></span></button>
       <ul class="dropdown-menu">
-        <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiageriatriaavalicao_list' object.pk %}">Avaliação</a></li>
-        <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaberg_list' object.pk %}">Escala de Equilíbrio Funcional de Berg</a></li>
-        <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiageriatriaanamnese_list' object.pk %}">Ficha de Avaliação / Anamnese</a></li>
+        <li><a tabindex="-1" href="">Triagem</a></li>
+        <li><a tabindex="-1" href="">Evolução</a></li>
       </ul>
-    </li>
-    <li class="dropdown-submenu">
-      <a class="test" tabindex="-1" href="#">Neurologia Adulto</a>
+    </div>
+
+    <div class="btn-group">
+      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Enfermagem&nbsp;<span class="caret"></span></button>
       <ul class="dropdown-menu">
-        <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaacidentevascularencefalico_list' object.pk %}">Avaliação AVE</a></li>
-        <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaesclerosemultipla_list' object.pk %}">Avaliação Esclerose Múltipla</a></li>
-        <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaparalisiafacial_list' object.pk %}">Avaliação Paralisia Facial</a></li>
-        <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaparkinson_list' object.pk %}">Avaliação Parkinson</a></li>
-        <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiatrm_list' object.pk %}">Avaliação TRM</a></li>
-        <li><a tabindex="-1" href="{% url 'usuarios:fisioterapianeurologica_list' object.pk %}">Ficha Base</a></li>
+        <li><a tabindex="-1" href="">Triagem</a></li>
+        <li><a tabindex="-1" href="">Evolução</a></li>
       </ul>
-    </li>
-    <li class="dropdown-submenu">
-      <a class="test" tabindex="-1" href="#">Neurologia Infantil</a>
+    </div>
+
+    <div class="btn-group">
+      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Enfermagem&nbsp;<span class="caret"></span></button>
       <ul class="dropdown-menu">
-        <li><a tabindex="-1" href="{% url 'usuarios:fisioterapianeurologiainfantilavalicao_list' object.pk %}">Avaliação Fisioterápica em Neuropediatria</a></li>
+        <li><a tabindex="-1" href="">Triagem</a></li>
+        <li><a tabindex="-1" href="">Evolução</a></li>
       </ul>
-    </li>
-    <li class="dropdown-submenu">
-      <a class="test" tabindex="-1" href="#">Ortopedia</a>
+    </div>
+
+    <div class="btn-group">
+      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Farmácia&nbsp;<span class="caret"></span></button>
       <ul class="dropdown-menu">
-        <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaortopediaavaliacao_list' object.pk %}">Ficha de Avaliação</a></li>
-        <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaortopediareavaliacao_list' object.pk %}">Ficha de Reavaliação</a></li>
+        <li><a tabindex="-1" href="">Triagem</a></li>
+        <li><a tabindex="-1" href="">Evolução</a></li>
       </ul>
-    </li>
-    <li class="dropdown-submenu">
-      <a class="test" tabindex="-1" href="#">Uroginecologia</a>
+    </div>
+
+    <div class="btn-group">
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Fisioterapia&nbsp;<span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiatriagem_list' object.pk %}">Triagem</a></li>
+      <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaevolucao_list' object.pk %}">Evolução</a></li>
+      <li class="dropdown-submenu">
+        <a class="test" tabindex="-1" href="#">Geriatria</a>
+        <ul class="dropdown-menu">
+          <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiageriatriaavalicao_list' object.pk %}">Avaliação</a></li>
+          <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaberg_list' object.pk %}">Escala de Equilíbrio Funcional de Berg</a></li>
+          <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiageriatriaanamnese_list' object.pk %}">Ficha de Avaliação / Anamnese</a></li>
+        </ul>
+      </li>
+      <li class="dropdown-submenu">
+        <a class="test" tabindex="-1" href="#">Neurologia Adulto</a>
+        <ul class="dropdown-menu">
+          <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaacidentevascularencefalico_list' object.pk %}">Avaliação AVE</a></li>
+          <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaesclerosemultipla_list' object.pk %}">Avaliação Esclerose Múltipla</a></li>
+          <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaparalisiafacial_list' object.pk %}">Avaliação Paralisia Facial</a></li>
+          <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaparkinson_list' object.pk %}">Avaliação Parkinson</a></li>
+          <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiatrm_list' object.pk %}">Avaliação TRM</a></li>
+          <li><a tabindex="-1" href="{% url 'usuarios:fisioterapianeurologica_list' object.pk %}">Ficha Base</a></li>
+        </ul>
+      </li>
+      <li class="dropdown-submenu">
+        <a class="test" tabindex="-1" href="#">Neurologia Infantil</a>
+        <ul class="dropdown-menu">
+          <li><a tabindex="-1" href="{% url 'usuarios:fisioterapianeurologiainfantilavalicao_list' object.pk %}">Avaliação Fisioterápica em Neuropediatria</a></li>
+        </ul>
+      </li>
+      <li class="dropdown-submenu">
+        <a class="test" tabindex="-1" href="#">Ortopedia</a>
+        <ul class="dropdown-menu">
+          <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaortopediaavaliacao_list' object.pk %}">Ficha de Avaliação</a></li>
+          <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaortopediareavaliacao_list' object.pk %}">Ficha de Reavaliação</a></li>
+        </ul>
+      </li>
+      <li class="dropdown-submenu">
+        <a class="test" tabindex="-1" href="#">Uroginecologia</a>
+        <ul class="dropdown-menu">
+          <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaavaliacaogestacional_list' object.pk %}">Avaliação Fisioterapêutica Gestacional</a></li>
+          <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaavaliacaomasculina_list' object.pk %}">Avaliação de Incontinência Urinária Masculina</a></li>
+          <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaavaliacaofeminina_list' object.pk %}">Avaliação de Incontinência Urinária Feminina</a></li>
+        </ul>
+      </li>
+    </ul>
+    </div>
+
+    <div class="btn-group">
+      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Medicina&nbsp;<span class="caret"></span></button>
       <ul class="dropdown-menu">
-        <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaavaliacaogestacional_list' object.pk %}">Avaliação Fisioterapêutica Gestacional</a></li>
-        <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaavaliacaomasculina_list' object.pk %}">Avaliação de Incontinência Urinária Masculina</a></li>
-        <li><a tabindex="-1" href="{% url 'usuarios:fisioterapiaavaliacaofeminina_list' object.pk %}">Avaliação de Incontinência Urinária Feminina</a></li>
+        <li><a tabindex="-1" href="">Triagem</a></li>
+        <li><a tabindex="-1" href="">Evolução</a></li>
       </ul>
-    </li>
-  </ul>
-</div>
+    </div>
+
+    <div class="btn-group">
+      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Nutrição&nbsp;<span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a tabindex="-1" href="">Triagem</a></li>
+        <li><a tabindex="-1" href="">Evolução</a></li>
+      </ul>
+    </div>
+
+    <div class="btn-group">
+      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Odontologia&nbsp;<span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a tabindex="-1" href="">Triagem</a></li>
+        <li><a tabindex="-1" href="">Evolução</a></li>
+      </ul>
+    </div>
+
+    <div class="btn-group">
+      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Psicologia&nbsp;<span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a tabindex="-1" href="">Triagem</a></li>
+        <li><a tabindex="-1" href="">Evolução</a></li>
+      </ul>
+    </div>
+  </div>
 {% endblock sub_actions %}
