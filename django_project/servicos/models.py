@@ -20,7 +20,7 @@ class Setor(models.Model):
 class Disciplina(models.Model):
     setor = models.ForeignKey(Setor, verbose_name=_('Curso'))
     descricao = models.CharField(
-        max_length=30, verbose_name=('Nome da Disciplina'), unique=True)
+        max_length=50, verbose_name=('Nome da Disciplina'))
 
     class Meta:
         verbose_name = _('Disciplina')

@@ -1,6 +1,50 @@
 from blessings import Terminal
 
 
+def criar_setor_biomedicina(sender, **kwargs):
+    from servicos.models import Setor
+
+    Setor.objects.get_or_create(
+        descricao='Biomedicina',
+        nome='Clínica Escola de Biomedicina')
+
+    t = Terminal()
+    print (t.red('\nSetor \'Biomedicina\' criado!'))
+
+
+def criar_setor_educacao_fisica(sender, **kwargs):
+    from servicos.models import Setor
+
+    Setor.objects.get_or_create(
+        descricao='Educação Física',
+        nome='Clínica Escola de Educação Física')
+
+    t = Terminal()
+    print (t.red('\nSetor \'Educação Física\' criado!'))
+
+
+def criar_setor_enfermagem(sender, **kwargs):
+    from servicos.models import Setor
+
+    Setor.objects.get_or_create(
+        descricao='Enfermagem',
+        nome='Clínica Escola de Enfermagem')
+
+    t = Terminal()
+    print (t.red('\nSetor \'Enfermagem\' criado!'))
+
+
+def criar_setor_farmacia(sender, **kwargs):
+    from servicos.models import Setor
+
+    Setor.objects.get_or_create(
+        descricao='Farmácia',
+        nome='Clínica Escola de Farmácia')
+
+    t = Terminal()
+    print (t.red('\nSetor \'Farmácia\' criado!'))
+
+
 def criar_setor_fisioterapia(sender, **kwargs):
     from servicos.models import Setor
 
@@ -12,25 +56,124 @@ def criar_setor_fisioterapia(sender, **kwargs):
     print (t.red('\nSetor \'Fisioterapia\' criado!'))
 
 
-def criar_areas_fisioterapia(sender, **kwargs):
-    from servicos.models import AreaAtendimento, Setor
+def criar_setor_medicina(sender, **kwargs):
+    from servicos.models import Setor
 
-    areas = [
-        'Geriatria',
-        'Neurologia Adulto',
-        'Neurologia Infantil',
-        'Ortopedia',
-        'Uroginecologia',
-    ]
-    setor = Setor.objects.get(descricao='Fisioterapia')
-
-    for area in areas:
-        AreaAtendimento.objects.get_or_create(setor=setor, descricao=area)
+    Setor.objects.get_or_create(
+        descricao='Medicina',
+        nome='Clínica Escola de Medicina')
 
     t = Terminal()
-    print (t.green('\nAs seguintes áreas de atendimento de Fisioterapia foram criadas:'))
-    for area in AreaAtendimento.objects.all():
-        print (t.green('  - ' + area.descricao))
+    print (t.red('\nSetor \'Medicina\' criado!'))
+
+
+def criar_setor_nutricao(sender, **kwargs):
+    from servicos.models import Setor
+
+    Setor.objects.get_or_create(
+        descricao='Nutrição',
+        nome='Clínica Escola de Nutrição')
+
+    t = Terminal()
+    print (t.red('\nSetor \'Nutrição\' criado!'))
+
+
+def criar_setor_odontologia(sender, **kwargs):
+    from servicos.models import Setor
+
+    Setor.objects.get_or_create(
+        descricao='Odontologia',
+        nome='Clínica Escola de Odontologia')
+
+    t = Terminal()
+    print (t.red('\nSetor \'Odontologia\' criado!'))
+
+
+def criar_setor_psicologia(sender, **kwargs):
+    from servicos.models import Setor
+
+    Setor.objects.get_or_create(
+        descricao='Psicologia',
+        nome='Clínica Escola de Psicologia')
+
+    t = Terminal()
+    print (t.red('\nSetor \'Psicologia\' criado!'))
+
+
+def criar_disciplinas_biomedicina(sender, **kwargs):
+    from servicos.models import Disciplina, Setor
+
+    disciplinas = [
+        'Saúde Coletiva I',
+        'Saúde Coletiva II',
+        'Saúde Coletiva III',
+    ]
+    setor = Setor.objects.get(descricao='Biomedicina')
+
+    for disciplina in disciplinas:
+        Disciplina.objects.get_or_create(setor=setor, descricao=disciplina)
+
+    t = Terminal()
+    print (t.blue('\nAs seguintes disciplinas de Biomedicina foram criadas:'))
+    for disciplina in Disciplina.objects.filter(setor__descricao='Biomedicina'):
+        print (t.blue('  - ' + disciplina.descricao))
+
+
+def criar_disciplinas_educacao_fisica(sender, **kwargs):
+    from servicos.models import Disciplina, Setor
+
+    disciplinas = [
+        'Estágio Supervisonado I',
+        'Estágio Supervisonado II',
+        'Estágio Supervisonado III',
+    ]
+    setor = Setor.objects.get(descricao='Educação Física')
+
+    for disciplina in disciplinas:
+        Disciplina.objects.get_or_create(setor=setor, descricao=disciplina)
+
+    t = Terminal()
+    print (t.blue('\nAs seguintes disciplinas de Educação Física foram criadas:'))
+    for disciplina in Disciplina.objects.filter(setor__descricao='Educação Física'):
+        print (t.blue('  - ' + disciplina.descricao))
+
+
+def criar_disciplinas_enfermagem(sender, **kwargs):
+    from servicos.models import Disciplina, Setor
+
+    disciplinas = [
+        'Estágio Supervisonado I',
+        'Estágio Supervisonado II',
+        'Estágio Supervisonado III',
+    ]
+    setor = Setor.objects.get(descricao='Enfermagem')
+
+    for disciplina in disciplinas:
+        Disciplina.objects.get_or_create(setor=setor, descricao=disciplina)
+
+    t = Terminal()
+    print (t.blue('\nAs seguintes disciplinas de Enfermagem foram criadas:'))
+    for disciplina in Disciplina.objects.filter(setor__descricao='Enfermagem'):
+        print (t.blue('  - ' + disciplina.descricao))
+
+
+def criar_disciplinas_farmacia(sender, **kwargs):
+    from servicos.models import Disciplina, Setor
+
+    disciplinas = [
+        'Estágio Supervisonado I',
+        'Estágio Supervisonado II',
+        'Estágio Supervisonado III',
+    ]
+    setor = Setor.objects.get(descricao='Farmácia')
+
+    for disciplina in disciplinas:
+        Disciplina.objects.get_or_create(setor=setor, descricao=disciplina)
+
+    t = Terminal()
+    print (t.blue('\nAs seguintes disciplinas de Farmácia foram criadas:'))
+    for disciplina in Disciplina.objects.filter(setor__descricao='Farmácia'):
+        print (t.blue('  - ' + disciplina.descricao))
 
 
 def criar_disciplinas_fisioterapia(sender, **kwargs):
@@ -50,7 +193,83 @@ def criar_disciplinas_fisioterapia(sender, **kwargs):
 
     t = Terminal()
     print (t.blue('\nAs seguintes disciplinas de Fisioterapia foram criadas:'))
-    for disciplina in Disciplina.objects.all():
+    for disciplina in Disciplina.objects.filter(setor__descricao='Fisioterapia'):
+        print (t.blue('  - ' + disciplina.descricao))
+
+
+def criar_disciplinas_medicina(sender, **kwargs):
+    from servicos.models import Disciplina, Setor
+
+    disciplinas = [
+        'Prática em Clínica Cirurgica I',
+        'Prática em Clínica Cirurgica II',
+        'Prática em Clínica Cirurgica III',
+    ]
+    setor = Setor.objects.get(descricao='Medicina')
+
+    for disciplina in disciplinas:
+        Disciplina.objects.get_or_create(setor=setor, descricao=disciplina)
+
+    t = Terminal()
+    print (t.blue('\nAs seguintes disciplinas de Medicina foram criadas:'))
+    for disciplina in Disciplina.objects.filter(setor__descricao='Medicina'):
+        print (t.blue('  - ' + disciplina.descricao))
+
+
+def criar_disciplinas_nutricao(sender, **kwargs):
+    from servicos.models import Disciplina, Setor
+
+    disciplinas = [
+        'Estágio Supervisonado I',
+        'Estágio Supervisonado II',
+        'Estágio Supervisonado III',
+    ]
+    setor = Setor.objects.get(descricao='Nutrição')
+
+    for disciplina in disciplinas:
+        Disciplina.objects.get_or_create(setor=setor, descricao=disciplina)
+
+    t = Terminal()
+    print (t.blue('\nAs seguintes disciplinas de Nutrição foram criadas:'))
+    for disciplina in Disciplina.objects.filter(setor__descricao='Nutrição'):
+        print (t.blue('  - ' + disciplina.descricao))
+
+
+def criar_disciplinas_odontologia(sender, **kwargs):
+    from servicos.models import Disciplina, Setor
+
+    disciplinas = [
+        'Estágio Supervisonado I',
+        'Estágio Supervisonado II',
+        'Estágio Supervisonado III',
+    ]
+    setor = Setor.objects.get(descricao='Odontologia')
+
+    for disciplina in disciplinas:
+        Disciplina.objects.get_or_create(setor=setor, descricao=disciplina)
+
+    t = Terminal()
+    print (t.blue('\nAs seguintes disciplinas de Odontologia foram criadas:'))
+    for disciplina in Disciplina.objects.filter(setor__descricao='Odontologia'):
+        print (t.blue('  - ' + disciplina.descricao))
+
+
+def criar_disciplinas_psicologia(sender, **kwargs):
+    from servicos.models import Disciplina, Setor
+
+    disciplinas = [
+        'Psicologia Social I',
+        'Psicologia Social II',
+        'Psicologia Social III',
+    ]
+    setor = Setor.objects.get(descricao='Psicologia')
+
+    for disciplina in disciplinas:
+        Disciplina.objects.get_or_create(setor=setor, descricao=disciplina)
+
+    t = Terminal()
+    print (t.blue('\nAs seguintes disciplinas de Psicologia foram criadas:'))
+    for disciplina in Disciplina.objects.filter(setor__descricao='Psicologia'):
         print (t.blue('  - ' + disciplina.descricao))
 
 
