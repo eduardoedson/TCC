@@ -146,7 +146,7 @@ class Paciente(models.Model):
         ordering = ['nome', 'data_cadastro']
 
     def __str__(self):
-        return self.nome
+        return self.nome + '  (' + self.cpf + ')'
 
 
 class FisioterapiaTriagem(models.Model):
