@@ -32,6 +32,10 @@ from .models import (Aluno, FisioterapiaAcidenteVascularEncefalico,
                      Recepcionista, Supervisor)
 
 
+def get_paciente_nome(pk):
+    return Paciente.objects.get(id=pk).nome
+
+
 def get_medico(pk):
     try:
         supervisor = Supervisor.objects.get(user_id=pk)
@@ -66,13 +70,14 @@ class FisioterapiaGeriatriaAnamneseCrud(Crud):
         def get_context_data(self, **kwargs):
             context = super(crud.base.CrudListView, self).get_context_data(
                 **kwargs)
+
             context['NO_ENTRIES_MSG'] = 'Nenhuma ficha encontrada.'
             context['pk'] = self.kwargs['pk']
-            context['title'] = 'Ficha de Avaliação / Anamnese'
+            context['title'] = 'Ficha de Avaliação/Anamnese (' + get_paciente_nome(self.kwargs['pk']) + ')'
             context['headers'] = self.get_headers()
             context['rows'] = self.get_rows(
-                    FisioterapiaGeriatriaAnamnese.objects.filter(
-                        paciente_id=self.kwargs['pk']))
+                FisioterapiaGeriatriaAnamnese.objects.filter(
+                    paciente_id=self.kwargs['pk']))
             return context
 
     class CreateView(crud.base.CrudCreateView):
@@ -116,7 +121,7 @@ class FisioterapiaBergCrud(Crud):
                 **kwargs)
             context['NO_ENTRIES_MSG'] = 'Nenhuma ficha encontrada.'
             context['pk'] = self.kwargs['pk']
-            context['title'] = 'Escala de Equilíbrio Funcional de Berg'
+            context['title'] = 'Escala de Equilíbrio Funcional de Berg (' + get_paciente_nome(self.kwargs['pk']) + ')'
             context['headers'] = self.get_headers()
             context['rows'] = self.get_rows(
                     FisioterapiaBerg.objects.filter(
@@ -163,7 +168,7 @@ class FisioterapiaGeriatriaAvalicaoCrud(Crud):
                 **kwargs)
             context['NO_ENTRIES_MSG'] = 'Nenhuma ficha encontrada.'
             context['pk'] = self.kwargs['pk']
-            context['title'] = 'Avaliação de Geriatria'
+            context['title'] = 'Avaliação de Geriatria (' + get_paciente_nome(self.kwargs['pk']) + ')'
             context['headers'] = self.get_headers()
             context['rows'] = self.get_rows(
                     FisioterapiaGeriatriaAvalicao.objects.filter(
@@ -214,7 +219,7 @@ class FisioterapiaNeurologiaInfantilAvalicaoCrud(Crud):
                 **kwargs)
             context['NO_ENTRIES_MSG'] = 'Nenhuma ficha encontrada.'
             context['pk'] = self.kwargs['pk']
-            context['title'] = 'Avaliação Fisioterápica em Neuropediatria'
+            context['title'] = 'Avaliação Fisioterápica em Neuropediatria (' + get_paciente_nome(self.kwargs['pk']) + ')'
             context['headers'] = self.get_headers()
             context['rows'] = self.get_rows(
                     FisioterapiaNeurologiaInfantilAvalicao.objects.filter(
@@ -266,7 +271,7 @@ class FisioterapiaEvolucaoCrud(Crud):
                 **kwargs)
             context['NO_ENTRIES_MSG'] = 'Nenhuma ficha encontrada.'
             context['pk'] = self.kwargs['pk']
-            context['title'] = 'Evolução de Fisioterapia'
+            context['title'] = 'Evolução de Fisioterapia (' + get_paciente_nome(self.kwargs['pk']) + ')'
             context['headers'] = self.get_headers()
             context['rows'] = self.get_rows(
                     FisioterapiaEvolucao.objects.filter(
@@ -311,7 +316,7 @@ class FisioterapiaTriagemCrud(Crud):
                 **kwargs)
             context['NO_ENTRIES_MSG'] = 'Nenhuma ficha encontrada.'
             context['pk'] = self.kwargs['pk']
-            context['title'] = 'Triagem de Fisioterapia'
+            context['title'] = 'Triagem de Fisioterapia (' + get_paciente_nome(self.kwargs['pk']) + ')'
             context['headers'] = self.get_headers()
             context['rows'] = self.get_rows(
                     FisioterapiaTriagem.objects.filter(
@@ -499,7 +504,7 @@ class FisioterapiaAvaliacaoGestacionalCrud(Crud):
                 **kwargs)
             context['NO_ENTRIES_MSG'] = 'Nenhuma ficha encontrada.'
             context['pk'] = self.kwargs['pk']
-            context['title'] = 'Avaliação Fisioterapêutica Gestacional'
+            context['title'] = 'Avaliação Fisioterapêutica Gestacional (' + get_paciente_nome(self.kwargs['pk']) + ')'
             context['headers'] = self.get_headers()
             context['rows'] = self.get_rows(
                     FisioterapiaAvaliacaoGestacional.objects.filter(
@@ -546,7 +551,7 @@ class FisioterapiaAvaliacaoMasculinaCrud(Crud):
                 **kwargs)
             context['NO_ENTRIES_MSG'] = 'Nenhuma ficha encontrada.'
             context['pk'] = self.kwargs['pk']
-            context['title'] = 'Avaliação de Incontinência Urinária Masculina'
+            context['title'] = 'Avaliação de Incontinência Urinária Masculina (' + get_paciente_nome(self.kwargs['pk']) + ')'
             context['headers'] = self.get_headers()
             context['rows'] = self.get_rows(
                     FisioterapiaAvaliacaoMasculina.objects.filter(
@@ -593,7 +598,7 @@ class FisioterapiaAvaliacaoFemininaCrud(Crud):
                 **kwargs)
             context['NO_ENTRIES_MSG'] = 'Nenhuma ficha encontrada.'
             context['pk'] = self.kwargs['pk']
-            context['title'] = 'Avaliação de Incontinência Urinária Feminina'
+            context['title'] = 'Avaliação de Incontinência Urinária Feminina (' + get_paciente_nome(self.kwargs['pk']) + ')'
             context['headers'] = self.get_headers()
             context['rows'] = self.get_rows(
                     FisioterapiaAvaliacaoFeminina.objects.filter(
@@ -639,7 +644,7 @@ class FisioterapiaAcidenteVascularEncefalicoCrud(Crud):
                 **kwargs)
             context['NO_ENTRIES_MSG'] = 'Nenhuma ficha encontrada.'
             context['pk'] = self.kwargs['pk']
-            context['title'] = 'Avaliação Acidente Vascular Encefálico'
+            context['title'] = 'Avaliação Acidente Vascular Encefálico (' + get_paciente_nome(self.kwargs['pk']) + ')'
             context['headers'] = self.get_headers()
             context['rows'] = self.get_rows(
                     FisioterapiaAcidenteVascularEncefalico.objects.filter(
@@ -686,7 +691,7 @@ class FisioterapiaEscleroseMultiplaCrud(Crud):
                 **kwargs)
             context['NO_ENTRIES_MSG'] = 'Nenhuma ficha encontrada.'
             context['pk'] = self.kwargs['pk']
-            context['title'] = 'Avaliação Esclerose Múltipla'
+            context['title'] = 'Avaliação Esclerose Múltipla (' + get_paciente_nome(self.kwargs['pk']) + ')'
             context['headers'] = self.get_headers()
             context['rows'] = self.get_rows(
                     FisioterapiaEscleroseMultipla.objects.filter(
@@ -733,7 +738,7 @@ class FisioterapiaTRMCrud(Crud):
                 **kwargs)
             context['NO_ENTRIES_MSG'] = 'Nenhuma ficha encontrada.'
             context['pk'] = self.kwargs['pk']
-            context['title'] = 'Avaliação TRM'
+            context['title'] = 'Avaliação TRM (' + get_paciente_nome(self.kwargs['pk']) + ')'
             context['headers'] = self.get_headers()
             context['rows'] = self.get_rows(
                     FisioterapiaTRM.objects.filter(
@@ -782,7 +787,7 @@ class FisioterapiaNeurologicaCrud(Crud):
                 **kwargs)
             context['NO_ENTRIES_MSG'] = 'Nenhuma ficha encontrada.'
             context['pk'] = self.kwargs['pk']
-            context['title'] = 'Avaliação Neurológica'
+            context['title'] = 'Avaliação Neurológica (' + get_paciente_nome(self.kwargs['pk']) + ')'
             context['headers'] = self.get_headers()
             context['rows'] = self.get_rows(
                     FisioterapiaNeurologica.objects.filter(
@@ -829,7 +834,7 @@ class FisioterapiaParkinsonCrud(Crud):
                 **kwargs)
             context['NO_ENTRIES_MSG'] = 'Nenhuma ficha encontrada.'
             context['pk'] = self.kwargs['pk']
-            context['title'] = 'Avaliação Parkinson'
+            context['title'] = 'Avaliação Parkinson (' + get_paciente_nome(self.kwargs['pk']) + ')'
             context['headers'] = self.get_headers()
             context['rows'] = self.get_rows(
                     FisioterapiaParkinson.objects.filter(
@@ -881,7 +886,7 @@ class FisioterapiaParalisiaFacialCrud(Crud):
                 **kwargs)
             context['NO_ENTRIES_MSG'] = 'Nenhuma ficha encontrada.'
             context['pk'] = self.kwargs['pk']
-            context['title'] = 'Avaliação Paralisia Facil'
+            context['title'] = 'Avaliação Paralisia Facil (' + get_paciente_nome(self.kwargs['pk']) + ')'
             context['headers'] = self.get_headers()
             context['rows'] = self.get_rows(
                     FisioterapiaParalisiaFacial.objects.filter(
@@ -927,7 +932,7 @@ class FisioterapiaOrtopediaReavaliacaoCrud(Crud):
                 **kwargs)
             context['NO_ENTRIES_MSG'] = 'Nenhuma ficha encontrada.'
             context['pk'] = self.kwargs['pk']
-            context['title'] = 'Ficha de Reavaliação'
+            context['title'] = 'Ficha de Reavaliação (' + get_paciente_nome(self.kwargs['pk']) + ')'
             context['headers'] = self.get_headers()
             context['rows'] = self.get_rows(
                     FisioterapiaOrtopediaReavaliacao.objects.filter(
@@ -972,7 +977,7 @@ class FisioterapiaOrtopediaAvaliacaoCrud(Crud):
                 **kwargs)
             context['NO_ENTRIES_MSG'] = 'Nenhuma ficha encontrada.'
             context['pk'] = self.kwargs['pk']
-            context['title'] = 'Ficha de Avaliação'
+            context['title'] = 'Ficha de Avaliação (' + get_paciente_nome(self.kwargs['pk']) + ')'
             context['headers'] = self.get_headers()
             context['rows'] = self.get_rows(
                     FisioterapiaOrtopediaAvaliacao.objects.filter(
