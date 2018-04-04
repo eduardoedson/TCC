@@ -22,16 +22,18 @@
   </style>
 
   <fieldset>
-    <legend style="text-align: center;">Prontuário Único UCB</legend>
-    <form method="post">
-      {% csrf_token %}
-      {% if msg %}<font color="red" ><p style="font-size:23px; text-align:center;">{{msg}}<br /><br /></font>{% endif %}
-      <div class="box2">{{form.nova_senha}}</div>
-      <br />
-      <div class="box2">{{form.confirmar_senha}}</div>
-      <br />
-      <input class="btn btn-primary btn-block" type="submit" value="Salvar" />
-    </form>
+    <legend style="text-align: center;">Mudar Senha</legend>
+    <div class="form">
+      <form method="post">
+        {% csrf_token %}
+        {% if msg %}<font color="red" ><p style="font-size:23px; text-align:center;">{{msg}}<br /><br /></font>{% endif %}
+        <div class="box2">{{form.nova_senha}}</div>
+        <br />
+        <div class="box2">{{form.confirmar_senha}}</div>
+        <br />
+        <input class="btn btn-primary btn-block" type="submit" value="Salvar" />
+      </form>
+    </div>
   </fieldset>
 
 {% endblock %}
