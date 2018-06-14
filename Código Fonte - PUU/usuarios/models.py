@@ -554,11 +554,11 @@ class FisioterapiaGeriatriaAnamnese(models.Model):
     atividade_fisica_qual = models.CharField(max_length=40, verbose_name=_('Qual?'), blank=True)
     atividade_fisica_frequencia = models.CharField(max_length=40, verbose_name=_('Frequência?'), blank=True)
 
-    cuidar_casa = models.CharField(max_length=10, verbose_name=_('Cuidar da Casa?'), choices=[('Não', 'Não'), ('1 a 2 vezes', '1 a 2 vezes'), ('3 a 4 vezes', '3 a 4 vezes'), ('5 a 6 vezes', '5 a 6 vezes')], default='Não')
-    lavar_roupa = models.CharField(max_length=10, verbose_name=_('Lavar Roupa?'), choices=[('Não', 'Não'), ('1 a 2 vezes', '1 a 2 vezes'), ('3 a 4 vezes', '3 a 4 vezes'), ('5 a 6 vezes', '5 a 6 vezes')], default='Não')
-    passar_roupa = models.CharField(max_length=10, verbose_name=_('Passar Roupa?'), choices=[('Não', 'Não'), ('1 a 2 vezes', '1 a 2 vezes'), ('3 a 4 vezes', '3 a 4 vezes'), ('5 a 6 vezes', '5 a 6 vezes')], default='Não')
-    jardinagem = models.CharField(max_length=10, verbose_name=_('Jardinagem?'), choices=[('Não', 'Não'), ('1 a 2 vezes', '1 a 2 vezes'), ('3 a 4 vezes', '3 a 4 vezes'), ('5 a 6 vezes', '5 a 6 vezes')], default='Não')
-    supermecado = models.CharField(max_length=10, verbose_name=_('Ir ao supermecado?'), choices=[('Não', 'Não'), ('1 a 2 vezes', '1 a 2 vezes'), ('3 a 4 vezes', '3 a 4 vezes'), ('5 a 6 vezes', '5 a 6 vezes')], default='Não')
+    cuidar_casa = models.CharField(max_length=20, verbose_name=_('Cuidar da Casa?'), choices=[('Não', 'Não'), ('1 a 2 vezes', '1 a 2 vezes'), ('3 a 4 vezes', '3 a 4 vezes'), ('5 a 6 vezes', '5 a 6 vezes')], default='Não')
+    lavar_roupa = models.CharField(max_length=20, verbose_name=_('Lavar Roupa?'), choices=[('Não', 'Não'), ('1 a 2 vezes', '1 a 2 vezes'), ('3 a 4 vezes', '3 a 4 vezes'), ('5 a 6 vezes', '5 a 6 vezes')], default='Não')
+    passar_roupa = models.CharField(max_length=20, verbose_name=_('Passar Roupa?'), choices=[('Não', 'Não'), ('1 a 2 vezes', '1 a 2 vezes'), ('3 a 4 vezes', '3 a 4 vezes'), ('5 a 6 vezes', '5 a 6 vezes')], default='Não')
+    jardinagem = models.CharField(max_length=20, verbose_name=_('Jardinagem?'), choices=[('Não', 'Não'), ('1 a 2 vezes', '1 a 2 vezes'), ('3 a 4 vezes', '3 a 4 vezes'), ('5 a 6 vezes', '5 a 6 vezes')], default='Não')
+    supermecado = models.CharField(max_length=20, verbose_name=_('Ir ao supermecado?'), choices=[('Não', 'Não'), ('1 a 2 vezes', '1 a 2 vezes'), ('3 a 4 vezes', '3 a 4 vezes'), ('5 a 6 vezes', '5 a 6 vezes')], default='Não')
 
     queda_2_anos = models.CharField(max_length=10, verbose_name=_('Nos 2 últimos anos o Sr(a) teve alguma queda?'), choices=YES_NO_CHOICES, default='Não')
     queda_como = models.CharField(max_length=40, verbose_name=_('Como foi?'), blank=True)
