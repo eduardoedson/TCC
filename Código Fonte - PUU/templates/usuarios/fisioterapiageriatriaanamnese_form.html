@@ -21,6 +21,22 @@
       }
     }
 
+    function change_input_3(id, cond, id_change_1, id_change_2, id_change_3){
+      if(document.getElementById(id).value === cond){
+        $('#' + id_change_1).prop('disabled', false);
+        $('#' + id_change_2).prop('disabled', false);
+        $('#' + id_change_3).prop('disabled', false);
+      }else{
+        $('#' + id_change_1).prop('disabled', true);
+        $('#' + id_change_2).prop('disabled', true);
+        $('#' + id_change_3).prop('disabled', true);
+      }
+    }
+
+
+    document.getElementById('id_trabalha').onchange = function() {
+      change_input_3('id_trabalha', 'Sim', 'id_funcao', 'id_tempo_trabalho', 'id_ocupacao');
+    };
     document.getElementById('id_diabetes').onchange = function() {
       change_input_2('id_diabetes', 'Sim', 'id_diabetes_tipo', 'id_diabetes_tempo');
     };
