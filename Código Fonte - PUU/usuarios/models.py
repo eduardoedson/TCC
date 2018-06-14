@@ -1778,7 +1778,7 @@ class FisioterapiaOrtopediaAvaliacao(models.Model):
 
     anamnese_qp = models.TextField(verbose_name=_('Queixa Principal'), blank=True)
     anamnese_lesao = models.CharField(max_length=40, verbose_name=_('História da Lesão/Problema'), blank=True, choices=[('Trauma', _('Trauma')), ('Sem Trauma', _('Sem Trauma')), ('Não Sabe Informar', _('Não Sabe Informar'))])
-    anamnese_data_inicio = models.DateField(max_length=40, verbose_name=_('Data do Início'), blank=True)
+    anamnese_data_inicio = models.DateField(max_length=40, verbose_name=_('Data do Início'), blank=True, null=True)
     anamnese_tipo_trauma = models.CharField(max_length=40, verbose_name=_('Tipo de Trauma'), blank=True)
 
     tratamento_medicamentoso = models.TextField(verbose_name=_('Medicamentoso'), blank=True)
