@@ -59,10 +59,10 @@ function id(el){
 id('id_telefone').onkeyup = function(){
   mascara(this, mascara_tel);
 }
-id('id_referencia_telefone').onkeyup = function(){
+id('id_celular').onkeyup = function(){
   mascara(this, mascara_tel);
 }
-id('id_celular').onkeyup = function(){
+id('id_referencia_telefone').onkeyup = function(){
   mascara(this, mascara_tel);
 }
 id('id_cpf').onkeyup = function(){
