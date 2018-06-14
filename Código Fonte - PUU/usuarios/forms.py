@@ -376,7 +376,7 @@ class RecepcionistaForm(ModelForm):
 
     @transaction.atomic
     def save(self, commit=False):
-        supervisor = super(RecepcionistaForm, self).save(commit)
+        recepcionista = super(RecepcionistaForm, self).save(commit)
 
         # Cria User
         u = User.objects.create(username=recepcionista.username, email=recepcionista.email)
