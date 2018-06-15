@@ -53,7 +53,7 @@ class AreaAtendimentoCrud(Crud):
 
     class BaseMixin(GroupRequiredMixin,
                     LoginRequiredMixin, crud.base.CrudBaseMixin):
-        list_field_names = ['setor', 'descricao']
+        list_field_names = ['descricao', 'setor']
 
         raise_exception = True
         login_url = LOGIN_REDIRECT_URL
