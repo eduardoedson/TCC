@@ -324,7 +324,7 @@ class FisioterapiaGeriatriaAvalicao(models.Model):
     planejamento_objetivos = models.TextField(verbose_name=_('Objetivos'), blank=True)
     planejamento_tratamento = models.TextField(verbose_name=_('Tratamento'), blank=True)
 
-    estagiario = models.CharField(max_length=30, blank=True, verbose_name=_('Estagiário'))
+    estagiario = models.CharField(max_length=30, verbose_name=_('Estagiário'))
     supervisor = models.CharField(max_length=30, blank=True, verbose_name=_('Supervisor'))
 
     class Meta:
@@ -1014,7 +1014,7 @@ class FisioterapiaAcidenteVascularEncefalico(models.Model):
     objetivos_tratamento = models.TextField(verbose_name=_('Tratamento'), blank=True)
     objetivos_conduta = models.TextField(verbose_name=_('Conduta Fisioterapêutica'), blank=True)
 
-    atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'), blank=True)
+    atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'))
     atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervisor (a)'), blank=True)
 
     class Meta:
@@ -1084,7 +1084,7 @@ class FisioterapiaEscleroseMultipla(models.Model):
     kurtzke_piramidais = models.CharField(max_length=40, verbose_name=_('Funções Piramidais'), choices=[('0', 'Normal'), ('1', 'Sinais anormais sem incapacidades'), ('2', 'Incapacidade mínima'), ('3', 'Paraparesia ou Hemiparesia leve ou moderada, Monoparesia grave'), ('4', 'Paraparesia ou Hemiparesia acentuada, Quadriparesia moderada; ou Monoplegia'), ('5', 'Paraplegia, Hemiplegia ou Quadriparesia acentuada'), ('6', 'Quadriplegia')], blank=True)
     kurtzke_cerebelares = models.TextField(verbose_name=_('Funções Cerebelares'), blank=True)
 
-    atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'), blank=True)
+    atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'))
     atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervisor (a)'), blank=True)
 
     class Meta:
@@ -1178,7 +1178,7 @@ class FisioterapiaTRM(models.Model):
     desenvolvimento_conduta = models.TextField(verbose_name=_('Conduta Fisioterapêutica'), blank=True)
     desenvolvimento_objetivo = models.TextField(verbose_name=_('Objetivos de Tratamento'), blank=True)
 
-    atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'), blank=True)
+    atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'))
     atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervisor (a)'), blank=True)
 
     class Meta:
@@ -1236,7 +1236,7 @@ class FisioterapiaNeurologica(models.Model):
     desenvolvimento_conduta = models.TextField(verbose_name=_('Conduta Fisioterapêutica'), blank=True)
     desenvolvimento_objetivo = models.TextField(verbose_name=_('Objetivos de Tratamento'), blank=True)
 
-    atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'), blank=True)
+    atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'))
     atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervisor (a)'), blank=True)
 
     class Meta:
@@ -1333,7 +1333,7 @@ class FisioterapiaParkinson(models.Model):
     desenvolvimento_conduta = models.TextField(verbose_name=_('Conduta Fisioterapêutica'), blank=True)
     desenvolvimento_complemento = models.TextField(verbose_name=_('Complementações'), blank=True)
 
-    atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'), blank=True)
+    atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'))
     atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervisor (a)'), blank=True)
 
 
@@ -1659,7 +1659,7 @@ class FisioterapiaParalisiaFacial(models.Model):
     desenvolvimento_objetivo = models.TextField(verbose_name=_('Objetivos do Tratamento'), blank=True)
     desenvolvimento_conduta = models.TextField(verbose_name=_('Conduta Fisioterápica'), blank=True)
 
-    atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'), blank=True)
+    atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'))
     atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervisor (a)'), blank=True)
 
 
@@ -1675,7 +1675,7 @@ class FisioterapiaParalisiaFacial(models.Model):
 class FisioterapiaOrtopediaReavaliacao(models.Model):
     data = models.DateField(verbose_name=_('Data'), blank=True)
     paciente = models.ForeignKey(Paciente, verbose_name=_('Paciente'))
-    estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'), blank=True)
+    estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'))
 
     # Exame Mecânico - Teste de Uma Repetição - Movimentos Ativos
     movimento_ativo_1 = models.CharField(max_length=40, verbose_name=_('Movimento Realizado [1]'), blank=True)
@@ -1771,7 +1771,7 @@ class FisioterapiaOrtopediaAvaliacao(models.Model):
     trabalho = models.CharField(max_length=40, verbose_name=_('Local de Trabalho'), blank=True)
     dominancia = models.CharField(max_length=40, verbose_name=_('Dominância'), blank=True, choices=[('Direito', _('Direito')), ('Esquerdo', _('Esquerdo'))])
 
-    atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'), blank=True)
+    atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'))
     atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervisor (a)'), blank=True)
 
     diagnostico_fisioterapico = models.TextField(verbose_name=_('Diagnóstico Fisioterápico'), blank=True)
