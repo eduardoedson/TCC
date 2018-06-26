@@ -27,6 +27,7 @@ class UsuariosConfig(AppConfig):
         post_migrate.connect(criar_disciplinas_nutricao, sender=self)
         post_migrate.connect(criar_disciplinas_odontologia, sender=self)
         post_migrate.connect(criar_disciplinas_psicologia, sender=self)
+        post_migrate.connect(criar_areas_fisioterapia, sender=self)
         post_migrate.connect(criar_superuser, sender=self)
         post_migrate.connect(criar_supervisor_fisioterapia, sender=self)
         post_migrate.connect(criar_recepcionista_fisioterapia, sender=self)

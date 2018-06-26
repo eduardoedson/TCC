@@ -342,3 +342,24 @@ def criar_recepcionista_fisioterapia(sender, **kwargs):
 
     t = Terminal()
     print (t.cyan('\nRecepção de Fisioterapia criado!\n  - Login: ' + username + '\n  - Senha: ' + password))
+
+
+def criar_areas_fisioterapia(sender, **kwargs):
+    from servicos.models import AreaAtendimento, Setor
+
+    areas = [
+        'Geriatria',
+        'Neurologia Infantil',
+        'Neurologia Adulto',
+        'Ortopedia',
+        'Uroginecologia',
+    ]
+    setor = Setor.objects.get(descricao='Fisioterapia')
+
+    for area in areas:
+        AreaAtendimento.objects.get_or_create(setor=setor, descricao=area)
+
+    t = Terminal()
+    print (t.green('\nAs seguintes áreas de Atendimento de Fisioterapia foram criadas:'))
+    for area in AreaAtendimento.objects.filter(setor__descricao='Fisioterapia'):
+        print (t.green('  - ' + area.descricao))
