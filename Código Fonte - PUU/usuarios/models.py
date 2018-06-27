@@ -325,7 +325,7 @@ class FisioterapiaGeriatriaAvalicao(models.Model):
     planejamento_tratamento = models.TextField(verbose_name=_('Tratamento'), blank=True)
 
     estagiario = models.CharField(max_length=30, verbose_name=_('Estagiário'))
-    supervisor = models.CharField(max_length=30, blank=True, verbose_name=_('Supervisor'))
+    supervisor = models.CharField(max_length=30, verbose_name=_('Supervisor'))
 
     class Meta:
         verbose_name = _('Avaliação de Geriatria')
@@ -339,9 +339,9 @@ class FisioterapiaGeriatriaAvalicao(models.Model):
 
 class FisioterapiaBerg(models.Model):
     paciente = models.ForeignKey(Paciente, verbose_name=_('Nome'))
-    data = models.DateField(verbose_name=_('Data'), blank=True)
-    local = models.CharField(max_length=20, verbose_name=_('Local'), blank=True)
-    avaliador = models.CharField(max_length=20, verbose_name=_('Avaliador'), blank=True)
+    data = models.DateField(verbose_name=_('Data'))
+    local = models.CharField(max_length=20, verbose_name=_('Local'))
+    avaliador = models.CharField(max_length=20, verbose_name=_('Avaliador'))
 
     berg_1 = models.CharField(
         max_length=10,
@@ -1015,7 +1015,7 @@ class FisioterapiaAcidenteVascularEncefalico(models.Model):
     objetivos_conduta = models.TextField(verbose_name=_('Conduta Fisioterapêutica'), blank=True)
 
     atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'))
-    atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervisor (a)'), blank=True)
+    atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervisor (a)'))
 
     class Meta:
         verbose_name = _('Avaliação Acidente Vascular Encefálico')
@@ -1085,7 +1085,7 @@ class FisioterapiaEscleroseMultipla(models.Model):
     kurtzke_cerebelares = models.TextField(verbose_name=_('Funções Cerebelares'), blank=True)
 
     atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'))
-    atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervisor (a)'), blank=True)
+    atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervisor (a)'))
 
     class Meta:
         verbose_name = _('Avaliação Esclerose Múltipla')
@@ -1179,7 +1179,7 @@ class FisioterapiaTRM(models.Model):
     desenvolvimento_objetivo = models.TextField(verbose_name=_('Objetivos de Tratamento'), blank=True)
 
     atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'))
-    atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervisor (a)'), blank=True)
+    atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervisor (a)'))
 
     class Meta:
         verbose_name = _('Avaliação TRM')
@@ -1237,7 +1237,7 @@ class FisioterapiaNeurologica(models.Model):
     desenvolvimento_objetivo = models.TextField(verbose_name=_('Objetivos de Tratamento'), blank=True)
 
     atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'))
-    atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervisor (a)'), blank=True)
+    atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervisor (a)'))
 
     class Meta:
         verbose_name = _('Avaliação Neurológica')
@@ -1334,7 +1334,7 @@ class FisioterapiaParkinson(models.Model):
     desenvolvimento_complemento = models.TextField(verbose_name=_('Complementações'), blank=True)
 
     atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'))
-    atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervisor (a)'), blank=True)
+    atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervisor (a)'))
 
 
     class Meta:
@@ -1660,7 +1660,7 @@ class FisioterapiaParalisiaFacial(models.Model):
     desenvolvimento_conduta = models.TextField(verbose_name=_('Conduta Fisioterápica'), blank=True)
 
     atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'))
-    atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervisor (a)'), blank=True)
+    atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervisor (a)'))
 
 
     class Meta:
@@ -1772,7 +1772,7 @@ class FisioterapiaOrtopediaAvaliacao(models.Model):
     dominancia = models.CharField(max_length=40, verbose_name=_('Dominância'), blank=True, choices=[('Direito', _('Direito')), ('Esquerdo', _('Esquerdo'))])
 
     atendimento_estagiario = models.CharField(max_length=40, verbose_name=_('Estagiário (a)'))
-    atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervisor (a)'), blank=True)
+    atendimento_supervisor = models.CharField(max_length=40, verbose_name=_('Supervisor (a)'))
 
     diagnostico_fisioterapico = models.TextField(verbose_name=_('Diagnóstico Fisioterápico'), blank=True)
 
